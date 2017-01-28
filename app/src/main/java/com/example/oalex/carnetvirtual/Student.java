@@ -44,7 +44,7 @@ public class Student
         this.adress = adress;
         this.phone = phone;
 
-        Serialization serialization = new Serialization(this.e_mail, this.password);
+        new Serialization(this.e_mail, this.password);
 
         grades = new ArrayList<>();
         presences = new ArrayList<>();

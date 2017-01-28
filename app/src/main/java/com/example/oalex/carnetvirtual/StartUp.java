@@ -24,6 +24,7 @@ public class StartUp extends AppCompatActivity {
         setContentView(R.layout.activity_start_up);
 
         LinkButtons();
+        Serialization.readSerializable(getApplicationContext());
     }
 
 

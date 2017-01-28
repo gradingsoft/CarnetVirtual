@@ -22,10 +22,7 @@ public class Main extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Oprea stuff
         LinkButtons();
-
-        //Duncea stuff
         TextView text_text = (TextView) findViewById(R.id.text_test);
         text_text.setText("Buna ziua, " + Student.student.name + "! bine ati revenit.");
     }
