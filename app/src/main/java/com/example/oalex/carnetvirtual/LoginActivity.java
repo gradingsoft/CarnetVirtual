@@ -32,10 +32,6 @@ public class LoginActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mEmailView = (EditText) findViewById(R.id.email);
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mEmail = mEmailView.getText().toString();
-        mPassword = mPasswordView.getText().toString();
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -48,6 +44,10 @@ public class LoginActivity extends Activity
 
     private void LogIn() {
 
+        mEmailView = (EditText) findViewById(R.id.email);
+        mPasswordView = (EditText) findViewById(R.id.password);
+        mEmail = mEmailView.getText().toString();
+        mPassword = mPasswordView.getText().toString();
         Response.Listener<String> loginListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
