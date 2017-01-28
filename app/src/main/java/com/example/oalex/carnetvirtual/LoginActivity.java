@@ -80,7 +80,7 @@ public class LoginActivity extends Activity
                             //String STEmail = jsonResponse.getString("STEmail");
                             String STSerialNr = jsonResponse.getString("STSerialNr");
                             //String STCnp = jsonResponse.getString("STCnp");
-                            String STAddress = jsonResponse.getString("SPhone");
+                            String STAddress = jsonResponse.getString("STAddress");
                             String STPhone = jsonResponse.getString("STPhone");
 
                             new Student(SName,SAddress,SPhone,CName,STName,STFirstName,null,mEmail,STSerialNr,null,STAddress,STPhone);
