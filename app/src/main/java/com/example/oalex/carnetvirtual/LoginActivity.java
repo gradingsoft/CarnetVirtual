@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -21,7 +22,7 @@ import org.json.JSONObject;
 
 public class LoginActivity extends Activity
 {
-    private AutoCompleteTextView mEmailView;
+    private EditText mEmailView;
     private EditText mPasswordView;
     private String mEmail;
     private String mPassword;
@@ -32,11 +33,9 @@ public class LoginActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mEmail = mEmailView.getText().toString();
-        mPassword = mPasswordView.getText().toString();
+
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,7 +46,12 @@ public class LoginActivity extends Activity
 
 
     private void LogIn() {
-
+        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+        mEmailView = (EditText) findViewById(R.id.email);
+        mPasswordView = (EditText) findViewById(R.id.password);
+        mEmail = mEmailView.getText().toString();
+        mPassword = mPasswordView.getText().toString();
+        mEmailSignInButton.setText(mEmail);
         Response.Listener<String> loginListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -66,7 +70,7 @@ public class LoginActivity extends Activity
                         else if (!is_password_right)
                         {
                             AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);
-                            alert.setMessage("Parola e necorespunzatoare.").setNegativeButton("Inapoi",null).create().show();
+                            alert.setMessage("Parola e incorecta.").setNegativeButton("Inapoi",null).create().show();
                         }
                         else
                         {
