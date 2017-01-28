@@ -1,8 +1,7 @@
 package com.example.oalex.carnetvirtual;
 
-/**
- * Created by oalex on 2017-01-28.
- */
+
+import android.media.Image;
 
 public class Student
 {
@@ -15,15 +14,16 @@ public class Student
     public String className;
     public String name;
     public String forename;
+    public Image photo;
     public String e_mail;
     public String cnp;
+    public String serialNumber;
     public String adress;
     public String phone;
 
-    //TODO: ask duncea about serial number
-    //public static String serial number
 
-    public Student(String schoolname, String schooladress, String schoolphone,String className, String name, String forename, String e_mail, String cnp, String adress, String phone)
+
+    public Student(String schoolname, String schooladress, String schoolphone,String className, String name, String forename,Image photo, String e_mail, String serialNumber, String cnp, String adress, String phone)
     {
         this.schoolname = schoolname;
         this.schooladress = schooladress;
@@ -32,8 +32,10 @@ public class Student
         this.className = className;
         this.name = name;
         this.forename = forename;
+        this.photo = photo;
         this.e_mail = e_mail;
         this.cnp = cnp;
+        this.serialNumber = serialNumber;
         this.adress = adress;
         this.phone = phone;
 
