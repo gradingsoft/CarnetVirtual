@@ -19,7 +19,6 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Oprea stuff
-        new Student(1,"Clasa a XI-a", "Oprea","Alexandru", "dark_bubu@yahoo.com","1993003240016", "Calea dorobantilor 102-110","0757106250");
         LinkButtons();
 
         //Duncea stuff
