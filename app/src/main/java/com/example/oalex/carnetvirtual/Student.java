@@ -3,6 +3,9 @@ package com.example.oalex.carnetvirtual;
 
 import android.media.Image;
 
+import java.util.ArrayList;
+import java.util.prefs.PreferenceChangeEvent;
+
 public class Student
 {
     public static Student student;
@@ -21,7 +24,8 @@ public class Student
     public String adress;
     public String phone;
 
-
+    public ArrayList<Grades> grades;
+    public ArrayList<Presences> presences;
 
     public Student(String schoolname, String schooladress, String schoolphone,String className, String name, String forename,Image photo, String e_mail, String serialNumber, String cnp, String adress, String phone)
     {
@@ -39,6 +43,8 @@ public class Student
         this.adress = adress;
         this.phone = phone;
 
+        grades = new ArrayList<>();
+        presences = new ArrayList<>();
         student = this;
     }
 
