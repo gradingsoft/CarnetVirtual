@@ -21,7 +21,7 @@ import org.json.JSONObject;
 
 public class LoginActivity extends Activity
 {
-    private AutoCompleteTextView mEmailView;
+    private EditText mEmailView;
     private EditText mPasswordView;
     private String mEmail;
     private String mPassword;
@@ -32,7 +32,7 @@ public class LoginActivity extends Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView = (EditText) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
         mEmail = mEmailView.getText().toString();
         mPassword = mPasswordView.getText().toString();
@@ -83,14 +83,14 @@ public class LoginActivity extends Activity
                             String STAddress = jsonResponse.getString("STAddress");
                             String STPhone = jsonResponse.getString("STPhone");
 
-                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,null,mEmail,STSerialNr,null,STAddress,STPhone);
+                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,null,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
                             startActivity(new Intent(LoginActivity.this, Main.class));
                         }
 
                     }
                     else{
                         AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);
-                        alert.setMessage("Ups.. S-a intamplat ceva neprevazut").setNegativeButton("1napoi",null).create().show();
+                        alert.setMessage("Ups.. S-a intamplat ceva neprevazut").setNegativeButton("Inapoi",null).create().show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
