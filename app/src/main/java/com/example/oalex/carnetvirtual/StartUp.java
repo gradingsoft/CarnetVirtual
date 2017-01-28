@@ -38,6 +38,12 @@ public class StartUp extends AppCompatActivity {
                 SubmitCode();
             }
         });
+        login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StartUp.this, LoginActivity.class));
+            }
+        });
     }
 
     private void SubmitCode()
