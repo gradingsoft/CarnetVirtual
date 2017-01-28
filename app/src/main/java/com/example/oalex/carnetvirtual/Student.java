@@ -19,6 +19,7 @@ public class Student
     public String forename;
     public Image photo;
     public String e_mail;
+    public String password;
     public String cnp;
     public String serialNumber;
     public String adress;
@@ -27,7 +28,7 @@ public class Student
     public ArrayList<Grades> grades;
     public ArrayList<Presences> presences;
 
-    public Student(String schoolname, String schooladress, String schoolphone,String className, String name, String forename,Image photo, String e_mail, String serialNumber, String cnp, String adress, String phone)
+    public Student(String schoolname, String schooladress, String schoolphone,String className, String name, String forename,Image photo, String e_mail, String password, String serialNumber, String cnp, String adress, String phone)
     {
         this.schoolname = schoolname;
         this.schooladress = schooladress;
@@ -38,6 +39,7 @@ public class Student
         this.forename = forename;
         this.photo = photo;
         this.e_mail = e_mail;
+        this.password = password;
         this.cnp = cnp;
         this.serialNumber = serialNumber;
         this.adress = adress;
