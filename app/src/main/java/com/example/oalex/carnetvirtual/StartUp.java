@@ -18,27 +18,14 @@ import org.json.JSONObject;
 
 public class StartUp extends AppCompatActivity {
 
-    private String[] codes;
-    private String input_code;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_up);
 
-        GetCodes();
         LinkButtons();
     }
 
-    private void GetCodes()
-    {
-        //TODO: add logic here.
-        codes = new String[4];
-        codes[0] = "code1";
-        codes[1] = "code2";
-        codes[2] = "code3";
-        codes[3] = "code4";
-    }
 
     private void LinkButtons()
     {
@@ -51,21 +38,11 @@ public class StartUp extends AppCompatActivity {
                 SubmitCode();
             }
         });
-        login_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Login();
-            }
-        });
     }
 
     private void SubmitCode()
     {
-
-
-        //TODO: duncea pls explain de ce funtioneaza
-
-        input_code = ((EditText)findViewById(R.id.code_editText)).getText().toString();
+        String input_code = ((EditText)findViewById(R.id.code_editText)).getText().toString();
         Response.Listener<String> loginListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -98,11 +75,5 @@ public class StartUp extends AppCompatActivity {
         Code_Request code_Request = new Code_Request(input_code,loginListener);
         RequestQueue code_Queue = Volley.newRequestQueue(StartUp.this);
         code_Queue.add(code_Request);
-    }
-
-    private void Login()
-    {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
     }
 }
