@@ -25,7 +25,11 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".CreateActivity" />
-        <activity android:name=".Main"></activity>
+        <activity android:name=".Main" />
+        <activity android:name=".FirstPage" />
+        <activity android:name=".ChatActivity" />
+        <activity android:name=".GradesActivity" />
+        <activity android:name=".PresenceActivity"></activity>
     </application>
 
 </manifest>

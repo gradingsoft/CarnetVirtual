@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_first_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.oalex.carnetvirtual.FirstPage">
+
+    <TextView
+        android:text="telefon scoala"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/schooladresa_textView"
+        android:layout_alignStart="@+id/schooladresa_textView"
+        android:id="@+id/schoolphone_textView"
+        tools:ignore="HardcodedText"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <TextView
+        android:text="Nume elev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/schoolphone_textView"
+        android:layout_alignStart="@+id/schoolphone_textView"
+        android:id="@+id/studentname_textView"
+        tools:ignore="HardcodedText"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <TextView
+        android:text="Prenume elev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/studentname_textView"
+        android:layout_alignStart="@+id/studentname_textView"
+        android:id="@+id/studentforename_textView"
+        tools:ignore="HardcodedText"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <TextView
+        android:text="Numar matricol?"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nrmatricol_textView"
+        android:layout_below="@+id/studentforename_textView"
+        android:layout_alignStart="@+id/studentforename_textView"
+        tools:ignore="HardcodedText"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <TextView
+        android:text="Adresa elev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nrmatricol_textView"
+        android:layout_alignStart="@+id/nrmatricol_textView"
+        android:id="@+id/studentadress_textView"
+        tools:ignore="HardcodedText"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <TextView
+        android:text="Telefon elev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/studentadress_textView"
+        android:layout_alignStart="@+id/studentadress_textView"
+        android:id="@+id/studentphone_textView"
+        tools:ignore="HardcodedText"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <TextView
+        android:text="Adresa scoala"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/schooladresa_textView"
+        tools:ignore="HardcodedText"
+        android:layout_below="@+id/schoolname_textView"
+        android:layout_alignStart="@+id/schoolname_textView"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/schoolname_textView"
+        tools:text="Denumire Scoala"
+        tools:ignore="HardcodedText"
+        android:layout_below="@+id/poza"
+        android:layout_alignStart="@+id/poza"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <ImageView
+        app:srcCompat="@android:color/holo_blue_light"
+        android:id="@+id/semnatura"
+        android:contentDescription=""
+        tools:ignore="ContentDescription"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        app:srcCompat="@android:color/holo_orange_dark"
+        android:id="@+id/poza"
+        android:contentDescription=""
+        tools:ignore="ContentDescription"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
