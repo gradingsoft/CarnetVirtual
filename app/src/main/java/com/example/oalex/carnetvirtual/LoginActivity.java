@@ -1,6 +1,7 @@
 package com.example.oalex.carnetvirtual;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -40,6 +41,7 @@ public class LoginActivity extends Activity
 
     private void ReadFromDB()
     {
+        //TODO: Add server request here or in login.
         e_mails = new String[4];
         e_mails[0] = "florea@yahoo.com";
         e_mails[1] = "dark_bubu@yahoo.com";
@@ -73,7 +75,7 @@ public class LoginActivity extends Activity
         else if (!is_password_right)
             Toast.makeText(this, "Wrong password.", Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(this, "Successfully logged in.", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, Main.class));
     }
 }
 

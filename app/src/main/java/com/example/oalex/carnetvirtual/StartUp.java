@@ -32,6 +32,7 @@ public class StartUp extends AppCompatActivity {
 
     private void GetCodes()
     {
+        //TODO: add logic here.
         codes = new String[4];
         codes[0] = "code1";
         codes[1] = "code2";
@@ -61,6 +62,9 @@ public class StartUp extends AppCompatActivity {
     private void SubmitCode()
     {
 
+
+        //TODO: duncea pls explain de ce funtioneaza
+
         input_code = ((EditText)findViewById(R.id.code_editText)).getText().toString();
         Response.Listener<String> loginListener = new Response.Listener<String>() {
             @Override
@@ -73,6 +77,7 @@ public class StartUp extends AppCompatActivity {
                         String LastName = jsonResponse.getString("SName");
                         String Email = jsonResponse.getString("CName");
 
+
                         Intent intent = new Intent(StartUp.this,Main.class);
                         intent.putExtra("CID",FirstName);
                         intent.putExtra("SName",LastName);
@@ -82,7 +87,7 @@ public class StartUp extends AppCompatActivity {
                     }
                     else{
                         AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
-                        alert.setMessage("Cod inexistent").setNegativeButton("1napoi",null).create().show();
+                        alert.setMessage("Cod inexistent").setNegativeButton("Inapoi",null).create().show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
