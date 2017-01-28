@@ -55,11 +55,10 @@ public class StartUp extends AppCompatActivity {
                         String Email = jsonResponse.getString("CName");
 
 
-                        Intent intent = new Intent(StartUp.this,Main.class);
+                        Intent intent = new Intent(StartUp.this,CreateActivity.class);
                         intent.putExtra("CID",FirstName);
                         intent.putExtra("SName",LastName);
                         intent.putExtra("CName",Email);
-                        //intent.putExtra("Username",Username);
                         StartUp.this.startActivity(intent);
                     }
                     else{
