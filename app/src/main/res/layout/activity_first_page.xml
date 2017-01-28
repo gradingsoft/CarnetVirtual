@@ -124,6 +124,6 @@
         tools:ignore="HardcodedText"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
         android:layout_below="@+id/nrmatricol_textView"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignStart="@+id/nrmatricol_textView" />
 
 </RelativeLayout>
