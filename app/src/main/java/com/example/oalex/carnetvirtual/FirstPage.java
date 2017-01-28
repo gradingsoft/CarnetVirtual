@@ -20,13 +20,13 @@ public class FirstPage extends AppCompatActivity {
         Student student = Student.student;
 
         TextView schoolname = (TextView) findViewById(R.id.schoolname_textView);
-        schoolname.setText("Variabila pentru denumirea scolii");
+        schoolname.setText(student.schoolname);
 
         TextView schooladress = (TextView) findViewById(R.id.schooladresa_textView);
-        schooladress.setText("Variabile pentru adresa scolii");
+        schooladress.setText(student.schooladress);
 
         TextView schoolphone = (TextView) findViewById(R.id.schoolphone_textView);
-        schoolphone.setText("Variabile pentru telefonul scolii.");
+        schoolphone.setText(student.schoolphone);
 
         TextView studentclass = (TextView) findViewById(R.id.studentclass_textView);
         studentclass.setText(student.className);
@@ -36,6 +36,9 @@ public class FirstPage extends AppCompatActivity {
 
         TextView studentforename = (TextView) findViewById(R.id.studentforename_textView);
         studentforename.setText(student.forename);
+
+        TextView numarmatricol = (TextView) findViewById(R.id.nrmatricol_textView);
+        numarmatricol.setText(student.serialNumber);
 
         TextView studentadress = (TextView) findViewById(R.id.studentadress_textView);
         studentadress.setText(student.adress);

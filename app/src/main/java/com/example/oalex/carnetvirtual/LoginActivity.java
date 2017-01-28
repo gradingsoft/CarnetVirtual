@@ -71,19 +71,19 @@ public class LoginActivity extends Activity
                         else
                         {
 
-                            String Sname = jsonResponse.getString("Sname");
+                            String SName = jsonResponse.getString("SName");
                             String SAddress = jsonResponse.getString("SAddress");
                             String SPhone = jsonResponse.getString("SPhone");
                             String CName = jsonResponse.getString("CName");
                             String STName = jsonResponse.getString("STName");
                             String STFirstName = jsonResponse.getString("STFirstName");
-                            String STEmail = jsonResponse.getString("STEmail");
+                            //String STEmail = jsonResponse.getString("STEmail");
                             String STSerialNr = jsonResponse.getString("STSerialNr");
                             //String STCnp = jsonResponse.getString("STCnp");
                             String STAddress = jsonResponse.getString("SPhone");
                             String STPhone = jsonResponse.getString("STPhone");
 
-                            new Student(Sname,SAddress,SPhone,CName,STName,STFirstName,null,STEmail,STSerialNr,null,STAddress,STPhone);
+                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,null,mEmail,STSerialNr,null,STAddress,STPhone);
                             startActivity(new Intent(LoginActivity.this, Main.class));
                         }
 

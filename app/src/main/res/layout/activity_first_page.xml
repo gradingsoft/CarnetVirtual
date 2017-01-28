@@ -73,16 +73,6 @@
         android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
     <TextView
-        android:text="Adresa elev"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nrmatricol_textView"
-        android:layout_alignStart="@+id/nrmatricol_textView"
-        android:id="@+id/studentadress_textView"
-        tools:ignore="HardcodedText"
-        android:textAppearance="@android:style/TextAppearance.Material.Large" />
-
-    <TextView
         android:text="Telefon elev"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -125,5 +115,15 @@
         android:textAppearance="@android:style/TextAppearance.Material.Large"
         android:layout_below="@+id/studentclass_textView"
         android:layout_alignStart="@+id/studentclass_textView" />
+
+    <TextView
+        android:text="Adresa elev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/studentadress_textView"
+        tools:ignore="HardcodedText"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:layout_below="@+id/nrmatricol_textView"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
