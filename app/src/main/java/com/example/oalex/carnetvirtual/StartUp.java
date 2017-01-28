@@ -24,14 +24,8 @@ public class StartUp extends AppCompatActivity {
         setContentView(R.layout.activity_start_up);
 
         LinkButtons();
-        ReadData();
     }
 
-    private void ReadData()
-    {
-        Serialization.readSerializable(getApplicationContext());
-        //TODO: try to log in.
-    }
 
     private void LinkButtons()
     {

@@ -84,7 +84,6 @@ public class LoginActivity extends Activity
                             String STPhone = jsonResponse.getString("STPhone");
 
                             new Student(SName,SAddress,SPhone,CName,STName,STFirstName,null,mEmail,STSerialNr,null,STAddress,STPhone);
-                            Serialization.saveSerializable(getApplicationContext());
                             startActivity(new Intent(LoginActivity.this, Main.class));
                         }
 
