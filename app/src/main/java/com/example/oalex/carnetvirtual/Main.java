@@ -19,16 +19,12 @@ public class Main extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Oprea stuff
+        new Student(1,"Clasa a XI-a", "Oprea","Alexandru", "dark_bubu@yahoo.com","1993003240016", "Calea dorobantilor 102-110","0757106250");
         LinkButtons();
 
         //Duncea stuff
         TextView text_text = (TextView) findViewById(R.id.text_test);
-
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("CID")+ " " +intent.getStringExtra("SName");
-        String data = intent.getStringExtra("CName");
-
-        text_text.setText(name+" "+data);
+        text_text.setText("Buna ziua, " + Student.student.name + "! bine ati revenit.");
     }
 
     private void LinkButtons()
@@ -55,7 +51,6 @@ public class Main extends AppCompatActivity {
         firstpagebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Student(1,"Clasa a XI-a", "2","1", "2",555, "2","1");
                 Intent intent = new Intent(Main.this, FirstPage.class);
                 startActivity(intent);
             }

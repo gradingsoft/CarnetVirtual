@@ -13,14 +13,14 @@ public class Student
     public String name;
     public String forename;
     public String e_mail;
-    public long cnp;
+    public String cnp;
     public String adress;
     public String phone;
 
     //TODO: ask duncea about serial number
     //public static String serial number
 
-    public Student(int CID,String className, String name, String forename, String e_mail, long cnp, String adress, String phone)
+    public Student(int CID,String className, String name, String forename, String e_mail, String cnp, String adress, String phone)
     {
         this.CID = CID;
         this.className = className;

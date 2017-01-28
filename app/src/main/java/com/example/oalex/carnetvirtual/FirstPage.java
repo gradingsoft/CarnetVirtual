@@ -2,6 +2,7 @@ package com.example.oalex.carnetvirtual;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 public class FirstPage extends AppCompatActivity {
@@ -19,13 +20,16 @@ public class FirstPage extends AppCompatActivity {
         Student student = Student.student;
 
         TextView schoolname = (TextView) findViewById(R.id.schoolname_textView);
-        schoolname.setText(student.className);
+        schoolname.setText("Variabila pentru denumirea scolii");
 
         TextView schooladress = (TextView) findViewById(R.id.schooladresa_textView);
         schooladress.setText("Variabile pentru adresa scolii");
 
         TextView schoolphone = (TextView) findViewById(R.id.schoolphone_textView);
         schoolphone.setText("Variabile pentru telefonul scolii.");
+
+        TextView studentclass = (TextView) findViewById(R.id.studentclass_textView);
+        studentclass.setText(student.className);
 
         TextView studentname = (TextView) findViewById(R.id.studentname_textView);
         studentname.setText(student.name);

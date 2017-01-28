@@ -33,6 +33,8 @@ public class PresenceActivity extends AppCompatActivity {
 
     private void DataChanged(int year, int month, int dayOfMonth)
     {
-        infos.setText("Anul:" + year + "Luna:" + month + "Ziua:"+ dayOfMonth);
+        infos.setText("Anul: " + year + "Luna: " + month + "Ziua: "+ dayOfMonth);
+        //TODO: ask Duncea, facem tot cu request la server?
+
     }
 }

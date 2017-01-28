@@ -12,6 +12,27 @@
     tools:context="com.example.oalex.carnetvirtual.FirstPage">
 
     <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/schoolname_textView"
+        tools:text="Denumire Scoala"
+        tools:ignore="HardcodedText"
+        android:layout_below="@+id/poza"
+        android:layout_alignStart="@+id/poza"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <TextView
+        android:text="Adresa scoala"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/schooladresa_textView"
+        tools:ignore="HardcodedText"
+        android:layout_below="@+id/schoolname_textView"
+        android:layout_alignStart="@+id/schoolname_textView"
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <TextView
         android:text="telefon scoala"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,12 +43,12 @@
         android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
     <TextView
-        android:text="Nume elev"
+        android:text="Clasa elev"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/schoolphone_textView"
         android:layout_alignStart="@+id/schoolphone_textView"
-        android:id="@+id/studentname_textView"
+        android:id="@+id/studentclass_textView"
         tools:ignore="HardcodedText"
         android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
@@ -71,27 +92,6 @@
         tools:ignore="HardcodedText"
         android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
-    <TextView
-        android:text="Adresa scoala"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/schooladresa_textView"
-        tools:ignore="HardcodedText"
-        android:layout_below="@+id/schoolname_textView"
-        android:layout_alignStart="@+id/schoolname_textView"
-        android:textAppearance="@android:style/TextAppearance.Material.Large" />
-
-    <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/schoolname_textView"
-        tools:text="Denumire Scoala"
-        tools:ignore="HardcodedText"
-        android:layout_below="@+id/poza"
-        android:layout_alignStart="@+id/poza"
-        android:textAppearance="@android:style/TextAppearance.Material.Large" />
-
     <ImageView
         app:srcCompat="@android:color/holo_blue_light"
         android:id="@+id/semnatura"
@@ -115,5 +115,15 @@
         android:layout_marginRight="10dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Nume elev"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/studentname_textView"
+        tools:ignore="HardcodedText"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:layout_below="@+id/studentclass_textView"
+        android:layout_alignStart="@+id/studentclass_textView" />
 
 </RelativeLayout>
