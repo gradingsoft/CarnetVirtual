@@ -85,6 +85,7 @@ public class LoginActivity extends Activity
                         else
                         {
                             String STID = jsonResponse.getString("STID");
+                            new Student();
                             startActivity(new Intent(LoginActivity.this, Main.class));
                         }
 
