@@ -87,7 +87,7 @@ public class LoginActivity extends Activity
                             String STAddress = jsonResponse.getString("STAddress");
                             String STPhone = jsonResponse.getString("STPhone");
 
-                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,null,mEmail,STSerialNr,null,STAddress,STPhone);
+                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,null,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
                             startActivity(new Intent(LoginActivity.this, Main.class));
                         }
 
