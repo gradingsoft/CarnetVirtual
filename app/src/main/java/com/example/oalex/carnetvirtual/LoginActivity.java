@@ -45,7 +45,7 @@ public class LoginActivity extends Activity
     }
 
 
-    private void LogIn() {
+    public void LogIn() {
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailView = (EditText) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
