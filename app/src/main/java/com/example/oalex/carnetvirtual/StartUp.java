@@ -25,8 +25,66 @@ public class StartUp extends AppCompatActivity {
 
         LinkButtons();
         Serialization.readSerializable(getApplicationContext());
+        if(Serialization.serialization!=null)
+
+            LogIn();
     }
 
+
+
+    private void LogIn() {
+        final String mEmail= Serialization.serialization.email;
+        final String mPassword = Serialization.serialization.password;
+        Response.Listener<String> loginListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+                    boolean is_email_right = jsonResponse.getBoolean("is_email_right");
+                    boolean is_password_right = jsonResponse.getBoolean("is_password_right");
+                    if(success){
+
+                        if (!is_email_right||!is_password_right)
+                        {
+                            startActivity(new Intent(StartUp.this, LoginActivity.class));
+                        }
+                        else
+                        {
+
+                            String SName = jsonResponse.getString("SName");
+                            String SAddress = jsonResponse.getString("SAddress");
+                            String SPhone = jsonResponse.getString("SPhone");
+                            String CName = jsonResponse.getString("CName");
+                            String STName = jsonResponse.getString("STName");
+                            String STFirstName = jsonResponse.getString("STFirstName");
+                            //String STEmail = jsonResponse.getString("STEmail");
+                            String STSerialNr = jsonResponse.getString("STSerialNr");
+                            //String STCnp = jsonResponse.getString("STCnp");
+                            String STAddress = jsonResponse.getString("STAddress");
+                            String STPhone = jsonResponse.getString("STPhone");
+
+                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,null,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
+                            startActivity(new Intent(StartUp.this, Main.class));
+                        }
+
+                    }
+                    else{
+                        AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
+                        alert.setMessage("Ups.. S-a intamplat ceva neprevazut").setNegativeButton("Inapoi",null).create().show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+        Login_Request login_Request = new Login_Request (mEmail,mPassword,loginListener);
+        RequestQueue login_Queue = Volley.newRequestQueue(StartUp.this);
+        login_Queue.add(login_Request);
+
+
+    }
 
     private void LinkButtons()
     {
