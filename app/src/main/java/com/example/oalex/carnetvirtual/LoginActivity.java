@@ -21,9 +21,6 @@ import org.json.JSONObject;
 
 public class LoginActivity extends Activity
 {
-    private String[] e_mails;
-    private String[] passwords;
-
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private String mEmail;
@@ -34,8 +31,6 @@ public class LoginActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        ReadFromDB();
 
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -50,21 +45,6 @@ public class LoginActivity extends Activity
         });
     }
 
-    private void ReadFromDB()
-    {
-        //TODO: Add server request here or in login.
-        e_mails = new String[4];
-        e_mails[0] = "florea@yahoo.com";
-        e_mails[1] = "dark_bubu@yahoo.com";
-        e_mails[2] = "duncea_vlad_31@yahoo.com";
-        e_mails[3] = "mergi_pls@yahoo.com";
-
-        passwords = new String[4];
-        passwords[0] = "password1";
-        passwords[1] = "password2";
-        passwords[2] = "password3";
-        passwords[3] = "password4";
-    }
 
     private void LogIn() {
 
@@ -79,13 +59,19 @@ public class LoginActivity extends Activity
                     if(success){
 
                         if (!is_email_right)
-                            Toast.makeText(LoginActivity.this, "Wrong e-mail.", Toast.LENGTH_SHORT).show();
+                        {
+                            AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);
+                            alert.setMessage("Email-ul e gresit.").setNegativeButton("Inapoi",null).create().show();
+                        }
                         else if (!is_password_right)
-                            Toast.makeText(LoginActivity.this, "Wrong password.", Toast.LENGTH_SHORT).show();
+                        {
+                            AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);
+                            alert.setMessage("Parola e necorespunzatoare.").setNegativeButton("Inapoi",null).create().show();
+                        }
                         else
                         {
                             String STID = jsonResponse.getString("STID");
-                            new Student();
+                            //new Student();
                             startActivity(new Intent(LoginActivity.this, Main.class));
                         }
 
