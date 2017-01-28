@@ -4,7 +4,6 @@ package com.example.oalex.carnetvirtual;
 import android.media.Image;
 
 import java.util.ArrayList;
-import java.util.prefs.PreferenceChangeEvent;
 
 public class Student
 {
@@ -45,10 +44,10 @@ public class Student
         this.adress = adress;
         this.phone = phone;
 
+        Serialization serialization = new Serialization(this.e_mail, this.password);
+
         grades = new ArrayList<>();
         presences = new ArrayList<>();
         student = this;
     }
-
-
 }
