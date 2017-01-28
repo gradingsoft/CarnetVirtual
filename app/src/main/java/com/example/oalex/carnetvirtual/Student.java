@@ -8,7 +8,10 @@ public class Student
 {
     public static Student student;
 
-    public int CID;
+    public String schoolname;
+    public String schooladress;
+    public String schoolphone;
+
     public String className;
     public String name;
     public String forename;
@@ -20,9 +23,12 @@ public class Student
     //TODO: ask duncea about serial number
     //public static String serial number
 
-    public Student(int CID,String className, String name, String forename, String e_mail, String cnp, String adress, String phone)
+    public Student(String schoolname, String schooladress, String schoolphone,String className, String name, String forename, String e_mail, String cnp, String adress, String phone)
     {
-        this.CID = CID;
+        this.schoolname = schoolname;
+        this.schooladress = schooladress;
+        this.schoolphone = schoolphone;
+
         this.className = className;
         this.name = name;
         this.forename = forename;
