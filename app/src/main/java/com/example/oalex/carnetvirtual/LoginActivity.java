@@ -71,6 +71,7 @@ public class LoginActivity extends Activity
                         else
                         {
 
+
                             String SName = jsonResponse.getString("SName");
                             String SAddress = jsonResponse.getString("SAddress");
                             String SPhone = jsonResponse.getString("SPhone");
