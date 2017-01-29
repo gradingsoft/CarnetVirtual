@@ -14,7 +14,6 @@ public class Student
     public String schooladress;
     public String schoolphone;
 
-    public int stID;
     public String className;
     public String name;
     public String forename;
@@ -30,13 +29,12 @@ public class Student
     public ArrayList<Presences> presences;
     public ArrayList<ChatMessage> chatMessages;
 
-    public Student(int stID, String schoolname, String schooladress, String schoolphone,String className, String name, String forename,Bitmap photo, String e_mail, String password, String serialNumber, String cnp, String adress, String phone)
+    public Student(String schoolname, String schooladress, String schoolphone,String className, String name, String forename,Bitmap photo, String e_mail, String password, String serialNumber, String cnp, String adress, String phone)
     {
         this.schoolname = schoolname;
         this.schooladress = schooladress;
         this.schoolphone = schoolphone;
 
-        this.stID = stID;
         this.className = className;
         this.name = name;
         this.forename = forename;
