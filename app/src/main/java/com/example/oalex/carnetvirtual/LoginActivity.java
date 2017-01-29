@@ -35,7 +35,7 @@ import java.util.Locale;
 
 public class LoginActivity extends Activity
 {
-    private EditText mEmailView;
+    private  EditText mEmailView;
     private EditText mPasswordView;
     private String mEmail;
     private String mPassword;
