@@ -18,12 +18,6 @@ public class PresenceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_presence);
-
-        //TODO: Remove this
-        new Presences(Calendar.getInstance().getTime(), true, "Geografie");
-        new Presences(Calendar.getInstance().getTime(), false, "Geografie");
-        new Presences(Calendar.getInstance().getTime(), true, "Geografie1");
-
         Links();
     }
 
