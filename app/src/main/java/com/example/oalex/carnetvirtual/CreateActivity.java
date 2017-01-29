@@ -50,6 +50,7 @@ public class CreateActivity extends AppCompatActivity {
         Code = intent.getStringExtra("Code");
         clasa_editText.setText(Class);
         clasa_editText.setInputType(0);
+
         Button submitButton = (Button) findViewById(R.id.submit_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +59,8 @@ public class CreateActivity extends AppCompatActivity {
             }
         });
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        Button selectImage = (Button) findViewById(R.id.imagine_button);
+        selectImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
