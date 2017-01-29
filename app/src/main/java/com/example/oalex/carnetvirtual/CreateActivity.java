@@ -154,9 +154,14 @@ public class CreateActivity extends AppCompatActivity {
                             if(success)
                             {
                                 AlertDialog.Builder alert = new AlertDialog.Builder(CreateActivity.this);
-                                alert.setMessage("Cont creat cu succes").setNegativeButton("Inapoi",null).create().show();
-                                Intent I = new Intent(CreateActivity.this, StartUp.class);
-                                startActivity(I);
+                                alert.setMessage("Cont creat cu succes").setNegativeButton("Inapoi", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent I = new Intent(CreateActivity.this, StartUp.class);
+                                        startActivity(I);
+                                    }
+                                }).create().show();
+
                             }
                             else
                             {
