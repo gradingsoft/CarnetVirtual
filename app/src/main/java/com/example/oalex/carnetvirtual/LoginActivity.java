@@ -56,7 +56,7 @@ public class LoginActivity extends Activity
         if (netInfo!= null && netInfo.isConnectedOrConnecting()) {}
         else {
 
-            AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
+            AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);
             alert.setMessage("Conexiune la internet inexistenta.").setNegativeButton("Inapoi",null).create().show();
             // No conection
             return;
