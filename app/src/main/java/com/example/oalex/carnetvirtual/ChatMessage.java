@@ -10,15 +10,15 @@ public class ChatMessage
 {
     public Date date;
     public Date expirationDate;
-    public String mesaj;
+    public String message;
     public String autor;
     public int type;
 
-    public ChatMessage(Date date, Date expirationDate, String mesaj, String autor, int type)
+    public ChatMessage(Date date, Date expirationDate, String message, String autor, int type)
     {
         this.date = date;
         this.expirationDate = expirationDate;
-        this.mesaj = mesaj;
+        this.message = message;
         this.autor = autor;
         this.type = type;
 
