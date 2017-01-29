@@ -22,6 +22,7 @@ public class Serialization
         this.email = email;
         this.password = password;
 
+        serialization = this;
     }
 
     public static void saveSerializable(Context context)
@@ -30,7 +31,6 @@ public class Serialization
         {
             FileOutputStream fileOutputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-
             objectOutputStream.writeObject(serialization);
 
             objectOutputStream.close();

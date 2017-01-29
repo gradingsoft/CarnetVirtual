@@ -25,8 +25,8 @@ public class StartUp extends AppCompatActivity {
 
         LinkButtons();
         Serialization.readSerializable(getApplicationContext());
-        if(Serialization.serialization!=null)
 
+        if(Serialization.serialization!=null)
             LogIn();
     }
 
@@ -107,6 +107,8 @@ public class StartUp extends AppCompatActivity {
 
     private void SubmitCode()
     {
+        Toast.makeText(getApplicationContext(), Serialization.serialization.email, Toast.LENGTH_LONG).show();
+
         String input_code = ((EditText)findViewById(R.id.code_editText)).getText().toString();
         Response.Listener<String> loginListener = new Response.Listener<String>() {
             @Override
