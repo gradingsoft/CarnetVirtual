@@ -1,5 +1,6 @@
 package com.example.oalex.carnetvirtual;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CalendarView;
@@ -65,6 +66,14 @@ public class PresenceActivity extends AppCompatActivity {
             }
         }
         infoText = "Absente nemotivate: " + presences_number + "\n" + infoText + "\n" + "Absente in total: " + prescenes_total;
+
+        //TODO: Remove this
+        AlertDialog.Builder alert = new AlertDialog.Builder(PresenceActivity.this);
+        if(prescenes_total != 0)
+            alert.setMessage(infoText).setNegativeButton("Inapoi", null).create().show();
+        else
+            alert.setMessage(noPresencesText).setNegativeButton("Inapoi", null).create().show();
+        //end Remove
 
         if(prescenes_total != 0)
             infos.setText(infoText);

@@ -79,7 +79,7 @@ public class GradesActivity extends AppCompatActivity {
         SimpleDateFormat df = new SimpleDateFormat("dd/MM", Locale.getDefault());
 
         for(Grades g : gradesList)
-            materii.add(g.value + " " + g.materie + " " + df.format(g.date));
+            materii.add(df.format(g.date) + " " + g.materie + " " + g.value);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, materii);
         gradesListView.setAdapter(adapter);
