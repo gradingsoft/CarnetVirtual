@@ -20,8 +20,11 @@ public class CreateActivity extends AppCompatActivity {
 
         //TODO: change clasa_editText.setText("XI G");
 
+        Intent intent = getIntent();
+
         EditText clasa_editText = (EditText) findViewById(R.id.clasa_editText);
-        clasa_editText.setText("XI G");
+        String  Class = intent.getStringExtra("CName");
+        clasa_editText.setText(Class);
         clasa_editText.setInputType(0);
         //EditText scoala_editText = (EditText) findViewById(R.id.clasa_editText);
         //clasa_editText.setText("XI G");
