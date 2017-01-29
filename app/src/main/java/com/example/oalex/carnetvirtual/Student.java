@@ -1,6 +1,7 @@
 package com.example.oalex.carnetvirtual;
 
 
+import android.graphics.Bitmap;
 import android.media.Image;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class Student
     public String className;
     public String name;
     public String forename;
-    public Image photo;
+    public Bitmap photo;
     public String e_mail;
     public String password;
     public String cnp;
@@ -27,7 +28,7 @@ public class Student
     public ArrayList<Grades> grades;
     public ArrayList<Presences> presences;
 
-    public Student(String schoolname, String schooladress, String schoolphone,String className, String name, String forename,Image photo, String e_mail, String password, String serialNumber, String cnp, String adress, String phone)
+    public Student(String schoolname, String schooladress, String schoolphone,String className, String name, String forename,Bitmap photo, String e_mail, String password, String serialNumber, String cnp, String adress, String phone)
     {
         this.schoolname = schoolname;
         this.schooladress = schooladress;

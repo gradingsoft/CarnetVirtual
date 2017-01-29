@@ -2,6 +2,7 @@ package com.example.oalex.carnetvirtual;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.TextView;
 
@@ -18,6 +19,9 @@ public class FirstPage extends AppCompatActivity {
     private void PopulateDetails()
     {
         Student student = Student.student;
+
+        ImageView studentimage = (ImageView) findViewById(R.id.studentpicture);
+        studentimage.setImageBitmap(student.photo);
 
         TextView schoolname = (TextView) findViewById(R.id.schoolname_textView);
         schoolname.setText(student.schoolname);
