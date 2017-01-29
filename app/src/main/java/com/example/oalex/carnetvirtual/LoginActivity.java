@@ -15,15 +15,22 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class LoginActivity extends Activity
@@ -73,7 +80,7 @@ public class LoginActivity extends Activity
             {
                 try {
                     LogIn();
-                    Thread.sleep(3000);
+                    Thread.sleep(5000);
                     progressDialog.dismiss();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -122,15 +129,32 @@ public class LoginActivity extends Activity
                             //String STCnp = jsonResponse.getString("STCnp");
                             String STAddress = jsonResponse.getString("STAddress");
                             String STPhone = jsonResponse.getString("STPhone");
+                            Integer Grade_nr = jsonResponse.getInt("Grade_nr");
+                            Integer Presence_nr = jsonResponse.getInt("Presence_nr");
 
                             String STPicture = jsonResponse.getString("STPicture");
                             byte[] byteArray = STPicture.getBytes("UTF-16");  //Transforma poza in binar
                             byte[] data = Base64.decode(byteArray, Base64.DEFAULT); // decodeaza poza cryptata in base 64
                             Bitmap STPicture_bm = BitmapFactory.decodeByteArray(data, 0 ,data.length); //transforma in bitmap
 
+                            for(int i=0;i<Presence_nr;i++)
+                            {
+                                JSONObject presence = jsonResponse.getJSONObject("Presence"+i);
+                                String PDate = presence.getString("PDate");
+                                DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+                                Date date = format.parse(PDate);
+                                Boolean PValue = presence.getBoolean("PValue");
+                                String SBName = presence.getString("SBName");
+                                Toast.makeText(LoginActivity.this,date.toString(),Toast.LENGTH_LONG).show();
+                                new Presences(null,PValue,SBName);
+                            }
+
                             new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
                             Serialization.saveSerializable(getApplicationContext());
                             startActivity(new Intent(LoginActivity.this, Main.class));
+
+
+
                         }
 
                     }
@@ -141,6 +165,8 @@ public class LoginActivity extends Activity
                 } catch (JSONException e) {
                     e.printStackTrace();
                 } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                } catch (ParseException e) {
                     e.printStackTrace();
                 }
 
