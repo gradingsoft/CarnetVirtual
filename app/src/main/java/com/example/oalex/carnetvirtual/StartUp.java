@@ -24,6 +24,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class StartUp extends AppCompatActivity {
 
@@ -107,7 +111,7 @@ public class StartUp extends AppCompatActivity {
                             //String STCnp = jsonResponse.getString("STCnp");
                             String STAddress = jsonResponse.getString("STAddress");
                             String STPhone = jsonResponse.getString("STPhone");
-
+                            Integer Presence_nr = jsonResponse.getInt("Presence_nr");
                             String STPicture = jsonResponse.getString("STPicture");
                             byte[] byteArray = STPicture.getBytes("UTF-16");  //Transforma poza in binar
                             byte[] data = Base64.decode(byteArray, Base64.DEFAULT); // decodeaza poza cryptata in base 64
@@ -115,6 +119,18 @@ public class StartUp extends AppCompatActivity {
 
                             new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
                             startActivity(new Intent(StartUp.this, Main.class));
+
+                            for(int i=0;i<Presence_nr;i++)
+                            {
+                                JSONObject presence = jsonResponse.getJSONObject("Presence"+i);
+                                String PDate = presence.getString("PDate");
+                                DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+                                Date date = format.parse(PDate);
+                                Boolean PValue = presence.getBoolean("PValue");
+                                String SBName = presence.getString("SBName");
+                                //Toast.makeText(LoginActivity.this,date.toString(),Toast.LENGTH_LONG).show();
+                                new Presences(date,PValue,SBName);
+                            }
                         }
 
                     }
