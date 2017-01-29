@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AlertDialog;
 import android.util.Base64;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,7 +28,8 @@ import java.util.Locale;
  */
 
 public class Refresh  {
-    public void LogIn(final Context context) {
+
+    public static void LogIn(final Context context, final String Email, final String Password) {
 
         Response.Listener<String> loginListener = new Response.Listener<String>() {
             @Override
@@ -65,13 +67,14 @@ public class Refresh  {
                             String STPhone = jsonResponse.getString("STPhone");
                             Integer Grade_nr = jsonResponse.getInt("Grade_nr");
                             Integer Presence_nr = jsonResponse.getInt("Presence_nr");
+                            Integer Chat_nr = jsonResponse.getInt("Chat_nr");
 
                             String STPicture = jsonResponse.getString("STPicture");
                             byte[] byteArray = STPicture.getBytes("UTF-16");  //Transforma poza in binar
                             byte[] data = Base64.decode(byteArray, Base64.DEFAULT); // decodeaza poza cryptata in base 64
                             Bitmap STPicture_bm = BitmapFactory.decodeByteArray(data, 0 ,data.length); //transforma in bitmap
 
-                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,Serialization.serialization.email,Serialization.serialization.password,STSerialNr,null,STAddress,STPhone);
+                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,Email,Password,STSerialNr,null,STAddress,STPhone);
                             Serialization.saveSerializable(context.getApplicationContext());
                             context.startActivity(new Intent(context, Main.class));
 
@@ -89,20 +92,30 @@ public class Refresh  {
 
                             for(int i=0;i<Grade_nr;i++)
                             {
-                                JSONObject presence = jsonResponse.getJSONObject("Grade"+i);
-                                String GDate = presence.getString("GDate");
+                                JSONObject grade = jsonResponse.getJSONObject("Grade"+i);
+                                String GDate = grade.getString("GDate");
                                 DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
                                 Date date = format.parse(GDate);
-                                Integer GValue = presence.getInt("GValue");
-                                String SBName = presence.getString("SBName");
+                                Integer GValue = grade.getInt("GValue");
+                                String SBName = grade.getString("SBName");
                                 new Grades(date,GValue,SBName);
                             }
 
+                            for(int i=0;i<Chat_nr;i++)
+                            {
+                                JSONObject chat = jsonResponse.getJSONObject("Chat"+i);
 
-
-
+                                DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+                                String CHDate = chat.getString("CHDate");
+                                String CHEDate = chat.getString("CHDate");
+                                Date chdate = format.parse(CHDate);
+                                Date chedate = format.parse(CHEDate);
+                                Integer CHType = chat.getInt("CHType");
+                                String CHMessage = chat.getString("CHMessage");
+                                new ChatMessage(chdate,chedate,CHMessage,"Pomohaci",CHType);
+                                Toast.makeText(context, CHMessage, Toast.LENGTH_LONG).show();
+                            }
                         }
-
                     }
                     else{
                         AlertDialog.Builder alert = new AlertDialog.Builder(context);
@@ -118,7 +131,7 @@ public class Refresh  {
 
             }
         };
-        _Login_Request login_Request = new _Login_Request(Serialization.serialization.email,Serialization.serialization.password,loginListener);
+        _Login_Request login_Request = new _Login_Request(Email,Password,loginListener);
         RequestQueue login_Queue = Volley.newRequestQueue(context);
         login_Queue.add(login_Request);
 
