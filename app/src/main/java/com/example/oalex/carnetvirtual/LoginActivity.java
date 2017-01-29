@@ -85,7 +85,6 @@ public class LoginActivity extends Activity
 
                             new Student(SName,SAddress,SPhone,CName,STName,STFirstName,null,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
                             Serialization.saveSerializable(getApplicationContext());
-                            Toast.makeText(getApplicationContext(), Serialization.serialization.email, Toast.LENGTH_LONG).show();
                             startActivity(new Intent(LoginActivity.this, Main.class));
                         }
 

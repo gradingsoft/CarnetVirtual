@@ -1,6 +1,8 @@
 package com.example.oalex.carnetvirtual;
 
 import android.content.Context;
+import android.os.Environment;
+import android.widget.Toast;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -29,6 +31,8 @@ public class Serialization
     {
         try
         {
+            Toast.makeText(context, "a mers", Toast.LENGTH_LONG);
+
             FileOutputStream fileOutputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(serialization);
@@ -47,6 +51,7 @@ public class Serialization
 
         try
         {
+            Toast.makeText(context, "a mers", Toast.LENGTH_LONG);
             FileInputStream fileInputStream = context.openFileInput(fileName);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             serialization = (Serialization) objectInputStream.readObject();
