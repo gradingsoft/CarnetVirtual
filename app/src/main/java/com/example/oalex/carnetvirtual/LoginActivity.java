@@ -2,9 +2,12 @@ package com.example.oalex.carnetvirtual;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.util.Base64;
@@ -47,6 +50,18 @@ public class LoginActivity extends Activity
 
     private void ProgressBar()
     {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        // Test for connection
+        if (netInfo!= null && netInfo.isConnectedOrConnecting()) {}
+        else {
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
+            alert.setMessage("Conexiune la internet inexistenta.").setNegativeButton("Inapoi",null).create().show();
+            // No conection
+            return;
+        }
+
         final ProgressDialog progressDialog;
         progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setMessage("Va rugam asteptati.");

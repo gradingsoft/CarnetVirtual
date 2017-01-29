@@ -1,9 +1,12 @@
 package com.example.oalex.carnetvirtual;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -38,6 +41,19 @@ public class StartUp extends AppCompatActivity {
 
     private void ProgressBar()
     {
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        // Test for connection
+        if (netInfo!= null && netInfo.isConnectedOrConnecting()) {}
+        else {
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
+            alert.setMessage("Conexiune la internet inexistenta.").setNegativeButton("Inapoi",null).create().show();
+            // No conection
+            return;
+        }
+
         final ProgressDialog progressDialog;
         progressDialog = new ProgressDialog(StartUp.this);
         progressDialog.setMessage("Va rugam asteptati.");
@@ -142,6 +158,21 @@ public class StartUp extends AppCompatActivity {
 
     private void SubmitCodeWait()
     {
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        // Test for connection
+        if (netInfo!= null && netInfo.isConnectedOrConnecting()) {
+
+        }
+        else {
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
+            alert.setMessage("Conexiune la internet inexistenta.").setNegativeButton("Inapoi",null).create().show();
+            // No conection
+            return;
+        }
+
         final ProgressDialog progressDialog;
         progressDialog = new ProgressDialog(StartUp.this);
         progressDialog.setMessage("Va rugam asteptati.");
