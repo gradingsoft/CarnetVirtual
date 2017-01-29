@@ -137,6 +137,10 @@ public class LoginActivity extends Activity
                             byte[] data = Base64.decode(byteArray, Base64.DEFAULT); // decodeaza poza cryptata in base 64
                             Bitmap STPicture_bm = BitmapFactory.decodeByteArray(data, 0 ,data.length); //transforma in bitmap
 
+                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
+                            Serialization.saveSerializable(getApplicationContext());
+                            startActivity(new Intent(LoginActivity.this, Main.class));
+
                             for(int i=0;i<Presence_nr;i++)
                             {
                                 JSONObject presence = jsonResponse.getJSONObject("Presence"+i);
@@ -145,13 +149,11 @@ public class LoginActivity extends Activity
                                 Date date = format.parse(PDate);
                                 Boolean PValue = presence.getBoolean("PValue");
                                 String SBName = presence.getString("SBName");
-                                Toast.makeText(LoginActivity.this,date.toString(),Toast.LENGTH_LONG).show();
-                                new Presences(null,PValue,SBName);
+                                //Toast.makeText(LoginActivity.this,date.toString(),Toast.LENGTH_LONG).show();
+                                new Presences(date,PValue,SBName);
                             }
 
-                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
-                            Serialization.saveSerializable(getApplicationContext());
-                            startActivity(new Intent(LoginActivity.this, Main.class));
+
 
 
 
