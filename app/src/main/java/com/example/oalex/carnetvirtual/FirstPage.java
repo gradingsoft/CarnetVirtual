@@ -1,7 +1,10 @@
 package com.example.oalex.carnetvirtual;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.TextView;
@@ -14,6 +17,17 @@ public class FirstPage extends AppCompatActivity {
         setContentView(R.layout.activity_first_page);
 
         PopulateDetails();
+
+        Button logoutButton = (Button) findViewById(R.id.log_out_button);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Serialization.serialization = null;
+                Serialization.saveSerializable(getApplicationContext());
+                Intent intent = new Intent(FirstPage.this, StartUp.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void PopulateDetails()

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Environment;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -30,18 +31,21 @@ public class Serialization implements Serializable
 
     public static void saveSerializable(Context context)
     {
-        try
-        {
-            FileOutputStream fileOutputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            objectOutputStream.writeObject(serialization);
+        if(serialization != null) {
+            try {
+                FileOutputStream fileOutputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
+                objectOutputStream.writeObject(serialization);
 
-            objectOutputStream.close();
-            fileOutputStream.close();
+                objectOutputStream.close();
+                fileOutputStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        catch (IOException e)
+        else
         {
-            e.printStackTrace();
+            context.deleteFile(fileName);
         }
     }
 

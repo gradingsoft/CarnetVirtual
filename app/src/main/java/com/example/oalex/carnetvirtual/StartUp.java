@@ -1,8 +1,10 @@
 package com.example.oalex.carnetvirtual;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,11 +32,30 @@ public class StartUp extends AppCompatActivity {
         LinkButtons();
 
         Serialization.readSerializable(getApplicationContext());
-        if(Serialization.serialization!=null)
-            LogIn();
+        if (Serialization.serialization != null)
+            ProgressBar();
+    }
 
-
-
+    private void ProgressBar()
+    {
+        final ProgressDialog progressDialog;
+        progressDialog = new ProgressDialog(StartUp.this);
+        progressDialog.setMessage("Va rugam asteptati.");
+        progressDialog.setTitle("Incarcare date");
+        progressDialog.show();
+        new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                try {
+                    LogIn();
+                    Thread.sleep(3000);
+                    progressDialog.dismiss();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
 
@@ -108,7 +129,7 @@ public class StartUp extends AppCompatActivity {
         submit_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SubmitCode();
+                SubmitCodeWait();
             }
         });
         login_button.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +138,28 @@ public class StartUp extends AppCompatActivity {
                 startActivity(new Intent(StartUp.this, LoginActivity.class));
             }
         });
+    }
+
+    private void SubmitCodeWait()
+    {
+        final ProgressDialog progressDialog;
+        progressDialog = new ProgressDialog(StartUp.this);
+        progressDialog.setMessage("Va rugam asteptati.");
+        progressDialog.setTitle("Verificare cod introdus.");
+        progressDialog.show();
+        new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                try {
+                    SubmitCode();
+                    Thread.sleep(3000);
+                    progressDialog.dismiss();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
     private void SubmitCode()

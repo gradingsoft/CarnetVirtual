@@ -127,4 +127,13 @@
         android:layout_below="@+id/semnatura"
         android:layout_alignParentStart="true" />
 
+    <Button
+        android:text="Delogheaza-te"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/log_out_button"
+        tools:ignore="HardcodedText" />
+
 </RelativeLayout>

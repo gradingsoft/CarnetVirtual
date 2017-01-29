@@ -1,6 +1,7 @@
 package com.example.oalex.carnetvirtual;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -39,11 +40,32 @@ public class LoginActivity extends Activity
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                LogIn();
+                ProgressBar();
             }
         });
     }
 
+    private void ProgressBar()
+    {
+        final ProgressDialog progressDialog;
+        progressDialog = new ProgressDialog(LoginActivity.this);
+        progressDialog.setMessage("Va rugam asteptati.");
+        progressDialog.setTitle("Incarcare date");
+        progressDialog.show();
+        new Thread(new Runnable() {
+            @Override
+            public void run()
+            {
+                try {
+                    LogIn();
+                    Thread.sleep(3000);
+                    progressDialog.dismiss();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
 
     private void LogIn() {
 
