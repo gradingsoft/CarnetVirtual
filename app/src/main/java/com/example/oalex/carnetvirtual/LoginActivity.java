@@ -153,6 +153,20 @@ public class LoginActivity extends Activity
                                 new Presences(date,PValue,SBName);
                             }
 
+                            for(int i=0;i<Grade_nr;i++)
+                            {
+                                JSONObject presence = jsonResponse.getJSONObject("Grade"+i);
+                                String GDate = presence.getString("GDate");
+                                DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+                                Date date = format.parse(GDate);
+                                Integer GValue = presence.getInt("GValue");
+                                String SBName = presence.getString("SBName");
+                                new Grades(date,GValue,SBName);
+                            }
+
+
+
+
                         }
 
                     }

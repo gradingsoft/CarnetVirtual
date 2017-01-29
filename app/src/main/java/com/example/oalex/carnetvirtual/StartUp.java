@@ -112,6 +112,7 @@ public class StartUp extends AppCompatActivity {
                             //String STCnp = jsonResponse.getString("STCnp");
                             String STAddress = jsonResponse.getString("STAddress");
                             String STPhone = jsonResponse.getString("STPhone");
+                            Integer Grade_nr = jsonResponse.getInt("Grade_nr");
                             Integer Presence_nr = jsonResponse.getInt("Presence_nr");
                             String STPicture = jsonResponse.getString("STPicture");
                             byte[] byteArray = STPicture.getBytes("UTF-16");  //Transforma poza in binar
@@ -129,8 +130,17 @@ public class StartUp extends AppCompatActivity {
                                 Date date = format.parse(PDate);
                                 Boolean PValue = presence.getBoolean("PValue");
                                 String SBName = presence.getString("SBName");
-                                //Toast.makeText(LoginActivity.this,date.toString(),Toast.LENGTH_LONG).show();
                                 new Presences(date,PValue,SBName);
+                            }
+                            for(int i=0;i<Grade_nr;i++)
+                            {
+                                JSONObject presence = jsonResponse.getJSONObject("Grade"+i);
+                                String GDate = presence.getString("GDate");
+                                DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+                                Date date = format.parse(GDate);
+                                Integer GValue = presence.getInt("GValue");
+                                String SBName = presence.getString("SBName");
+                                new Grades(date,GValue,SBName);
                             }
                         }
 
