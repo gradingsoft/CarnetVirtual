@@ -131,7 +131,7 @@ public class LoginActivity extends Activity
                             String STPhone = jsonResponse.getString("STPhone");
                             Integer Grade_nr = jsonResponse.getInt("Grade_nr");
                             Integer Presence_nr = jsonResponse.getInt("Presence_nr");
-                            Integer Chat_nr = jsonResponse.getInt("");
+                            Integer Chat_nr = jsonResponse.getInt("Chat_nr");
 
                             String STPicture = jsonResponse.getString("STPicture");
                             byte[] byteArray = STPicture.getBytes("UTF-16");  //Transforma poza in binar
