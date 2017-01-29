@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ public class GradesActivity extends AppCompatActivity {
     private Student student;
 
     private Spinner dropdownSpinner;
+    private ListView gradesListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class GradesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_grades);
 
         student = Student.student;
+        gradesListView = (ListView) findViewById(R.id.grades_listView);
         dropdownSpinner = (Spinner) findViewById(R.id.materii_spinner);
         dropdownSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -69,8 +72,17 @@ public class GradesActivity extends AppCompatActivity {
             if(g.materie.equals(materie) || materie.isEmpty())
                 gradesArrayList.add(g);
 
-        //TODO: Remove this and populate listview.
-        for(Grades g: gradesArrayList)
-            Toast.makeText(GradesActivity.this, g.materie+ " " + g.value, Toast.LENGTH_SHORT).show();
+        PopulateListView(gradesArrayList);
+    }
+
+    private void PopulateListView(ArrayList<Grades> gradesList)
+    {
+        ArrayList<String> materii = new ArrayList<>();
+
+        for(Grades g : gradesList)
+            materii.add(g.value + " " + g.materie + " " + g.date);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, materii);
+        gradesListView.setAdapter(adapter);
     }
 }
