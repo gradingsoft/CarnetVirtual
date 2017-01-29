@@ -9,9 +9,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 
-public class Serialization
+public class Serialization implements Serializable
 {
     public static Serialization serialization;
     private static String fileName = "studentdata.srl";
@@ -31,8 +32,6 @@ public class Serialization
     {
         try
         {
-            Toast.makeText(context, "a mers", Toast.LENGTH_LONG);
-
             FileOutputStream fileOutputStream = context.openFileOutput(fileName, Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(serialization);
@@ -51,7 +50,6 @@ public class Serialization
 
         try
         {
-            Toast.makeText(context, "a mers", Toast.LENGTH_LONG);
             FileInputStream fileInputStream = context.openFileInput(fileName);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             serialization = (Serialization) objectInputStream.readObject();
