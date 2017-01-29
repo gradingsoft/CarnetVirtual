@@ -1,8 +1,11 @@
 package com.example.oalex.carnetvirtual;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +14,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -27,12 +31,14 @@ public class CreateActivity extends AppCompatActivity {
 
     String Class;
 
+    private static int RESULT_LOAD_IMAGE = 1;
+    private Bitmap STimage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
 
-        //TODO: change clasa_editText.setText("XI G");
 
         Intent intent = getIntent();
 
@@ -50,6 +56,30 @@ public class CreateActivity extends AppCompatActivity {
                 CheckSubmit();
             }
         });
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            STimage = (BitmapFactory.decodeFile(picturePath));
+        }
     }
 
     private void CheckSubmit()
@@ -70,7 +100,7 @@ public class CreateActivity extends AppCompatActivity {
         String phone_number=tphone_number.getText().toString();
         String pass1       =tpass1.getText().toString();
         String pass2       =tpass2.getText().toString();
-        String address    =taddress.getText().toString();
+        String address     =taddress.getText().toString();
 
         ArrayList<String> fields = new ArrayList<>();
         fields.add(name);
@@ -124,15 +154,6 @@ public class CreateActivity extends AppCompatActivity {
         _Register_Request register_Request = new _Register_Request(name,forename,email,cnp,phone_number,Class,pass1,address,loginListener);
         RequestQueue register_Queue = Volley.newRequestQueue(CreateActivity.this);
         register_Queue.add(register_Request);
-
-
-
-
-
-
-
-
-        //TODO: Add sutdent logic here: Student student = new Student(...);
 
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

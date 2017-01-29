@@ -17,7 +17,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/name_editText"
-        android:hint="Name"
+        android:hint="Nume"
         tools:ignore="HardcodedText" />
 
     <EditText
@@ -26,7 +26,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/forname_editText"
-        android:hint="Forname"
+        android:hint="Prenume"
         tools:ignore="HardcodedText" />
 
     <EditText
@@ -53,7 +53,7 @@
         android:inputType="phone"
         android:ems="10"
         android:id="@+id/phone_editText"
-        android:hint="Phone number"
+        android:hint="Telefon"
         tools:ignore="HardcodedText" />
 
     <EditText
@@ -71,7 +71,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/pass1_editText"
-        android:hint="Password"
+        android:hint="Parola"
         tools:ignore="HardcodedText" />
 
     <EditText
@@ -80,7 +80,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/pass2_editText"
-        android:hint="Repeat Password"
+        android:hint="Rescrie Parola"
         tools:ignore="HardcodedText" />
 
     <EditText
@@ -89,7 +89,14 @@
         android:inputType="textPostalAddress"
         android:ems="10"
         android:id="@+id/adress_editText"
-        android:hint="Adress"
+        android:hint="Adresa"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:text="Selecteaza Poza"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imagine_button"
         tools:ignore="HardcodedText" />
 
     <Button
