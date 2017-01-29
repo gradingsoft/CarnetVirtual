@@ -11,6 +11,7 @@ import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class GradesActivity extends AppCompatActivity {
 
@@ -50,10 +51,10 @@ public class GradesActivity extends AppCompatActivity {
         arraySpinner.add("");
 
         //TODO: Remove this.
-        new Grades(null, 10, "Geografie");
-        new Grades(null, 10, "Mate");
-        new Grades(null, 8, "Mate");
-        new Grades(null, 10, "Iunia");
+        new Grades(Calendar.getInstance().getTime(), 10, "Geografie");
+        new Grades(Calendar.getInstance().getTime(), 10, "Mate");
+        new Grades(Calendar.getInstance().getTime(), 8, "Mate");
+        new Grades(Calendar.getInstance().getTime(), 10, "Iunia");
         //End Remove.
 
         for(Grades g: student.grades)

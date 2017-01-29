@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.Date;
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class PresenceActivity extends AppCompatActivity {
         ArrayList<Presences> dayPres = new ArrayList<>();
         for (Presences pres: presences)
         {
+            Toast.makeText(PresenceActivity.this,"data:" + pres.date, Toast.LENGTH_SHORT).show();
             Calendar cal = Calendar.getInstance();
             cal.setTime(pres.date);
             int cyear = cal.get(Calendar.YEAR);
