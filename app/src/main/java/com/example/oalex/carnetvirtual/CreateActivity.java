@@ -31,6 +31,7 @@ public class CreateActivity extends AppCompatActivity {
 
     String Class;
     String CID;
+    String Code;
 
     private static int RESULT_LOAD_IMAGE = 1;
     private Bitmap STimage;
@@ -46,6 +47,7 @@ public class CreateActivity extends AppCompatActivity {
         EditText clasa_editText = (EditText) findViewById(R.id.clasa_editText);
         Class = intent.getStringExtra("CName");
         CID = intent.getStringExtra("CID");
+        Code = intent.getStringExtra("Code");
         clasa_editText.setText(Class);
         clasa_editText.setInputType(0);
         Button submitButton = (Button) findViewById(R.id.submit_button);
@@ -150,7 +152,7 @@ public class CreateActivity extends AppCompatActivity {
 
             }
         };
-        _Register_Request register_Request = new _Register_Request(name,forename,email,cnp,phone_number,CID,pass1,address,STimage,loginListener);
+        _Register_Request register_Request = new _Register_Request(Code,name,forename,email,cnp,phone_number,CID,pass1,address,STimage,loginListener);
         RequestQueue register_Queue = Volley.newRequestQueue(CreateActivity.this);
         register_Queue.add(register_Request);
 

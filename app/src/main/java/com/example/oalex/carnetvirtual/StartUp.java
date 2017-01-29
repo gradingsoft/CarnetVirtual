@@ -195,7 +195,7 @@ public class StartUp extends AppCompatActivity {
 
     private void SubmitCode()
     {
-        String input_code = ((EditText)findViewById(R.id.code_editText)).getText().toString();
+        final String input_code = ((EditText)findViewById(R.id.code_editText)).getText().toString();
         Response.Listener<String> loginListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -209,6 +209,7 @@ public class StartUp extends AppCompatActivity {
 
 
                         Intent intent = new Intent(StartUp.this,CreateActivity.class);
+                        intent.putExtra("Code",input_code);
                         intent.putExtra("CID",CID);
                         intent.putExtra("SName",SName);
                         intent.putExtra("CName",CName);

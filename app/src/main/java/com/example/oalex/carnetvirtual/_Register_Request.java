@@ -17,9 +17,11 @@ public class _Register_Request extends StringRequest {
     private static final String Site_URL_Login = "http://pasotee.5gbfree.com/register_request.php";
     private Map<String, String> params;
 
-    public _Register_Request(String Name, String FirstName, String Email, String CNP, String Phone, String Class, String Password, String Address, Bitmap STPicture, Response.Listener<String> listener) {
+    public _Register_Request(String Code,String Name, String FirstName, String Email, String CNP, String Phone, String Class, String Password, String Address, Bitmap STPicture, Response.Listener<String> listener) {
         super(Method.POST, Site_URL_Login, listener, null);
         params = new HashMap<>();
+        params.put("Access_code","123456789");
+        params.put("Code",Code);
         params.put("Name", Name);
         params.put("FirstName", FirstName);
         params.put("Email", Email);
