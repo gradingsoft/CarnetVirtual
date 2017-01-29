@@ -5,17 +5,24 @@ import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.TextView;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class PresenceActivity extends AppCompatActivity {
 
     private TextView infos;
+    private String noPresencesText = "Nu aveti absente in aceasta zi.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_presence);
+
+        //TODO: Remove this
+        new Presences(Calendar.getInstance().getTime(), true, "Geografie");
+        new Presences(Calendar.getInstance().getTime(), false, "Geografie");
+        new Presences(Calendar.getInstance().getTime(), true, "Geografie1");
 
         Links();
     }
@@ -62,9 +69,11 @@ public class PresenceActivity extends AppCompatActivity {
                 infoText += pres.materie + " ";
             }
         }
-        infoText = "Absente nemotivate: " + presences_number + "(in total " + prescenes_total + ")" + infoText;
+        infoText = "Absente nemotivate: " + presences_number + "\n" + infoText + "\n" + "Absente in total: " + prescenes_total;
 
         if(prescenes_total != 0)
             infos.setText(infoText);
+        else
+            infos.setText(noPresencesText);
     }
 }
