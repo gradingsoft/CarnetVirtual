@@ -1,5 +1,6 @@
 package com.example.oalex.carnetvirtual;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -85,6 +86,7 @@ public class CreateActivity extends AppCompatActivity {
         }
     }
 
+
     private void CheckSubmit()
     {
         EditText tname = (EditText) findViewById(R.id.name_editText);
@@ -134,19 +136,52 @@ public class CreateActivity extends AppCompatActivity {
             return;
         }
 
+
+
+
         Response.Listener<String> loginListener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
+                    boolean access = jsonResponse.getBoolean("access");
+                    boolean code_access = jsonResponse.getBoolean("code_access");
                     boolean success = jsonResponse.getBoolean("success");
-                    if(success){
+                    if(access)
+                    {
+                        if(code_access)
+                        {
+                            if(success)
+                            {
+                                AlertDialog.Builder alert = new AlertDialog.Builder(CreateActivity.this);
+                                alert.setMessage("Cont creat cu succes").setNegativeButton("Inapoi",null).create().show();
+                                Intent I = new Intent(CreateActivity.this, StartUp.class);
+                                startActivity(I);
+                            }
+                            else
+                            {
+                                AlertDialog.Builder alert = new AlertDialog.Builder(CreateActivity.this);
+                                alert.setMessage("Eroare").setNegativeButton("", null).create().show();
+                                Intent I = new Intent(CreateActivity.this, StartUp.class);
+                                startActivity(I);
 
+                            }
+                        }
+                        else
+                        {
+                            AlertDialog.Builder alert = new AlertDialog.Builder(CreateActivity.this);
+                            alert.setMessage("Cod gresit").setNegativeButton("Inapoi",null).create().show();
+                            Intent I = new Intent(CreateActivity.this, StartUp.class);
+                            startActivity(I);
+                        }
 
                     }
-                    else{
+                    else
+                    {
                         AlertDialog.Builder alert = new AlertDialog.Builder(CreateActivity.this);
-                        alert.setMessage("Ups.. S-a intamplat ceva neprevazut").setNegativeButton("Inapoi",null).create().show();
+                        alert.setMessage("Nu ai acces").setNegativeButton("Inapoi",null).create().show();
+                        Intent I = new Intent(CreateActivity.this, StartUp.class);
+                        startActivity(I);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -158,10 +193,5 @@ public class CreateActivity extends AppCompatActivity {
         RequestQueue register_Queue = Volley.newRequestQueue(CreateActivity.this);
         register_Queue.add(register_Request);
 
-
-        //TODO: Add sutdent logic here: Student student = new Student(...);
-
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
     }
 }
