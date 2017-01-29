@@ -50,13 +50,6 @@ public class GradesActivity extends AppCompatActivity {
         ArrayList<String> arraySpinner = new ArrayList<>();
         arraySpinner.add("");
 
-        //TODO: Remove this.
-        new Grades(Calendar.getInstance().getTime(), 10, "Geografie");
-        new Grades(Calendar.getInstance().getTime(), 10, "Mate");
-        new Grades(Calendar.getInstance().getTime(), 8, "Mate");
-        new Grades(Calendar.getInstance().getTime(), 10, "Iunia");
-        //End Remove.
-
         for(Grades g: student.grades)
             if(!arraySpinner.contains(g.materie))
                 arraySpinner.add(g.materie);
