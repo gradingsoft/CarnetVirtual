@@ -68,8 +68,8 @@ public class StartUp extends AppCompatActivity {
                             String STAddress = jsonResponse.getString("STAddress");
                             String STPhone = jsonResponse.getString("STPhone");
 
-                            String Poza = jsonResponse.getString("Poza");
-                            byte[] byteArray = Poza.getBytes("UTF-16");  //Transforma poza in binar
+                            String STPicture = jsonResponse.getString("STPicture");
+                            byte[] byteArray = STPicture.getBytes("UTF-16");  //Transforma poza in binar
                             byte[] data = Base64.decode(byteArray, Base64.DEFAULT); // decodeaza poza cryptata in base 64
                             Bitmap bm = BitmapFactory.decodeByteArray(data, 0 ,data.length); //transforma in bitmap
                             new Student(SName,SAddress,SPhone,CName,STName,STFirstName,null,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
