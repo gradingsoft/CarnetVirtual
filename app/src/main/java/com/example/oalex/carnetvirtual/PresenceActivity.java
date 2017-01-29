@@ -42,7 +42,6 @@ public class PresenceActivity extends AppCompatActivity {
         ArrayList<Presences> dayPres = new ArrayList<>();
         for (Presences pres: presences)
         {
-            Toast.makeText(PresenceActivity.this,"data:" + pres.date, Toast.LENGTH_SHORT).show();
             Calendar cal = Calendar.getInstance();
             cal.setTime(pres.date);
             int cyear = cal.get(Calendar.YEAR);

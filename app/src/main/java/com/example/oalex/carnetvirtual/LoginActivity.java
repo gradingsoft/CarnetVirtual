@@ -149,13 +149,9 @@ public class LoginActivity extends Activity
                                 Date date = format.parse(PDate);
                                 Boolean PValue = presence.getBoolean("PValue");
                                 String SBName = presence.getString("SBName");
-                                //Toast.makeText(LoginActivity.this,date.toString(),Toast.LENGTH_LONG).show();
+
                                 new Presences(date,PValue,SBName);
                             }
-
-
-
-
 
                         }
 
