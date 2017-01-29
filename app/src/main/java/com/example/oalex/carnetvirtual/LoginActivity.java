@@ -78,8 +78,13 @@ public class LoginActivity extends Activity
             @Override
             public void run()
             {
-                LogIn();
-                progressDialog.dismiss();
+                try {
+                    LogIn();
+                    Thread.sleep(5000);
+                    progressDialog.dismiss();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }).start();
     }
@@ -131,7 +136,6 @@ public class LoginActivity extends Activity
                             byte[] byteArray = STPicture.getBytes("UTF-16");  //Transforma poza in binar
                             byte[] data = Base64.decode(byteArray, Base64.DEFAULT); // decodeaza poza cryptata in base 64
                             Bitmap STPicture_bm = BitmapFactory.decodeByteArray(data, 0 ,data.length); //transforma in bitmap
-                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
 
                             for(int i=0;i<Presence_nr;i++)
                             {
@@ -141,13 +145,11 @@ public class LoginActivity extends Activity
                                 Date date = format.parse(PDate);
                                 Boolean PValue = presence.getBoolean("PValue");
                                 String SBName = presence.getString("SBName");
-
-                                new Presences(date,PValue,SBName);
+                                Toast.makeText(LoginActivity.this,date.toString(),Toast.LENGTH_LONG).show();
+                                new Presences(null,PValue,SBName);
                             }
 
-                            for(Presences p : Student.student.presences)
-                                Toast.makeText(LoginActivity.this, p.materie, Toast.LENGTH_SHORT).show();
-
+                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
                             Serialization.saveSerializable(getApplicationContext());
                             startActivity(new Intent(LoginActivity.this, Main.class));
 
