@@ -23,6 +23,9 @@ public class CreateActivity extends AppCompatActivity {
         EditText clasa_editText = (EditText) findViewById(R.id.clasa_editText);
         clasa_editText.setText("XI G");
         clasa_editText.setInputType(0);
+        //EditText scoala_editText = (EditText) findViewById(R.id.clasa_editText);
+        //clasa_editText.setText("XI G");
+        //clasa_editText.setInputType(0);
         Button submitButton = (Button) findViewById(R.id.submit_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
