@@ -10,8 +10,11 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class GradesActivity extends AppCompatActivity {
 
@@ -73,8 +76,10 @@ public class GradesActivity extends AppCompatActivity {
     {
         ArrayList<String> materii = new ArrayList<>();
 
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM", Locale.getDefault());
+
         for(Grades g : gradesList)
-            materii.add(g.value + " " + g.materie + " " + g.date);
+            materii.add(g.value + " " + g.materie + " " + df.format(g.date));
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, materii);
         gradesListView.setAdapter(adapter);
