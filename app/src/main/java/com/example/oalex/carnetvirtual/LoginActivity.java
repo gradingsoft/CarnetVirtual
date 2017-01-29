@@ -131,6 +131,7 @@ public class LoginActivity extends Activity
                             String STPhone = jsonResponse.getString("STPhone");
                             Integer Grade_nr = jsonResponse.getInt("Grade_nr");
                             Integer Presence_nr = jsonResponse.getInt("Presence_nr");
+                            Integer Chat_nr = jsonResponse.getInt("");
 
                             String STPicture = jsonResponse.getString("STPicture");
                             byte[] byteArray = STPicture.getBytes("UTF-16");  //Transforma poza in binar
@@ -155,20 +156,29 @@ public class LoginActivity extends Activity
 
                             for(int i=0;i<Grade_nr;i++)
                             {
-                                JSONObject presence = jsonResponse.getJSONObject("Grade"+i);
-                                String GDate = presence.getString("GDate");
+                                JSONObject grade = jsonResponse.getJSONObject("Grade"+i);
+                                String GDate = grade.getString("GDate");
                                 DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
                                 Date date = format.parse(GDate);
-                                Integer GValue = presence.getInt("GValue");
-                                String SBName = presence.getString("SBName");
+                                Integer GValue = grade.getInt("GValue");
+                                String SBName = grade.getString("SBName");
                                 new Grades(date,GValue,SBName);
                             }
 
+                            for(int i=0;i<Chat_nr;i++)
+                            {
+                                JSONObject chat = jsonResponse.getJSONObject("Chat"+i);
 
-
-
+                                DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+                                String CHDate = chat.getString("CHDate");
+                                String CHEDate = chat.getString("CHDate");
+                                Date chdate = format.parse(CHDate);
+                                Date chedate = format.parse(CHEDate);
+                                Integer CHType = chat.getInt("CHType");
+                                String CHMessage = chat.getString("CHMessage");
+                                new ChatMessage(chdate,chedate,CHMessage,"Pomohaci",CHType);
+                            }
                         }
-
                     }
                     else{
                         AlertDialog.Builder alert = new AlertDialog.Builder(LoginActivity.this);
