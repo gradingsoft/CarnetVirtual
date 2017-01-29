@@ -2,11 +2,8 @@ package com.example.oalex.carnetvirtual;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.util.Base64;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
@@ -20,8 +17,6 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
 
 
 public class LoginActivity extends Activity
@@ -88,12 +83,7 @@ public class LoginActivity extends Activity
                             String STAddress = jsonResponse.getString("STAddress");
                             String STPhone = jsonResponse.getString("STPhone");
 
-                            String STPicture = jsonResponse.getString("STPicture");
-                            byte[] byteArray = STPicture.getBytes("UTF-16");  //Transforma poza in binar
-                            byte[] data = Base64.decode(byteArray, Base64.DEFAULT); // decodeaza poza cryptata in base 64
-                            Bitmap STPicture_bm = BitmapFactory.decodeByteArray(data, 0 ,data.length); //transforma in bitmap
-
-                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
+                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,null,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
                             Serialization.saveSerializable(getApplicationContext());
                             Toast.makeText(getApplicationContext(), Serialization.serialization.email, Toast.LENGTH_LONG).show();
                             startActivity(new Intent(LoginActivity.this, Main.class));
@@ -105,8 +95,6 @@ public class LoginActivity extends Activity
                         alert.setMessage("Ups.. S-a intamplat ceva neprevazut").setNegativeButton("Inapoi",null).create().show();
                     }
                 } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
 
