@@ -2,14 +2,15 @@ package com.example.oalex.carnetvirtual;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.util.Base64;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -17,6 +18,8 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
 
 
 public class LoginActivity extends Activity
@@ -83,7 +86,12 @@ public class LoginActivity extends Activity
                             String STAddress = jsonResponse.getString("STAddress");
                             String STPhone = jsonResponse.getString("STPhone");
 
-                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,null,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
+                            String STPicture = jsonResponse.getString("STPicture");
+                            byte[] byteArray = STPicture.getBytes("UTF-16");  //Transforma poza in binar
+                            byte[] data = Base64.decode(byteArray, Base64.DEFAULT); // decodeaza poza cryptata in base 64
+                            Bitmap STPicture_bm = BitmapFactory.decodeByteArray(data, 0 ,data.length); //transforma in bitmap
+
+                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
                             Serialization.saveSerializable(getApplicationContext());
                             startActivity(new Intent(LoginActivity.this, Main.class));
                         }
@@ -95,11 +103,13 @@ public class LoginActivity extends Activity
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
                 }
 
             }
         };
-        Login_Request login_Request = new Login_Request (mEmail,mPassword,loginListener);
+        _Login_Request login_Request = new _Login_Request(mEmail,mPassword,loginListener);
         RequestQueue login_Queue = Volley.newRequestQueue(LoginActivity.this);
         login_Queue.add(login_Request);
 

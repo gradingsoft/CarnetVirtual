@@ -11,11 +11,11 @@ import java.util.Map;
  * Created by vlad_ on 28.01.2017.
  */
 
-public class Code_Request extends StringRequest {
+public class _Code_Request extends StringRequest {
     private static final String Site_URL_Login = "http://pasotee.5gbfree.com/code_request.php";
     private Map<String, String> params;
 
-    public Code_Request(String Code, Response.Listener<String> listener) {
+    public _Code_Request(String Code, Response.Listener<String> listener) {
         super(Method.POST, Site_URL_Login, listener, null);
         params = new HashMap<>();
         params.put("Code", Code);
