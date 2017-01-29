@@ -177,6 +177,7 @@ public class LoginActivity extends Activity
                                 Integer CHType = chat.getInt("CHType");
                                 String CHMessage = chat.getString("CHMessage");
                                 new ChatMessage(chdate,chedate,CHMessage,"Pomohaci",CHType);
+                                Toast.makeText(LoginActivity.this, CHMessage, Toast.LENGTH_LONG).show();
                             }
                         }
                     }
