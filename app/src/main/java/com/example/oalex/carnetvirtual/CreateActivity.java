@@ -30,6 +30,7 @@ import java.util.ArrayList;
 public class CreateActivity extends AppCompatActivity {
 
     String Class;
+    String CID;
 
     private static int RESULT_LOAD_IMAGE = 1;
     private Bitmap STimage;
@@ -44,11 +45,9 @@ public class CreateActivity extends AppCompatActivity {
 
         EditText clasa_editText = (EditText) findViewById(R.id.clasa_editText);
         Class = intent.getStringExtra("CName");
+        CID = intent.getStringExtra("CID");
         clasa_editText.setText(Class);
         clasa_editText.setInputType(0);
-        //EditText scoala_editText = (EditText) findViewById(R.id.clasa_editText);
-        //clasa_editText.setText("XI G");
-        //clasa_editText.setInputType(0);
         Button submitButton = (Button) findViewById(R.id.submit_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,9 +150,12 @@ public class CreateActivity extends AppCompatActivity {
 
             }
         };
-        _Register_Request register_Request = new _Register_Request(name,forename,email,cnp,phone_number,Class,pass1,address,loginListener);
+        _Register_Request register_Request = new _Register_Request(name,forename,email,cnp,phone_number,CID,pass1,address,STimage,loginListener);
         RequestQueue register_Queue = Volley.newRequestQueue(CreateActivity.this);
         register_Queue.add(register_Request);
+
+
+        //TODO: Add sutdent logic here: Student student = new Student(...);
 
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

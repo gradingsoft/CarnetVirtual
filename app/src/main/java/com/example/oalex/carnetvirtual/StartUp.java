@@ -203,15 +203,15 @@ public class StartUp extends AppCompatActivity {
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean success = jsonResponse.getBoolean("success");
                     if(success){
-                        String FirstName = jsonResponse.getString("CID");
-                        String LastName = jsonResponse.getString("SName");
-                        String Email = jsonResponse.getString("CName");
+                        String CID = jsonResponse.getString("CID");
+                        String SName = jsonResponse.getString("SName");
+                        String CName = jsonResponse.getString("CName");
 
 
                         Intent intent = new Intent(StartUp.this,CreateActivity.class);
-                        intent.putExtra("CID",FirstName);
-                        intent.putExtra("SName",LastName);
-                        intent.putExtra("CName",Email);
+                        intent.putExtra("CID",CID);
+                        intent.putExtra("SName",SName);
+                        intent.putExtra("CName",CName);
                         StartUp.this.startActivity(intent);
                     }
                     else{
