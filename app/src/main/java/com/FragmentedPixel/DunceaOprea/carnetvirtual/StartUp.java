@@ -113,14 +113,15 @@ public class StartUp extends AppCompatActivity {
                             Integer Presence_nr = jsonResponse.getInt("Presence_nr");
                             Integer Chat_nr = jsonResponse.getInt("Chat_nr");
 
-                            String BSignature = jsonResponse.getString("BSignature");
                             String STPicture = jsonResponse.getString("STPicture");
                             byte[] byteArray_st = STPicture.getBytes("UTF-16");
                             byte[] stpicture = Base64.decode(byteArray_st, Base64.DEFAULT);
                             Bitmap STPicture_bm = BitmapFactory.decodeByteArray(stpicture, 0 ,stpicture.length);
-                            byte[] byteArray_bs = STPicture.getBytes("UTF-16");
+
+                            String BSignature = jsonResponse.getString("BSignature");
+                            byte[] byteArray_bs = BSignature.getBytes("UTF-16");
                             byte[] bsignature = Base64.decode(byteArray_bs, Base64.DEFAULT);
-                            Bitmap BSignature_bm = BitmapFactory.decodeByteArray(stpicture, 0 ,stpicture.length);
+                            Bitmap BSignature_bm = BitmapFactory.decodeByteArray(bsignature, 0 ,bsignature.length);
 
                             new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,mEmail, mPassword, BSignature_bm,STSerialNr,STAddress,STPhone);
                             startActivity(new Intent(StartUp.this, Main.class));
