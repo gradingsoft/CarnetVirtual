@@ -59,9 +59,7 @@ public class Refresh  {
                             String CName = jsonResponse.getString("CName");
                             String STName = jsonResponse.getString("STName");
                             String STFirstName = jsonResponse.getString("STFirstName");
-                            //String STEmail = jsonResponse.getString("STEmail");
                             String STSerialNr = jsonResponse.getString("STSerialNr");
-                            //String STCnp = jsonResponse.getString("STCnp");
                             String STAddress = jsonResponse.getString("STAddress");
                             String STPhone = jsonResponse.getString("STPhone");
                             Integer Grade_nr = jsonResponse.getInt("Grade_nr");
@@ -69,9 +67,9 @@ public class Refresh  {
                             Integer Chat_nr = jsonResponse.getInt("Chat_nr");
 
                             String STPicture = jsonResponse.getString("STPicture");
-                            byte[] byteArray = STPicture.getBytes("UTF-16");  //Transforma poza in binar
-                            byte[] data = Base64.decode(byteArray, Base64.DEFAULT); // decodeaza poza cryptata in base 64
-                            Bitmap STPicture_bm = BitmapFactory.decodeByteArray(data, 0 ,data.length); //transforma in bitmap
+                            byte[] byteArray = STPicture.getBytes("UTF-16");
+                            byte[] data = Base64.decode(byteArray, Base64.DEFAULT);
+                            Bitmap STPicture_bm = BitmapFactory.decodeByteArray(data, 0 ,data.length);
 
                             new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,Email,Password,STSerialNr,null,STAddress,STPhone);
                             Serialization.saveSerializable(context);
@@ -113,7 +111,6 @@ public class Refresh  {
                                 String CHMessage = chat.getString("CHMessage");
                                 String TName = chat.getString("TName");
                                 new ChatMessage(chdate,chedate,CHMessage,TName,CHType);
-                                Toast.makeText(context, CHMessage, Toast.LENGTH_LONG).show();
                             }
                         }
                     }
