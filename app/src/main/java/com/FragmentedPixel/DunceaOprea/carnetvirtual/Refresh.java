@@ -75,7 +75,7 @@ public class Refresh  {
                             byte[] bsignature = Base64.decode(byteArray_bs, Base64.DEFAULT);
                             Bitmap BSignature_bm = BitmapFactory.decodeByteArray(stpicture, 0 ,stpicture.length);
 
-                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,Email,Password,STSerialNr,BSignature_bm,STAddress,STPhone);
+                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,Email,Password, BSignature_bm,STSerialNr,STAddress,STPhone);
                             Serialization.saveSerializable(context);
                             context.startActivity(new Intent(context, Main.class));
 

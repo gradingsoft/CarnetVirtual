@@ -106,19 +106,23 @@ public class StartUp extends AppCompatActivity {
                             String CName = jsonResponse.getString("CName");
                             String STName = jsonResponse.getString("STName");
                             String STFirstName = jsonResponse.getString("STFirstName");
-                            //String STEmail = jsonResponse.getString("STEmail");
                             String STSerialNr = jsonResponse.getString("STSerialNr");
-                            //String STCnp = jsonResponse.getString("STCnp");
                             String STAddress = jsonResponse.getString("STAddress");
                             String STPhone = jsonResponse.getString("STPhone");
                             Integer Grade_nr = jsonResponse.getInt("Grade_nr");
                             Integer Presence_nr = jsonResponse.getInt("Presence_nr");
-                            String STPicture = jsonResponse.getString("STPicture");
-                            byte[] byteArray = STPicture.getBytes("UTF-16");  //Transforma poza in binar
-                            byte[] data = Base64.decode(byteArray, Base64.DEFAULT); // decodeaza poza cryptata in base 64
-                            Bitmap STPicture_bm = BitmapFactory.decodeByteArray(data, 0 ,data.length); //transforma in bitmap
+                            Integer Chat_nr = jsonResponse.getInt("Chat_nr");
 
-                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,mEmail,mPassword,STSerialNr,null,STAddress,STPhone);
+                            String BSignature = jsonResponse.getString("BSignature");
+                            String STPicture = jsonResponse.getString("STPicture");
+                            byte[] byteArray_st = STPicture.getBytes("UTF-16");
+                            byte[] stpicture = Base64.decode(byteArray_st, Base64.DEFAULT);
+                            Bitmap STPicture_bm = BitmapFactory.decodeByteArray(stpicture, 0 ,stpicture.length);
+                            byte[] byteArray_bs = STPicture.getBytes("UTF-16");
+                            byte[] bsignature = Base64.decode(byteArray_bs, Base64.DEFAULT);
+                            Bitmap BSignature_bm = BitmapFactory.decodeByteArray(stpicture, 0 ,stpicture.length);
+
+                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,mEmail, mPassword, BSignature_bm,STSerialNr,STAddress,STPhone);
                             startActivity(new Intent(StartUp.this, Main.class));
 
                             for(int i=0;i<Presence_nr;i++)

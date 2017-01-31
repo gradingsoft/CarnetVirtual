@@ -36,6 +36,9 @@ public class FirstPage extends AppCompatActivity {
         ImageView studentimage = (ImageView) findViewById(R.id.studentpicture);
         studentimage.setImageBitmap(student.photo);
 
+        ImageView bossSignature = (ImageView) findViewById(R.id.semnatura);
+        bossSignature.setImageBitmap(student.bsignature);
+
         TextView schoolname = (TextView) findViewById(R.id.schoolname_textView);
         schoolname.setText(student.schoolname);
 

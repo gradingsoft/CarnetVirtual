@@ -19,7 +19,7 @@ public class Student
     public Bitmap photo;
     public String e_mail;
     public String password;
-    public String cnp;
+    public String serialNumber;
     public Bitmap bsignature;
     public String adress;
     public String phone;
@@ -28,7 +28,7 @@ public class Student
     public ArrayList<Presences> presences;
     public ArrayList<ChatMessage> chatMessages;
 
-    public Student(String schoolname, String schooladress, String schoolphone,String className, String name, String forename,Bitmap photo, String e_mail, String password, Bitmap BSignature, String cnp, String adress, String phone)
+    public Student(String schoolname, String schooladress, String schoolphone,String className, String name, String forename,Bitmap photo, String e_mail, String password, Bitmap bsignature,String serialNumber, String adress, String phone)
     {
         this.schoolname = schoolname;
         this.schooladress = schooladress;
@@ -38,9 +38,9 @@ public class Student
         this.name = name;
         this.forename = forename;
         this.photo = photo;
+        this.bsignature = bsignature;
         this.e_mail = e_mail;
         this.password = password;
-        this.cnp = cnp;
         this.serialNumber = serialNumber;
         this.adress = adress;
         this.phone = phone;

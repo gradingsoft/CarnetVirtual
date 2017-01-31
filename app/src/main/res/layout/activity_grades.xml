@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/materii_spinner" />
+        android:id="@+id/materii_spinner"
+        android:spinnerMode="dialog" />
 
     <ListView
         android:layout_width="match_parent"
