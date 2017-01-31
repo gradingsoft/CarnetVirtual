@@ -1,6 +1,4 @@
-package com.example.oalex.carnetvirtual;
-
-import android.widget.Toast;
+package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import java.util.Date;
 

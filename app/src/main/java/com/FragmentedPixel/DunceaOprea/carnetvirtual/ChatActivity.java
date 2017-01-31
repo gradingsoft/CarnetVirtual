@@ -1,4 +1,4 @@
-package com.example.oalex.carnetvirtual;
+package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

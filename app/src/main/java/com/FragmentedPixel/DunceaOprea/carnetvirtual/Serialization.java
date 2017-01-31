@@ -1,10 +1,7 @@
-package com.example.oalex.carnetvirtual;
+package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.content.Context;
-import android.os.Environment;
-import android.widget.Toast;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;

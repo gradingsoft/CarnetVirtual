@@ -1,4 +1,4 @@
-package com.example.oalex.carnetvirtual;
+package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import java.util.Date;
 
@@ -6,20 +6,19 @@ import java.util.Date;
  * Created by oalex on 2017-01-28.
  */
 
-public class Presences
+public class Grades
 {
+
     public Date date;
-    public boolean value;
+    public int value;
     public String materie;
 
-    public Presences(Date date, boolean value, String materie)
+    public Grades(Date date, int value, String materie)
     {
         this.date = date;
         this.value = value;
         this.materie = materie;
 
-        Student.student.presences.add(this);
+        Student.student.grades.add(this);
     }
-
-
 }

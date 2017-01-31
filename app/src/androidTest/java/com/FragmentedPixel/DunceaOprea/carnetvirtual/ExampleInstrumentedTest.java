@@ -1,4 +1,4 @@
-package com.example.oalex.carnetvirtual;
+package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,36 +1,16 @@
-package com.example.oalex.carnetvirtual;
+package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.util.Base64;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 
 public class LoginActivity extends Activity
@@ -95,7 +75,7 @@ public class LoginActivity extends Activity
         mPasswordView = (EditText) findViewById(R.id.password);
         mEmail = mEmailView.getText().toString();
         mPassword = mPasswordView.getText().toString();
-        Refresh.LogIn(getApplicationContext(),mEmail,mPassword);
+        Refresh.LogIn(LoginActivity.this,mEmail,mPassword);
 
     }
 }

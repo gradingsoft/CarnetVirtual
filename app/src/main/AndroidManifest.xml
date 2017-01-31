@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.oalex.carnetvirtual">
+    package="com.FragmentedPixel.DunceaOprea.carnetvirtual">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".StartUp"
+            android:name="com.FragmentedPixel.DunceaOprea.carnetvirtual.StartUp"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,13 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".CreateActivity" />
-        <activity android:name=".Main" />
-        <activity android:name=".FirstPage" />
-        <activity android:name=".ChatActivity" />
-        <activity android:name=".GradesActivity" />
-        <activity android:name=".PresenceActivity"></activity>
+        <activity android:name="com.FragmentedPixel.DunceaOprea.carnetvirtual.LoginActivity" />
+        <activity android:name="com.FragmentedPixel.DunceaOprea.carnetvirtual.CreateActivity" />
+        <activity android:name="com.FragmentedPixel.DunceaOprea.carnetvirtual.Main" />
+        <activity android:name="com.FragmentedPixel.DunceaOprea.carnetvirtual.FirstPage" />
+        <activity android:name="com.FragmentedPixel.DunceaOprea.carnetvirtual.ChatActivity" />
+        <activity android:name="com.FragmentedPixel.DunceaOprea.carnetvirtual.GradesActivity" />
+        <activity android:name="com.FragmentedPixel.DunceaOprea.carnetvirtual.PresenceActivity"></activity>
     </application>
 
 </manifest>

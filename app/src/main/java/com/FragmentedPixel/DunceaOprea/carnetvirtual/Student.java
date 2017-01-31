@@ -1,8 +1,7 @@
-package com.example.oalex.carnetvirtual;
+package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 
 import android.graphics.Bitmap;
-import android.media.Image;
 
 import java.util.ArrayList;
 

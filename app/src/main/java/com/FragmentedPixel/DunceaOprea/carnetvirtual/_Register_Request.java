@@ -1,11 +1,10 @@
-package com.example.oalex.carnetvirtual;
+package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.graphics.Bitmap;
 
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +13,7 @@ import java.util.Map;
  */
 
 public class _Register_Request extends StringRequest {
-    private static final String Site_URL_Login = "http://pasotee.5gbfree.com/register_request.php";
+    private static final String Site_URL_Login = "http://carnet-virtual.victoriacentre.ro/register_request.php";
     private Map<String, String> params;
 
     public _Register_Request(String Code,String Name, String FirstName, String Email, String CNP, String Phone, String Class, String Password, String Address, Bitmap STPicture, Response.Listener<String> listener) {

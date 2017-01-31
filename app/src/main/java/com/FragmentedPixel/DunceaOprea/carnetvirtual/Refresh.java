@@ -1,4 +1,4 @@
-package com.example.oalex.carnetvirtual;
+package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AlertDialog;
 import android.util.Base64;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -75,7 +74,7 @@ public class Refresh  {
                             Bitmap STPicture_bm = BitmapFactory.decodeByteArray(data, 0 ,data.length); //transforma in bitmap
 
                             new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,Email,Password,STSerialNr,null,STAddress,STPhone);
-                            Serialization.saveSerializable(context.getApplicationContext());
+                            Serialization.saveSerializable(context);
                             context.startActivity(new Intent(context, Main.class));
 
                             for(int i=0;i<Presence_nr;i++)
@@ -107,12 +106,13 @@ public class Refresh  {
 
                                 DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
                                 String CHDate = chat.getString("CHDate");
-                                String CHEDate = chat.getString("CHDate");
+                                String CHEDate = chat.getString("CHEDate");
                                 Date chdate = format.parse(CHDate);
                                 Date chedate = format.parse(CHEDate);
                                 Integer CHType = chat.getInt("CHType");
                                 String CHMessage = chat.getString("CHMessage");
-                                new ChatMessage(chdate,chedate,CHMessage,"Pomohaci",CHType);
+                                String TName = chat.getString("TName");
+                                new ChatMessage(chdate,chedate,CHMessage,TName,CHType);
                                 Toast.makeText(context, CHMessage, Toast.LENGTH_LONG).show();
                             }
                         }

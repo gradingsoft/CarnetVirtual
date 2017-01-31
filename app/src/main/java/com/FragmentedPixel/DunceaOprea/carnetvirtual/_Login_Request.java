@@ -1,9 +1,8 @@
-package com.example.oalex.carnetvirtual;
+package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +11,7 @@ import java.util.Map;
  */
 
 public class _Login_Request extends StringRequest {
-    private static final String Site_URL_Login = "http://pasotee.5gbfree.com/login_request.php";
+    private static final String Site_URL_Login = "http://carnet-virtual.victoriacentre.ro/login_request.php";
     private Map<String, String> params;
 
     public _Login_Request(String Email, String Password, Response.Listener<String> listener) {

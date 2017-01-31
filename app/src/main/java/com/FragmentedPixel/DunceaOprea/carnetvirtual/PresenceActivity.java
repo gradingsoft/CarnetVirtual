@@ -1,13 +1,11 @@
-package com.example.oalex.carnetvirtual;
+package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
 
