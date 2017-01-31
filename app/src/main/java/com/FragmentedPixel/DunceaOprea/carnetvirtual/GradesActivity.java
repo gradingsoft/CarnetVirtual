@@ -15,6 +15,7 @@ import java.util.Locale;
 public class GradesActivity extends AppCompatActivity {
 
     private Student student;
+    private String toateMateriile = "Toate Materiile";
 
     private Spinner dropdownSpinner;
     private ListView gradesListView;
@@ -47,7 +48,7 @@ public class GradesActivity extends AppCompatActivity {
     private void PopulateDropDown()
     {
         ArrayList<String> arraySpinner = new ArrayList<>();
-        arraySpinner.add("");
+        arraySpinner.add(toateMateriile);
 
         for(Grades g: student.grades)
             if(!arraySpinner.contains(g.materie))
@@ -62,7 +63,7 @@ public class GradesActivity extends AppCompatActivity {
         ArrayList<Grades> gradesArrayList = new ArrayList<>();
 
         for(Grades g: student.grades)
-            if(g.materie.equals(materie) || materie.isEmpty())
+            if(g.materie.equals(materie) || materie.equals(toateMateriile))
                 gradesArrayList.add(g);
 
         PopulateListView(gradesArrayList);
