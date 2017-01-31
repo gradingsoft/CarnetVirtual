@@ -66,12 +66,16 @@ public class Refresh  {
                             Integer Presence_nr = jsonResponse.getInt("Presence_nr");
                             Integer Chat_nr = jsonResponse.getInt("Chat_nr");
 
+                            String BSignature = jsonResponse.getString("BSignature");
                             String STPicture = jsonResponse.getString("STPicture");
-                            byte[] byteArray = STPicture.getBytes("UTF-16");
-                            byte[] data = Base64.decode(byteArray, Base64.DEFAULT);
-                            Bitmap STPicture_bm = BitmapFactory.decodeByteArray(data, 0 ,data.length);
+                            byte[] byteArray_st = STPicture.getBytes("UTF-16");
+                            byte[] stpicture = Base64.decode(byteArray_st, Base64.DEFAULT);
+                            Bitmap STPicture_bm = BitmapFactory.decodeByteArray(stpicture, 0 ,stpicture.length);
+                            byte[] byteArray_bs = STPicture.getBytes("UTF-16");
+                            byte[] bsignature = Base64.decode(byteArray_bs, Base64.DEFAULT);
+                            Bitmap BSignature_bm = BitmapFactory.decodeByteArray(stpicture, 0 ,stpicture.length);
 
-                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,Email,Password,STSerialNr,null,STAddress,STPhone);
+                            new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,Email,Password,STSerialNr,BSignature_bm,STAddress,STPhone);
                             Serialization.saveSerializable(context);
                             context.startActivity(new Intent(context, Main.class));
 
