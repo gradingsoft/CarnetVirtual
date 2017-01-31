@@ -240,7 +240,6 @@ public class StartUp extends AppCompatActivity {
                         String SName = jsonResponse.getString("SName");
                         String CName = jsonResponse.getString("CName");
 
-
                         Intent intent = new Intent(StartUp.this,CreateActivity.class);
                         intent.putExtra("Code",input_code);
                         intent.putExtra("CID",CID);
