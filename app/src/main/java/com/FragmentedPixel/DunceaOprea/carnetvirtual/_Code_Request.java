@@ -11,7 +11,7 @@ import java.util.Map;
  */
 
 public class _Code_Request extends StringRequest {
-    private static final String Site_URL_Login = "http://pasotee.5gbfree.com/code_request.php";
+    private static final String Site_URL_Login = "http://carnet-virtual.victoriacentre.ro/code_request.php";
     private Map<String, String> params;
 
     public _Code_Request(String Code, Response.Listener<String> listener) {

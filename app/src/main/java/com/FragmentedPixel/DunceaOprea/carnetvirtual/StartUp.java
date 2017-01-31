@@ -237,13 +237,13 @@ public class StartUp extends AppCompatActivity {
                     boolean success = jsonResponse.getBoolean("success");
                     if(success){
                         String CID = jsonResponse.getString("CID");
-                        String SName = jsonResponse.getString("SName");
+                        //String SName = jsonResponse.getString("SName");
                         String CName = jsonResponse.getString("CName");
 
                         Intent intent = new Intent(StartUp.this,CreateActivity.class);
                         intent.putExtra("Code",input_code);
                         intent.putExtra("CID",CID);
-                        intent.putExtra("SName",SName);
+                        //intent.putExtra("SName",SName);
                         intent.putExtra("CName",CName);
                         StartUp.this.startActivity(intent);
                     }
