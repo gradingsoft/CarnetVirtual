@@ -16,7 +16,7 @@ public class _Register_Request extends StringRequest {
     private static final String Site_URL_Login = "http://carnet-virtual.victoriacentre.ro/register_request.php";
     private Map<String, String> params;
 
-    public _Register_Request(String Code,String Name, String FirstName, String Email, String CNP, String Phone, String Class, String Password, String Address, Bitmap STPicture, Response.Listener<String> listener) {
+    public _Register_Request(String Code,String Name, String FirstName, String Email, String CNP, String Phone, String Class, String Password, String Address, String Picture, Response.Listener<String> listener) {
         super(Method.POST, Site_URL_Login, listener, null);
         params = new HashMap<>();
         params.put("AccessCode","123456789");
@@ -29,6 +29,7 @@ public class _Register_Request extends StringRequest {
         params.put("Class", Class);
         params.put("Password",Password);
         params.put("Address",Address);
+        params.put("Picture",Picture);
 
     }
     @Override

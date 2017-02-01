@@ -2,14 +2,18 @@ package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 public class CreateActivity extends AppCompatActivity {
@@ -32,6 +37,7 @@ public class CreateActivity extends AppCompatActivity {
 
     private static int RESULT_LOAD_IMAGE = 1;
     private Bitmap STimage;
+    boolean writeAccepted;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,14 +64,41 @@ public class CreateActivity extends AppCompatActivity {
 
         Button selectImage = (Button) findViewById(R.id.imagine_button);
         selectImage.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View arg0) {
-                Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, RESULT_LOAD_IMAGE);
+                    String[] perms = {"android.permission.WRITE_EXTERNAL_STORAGE"};
+
+                    int permsRequestCode = 200;
+                if (Build.VERSION.SDK_INT >= 23) {
+                    requestPermissions(perms, permsRequestCode);
+
+                }
+                else
+                writeAccepted=true;
+                if(writeAccepted)
+                    {
+                        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(i, RESULT_LOAD_IMAGE);
+                    }
             }
         });
     }
 
+    @Override
+    public void onRequestPermissionsResult(int permsRequestCode, String[] permissions, int[] grantResults){
+
+        switch(permsRequestCode){
+
+            case 200:
+
+                writeAccepted = grantResults[0]== PackageManager.PERMISSION_GRANTED;
+
+                break;
+
+        }
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -80,6 +113,11 @@ public class CreateActivity extends AppCompatActivity {
             cursor.close();
             STimage = (BitmapFactory.decodeFile(picturePath));
         }
+        else
+        {
+            Toast.makeText(this,"Eroare",Toast.LENGTH_LONG).show();
+
+        }
     }
 
 
@@ -93,6 +131,11 @@ public class CreateActivity extends AppCompatActivity {
         EditText tpass1 = (EditText) findViewById(R.id.pass1_editText);
         EditText tpass2 = (EditText) findViewById(R.id.pass2_editText);
         EditText taddress = (EditText) findViewById(R.id.adress_editText);
+
+        ByteArrayOutputStream baos=new  ByteArrayOutputStream();
+        STimage.compress(Bitmap.CompressFormat.PNG,100, baos);
+        byte [] b=baos.toByteArray();
+        String STImage=Base64.encodeToString(b, Base64.DEFAULT);
 
         String name        =tname.getText().toString();
         String forename    =tforename.getText().toString();
@@ -189,7 +232,7 @@ public class CreateActivity extends AppCompatActivity {
 
             }
         };
-        _Register_Request register_Request = new _Register_Request(Code,name,forename,email,cnp,phone_number,CID,pass1,address,STimage,loginListener);
+        _Register_Request register_Request = new _Register_Request(Code,name,forename,email,cnp,phone_number,CID,pass1,address,STImage,loginListener);
         RequestQueue register_Queue = Volley.newRequestQueue(CreateActivity.this);
         register_Queue.add(register_Request);
 
