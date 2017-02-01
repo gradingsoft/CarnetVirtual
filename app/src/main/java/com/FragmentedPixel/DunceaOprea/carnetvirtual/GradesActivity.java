@@ -66,20 +66,8 @@ public class GradesActivity extends AppCompatActivity {
             if(g.materie.equals(materie) || materie.equals(toateMateriile))
                 gradesArrayList.add(g);
 
-        PopulateListView(gradesArrayList);
-    }
-
-    private void PopulateListView(ArrayList<Grades> gradesList)
-    {
-        ArrayList<String> materii = new ArrayList<>();
-
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM", Locale.getDefault());
-
-        for(Grades g : gradesList)
-            materii.add(df.format(g.date) + " " + g.materie + " " + g.value);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, materii);
+        GradesAdapter adapter = new GradesAdapter(GradesActivity.this, R.layout.grades_item, gradesArrayList);
         gradesListView.setAdapter(adapter);
-
     }
+
 }

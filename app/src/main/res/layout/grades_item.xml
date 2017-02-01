@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+        android:text="Date"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/gradedate"
+        android:layout_weight="1"
+        tools:ignore="HardcodedText"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="Materie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gradesubject"
+        android:layout_weight="1"
+        tools:ignore="HardcodedText"
+        android:textAlignment="center" />
+
+    <TextView
+        android:text="Nota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/gradeValue"
+        android:layout_weight="1"
+        tools:ignore="HardcodedText"
+        android:textAlignment="center" />
+</LinearLayout>

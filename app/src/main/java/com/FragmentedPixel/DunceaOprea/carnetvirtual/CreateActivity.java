@@ -67,7 +67,7 @@ public class CreateActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View arg0) {
-                    String[] perms = {"android.permission.WRITE_EXTERNAL_STORAGE"};
+                    String[] perms = {"android.permission.READ_EXTERNAL_STORAGE"};
 
                     int permsRequestCode = 200;
                 if (Build.VERSION.SDK_INT >= 23) {
