@@ -171,6 +171,8 @@ public class CreateActivity extends AppCompatActivity {
                         }
                         else
                         {
+                            AlertDialog.Builder alert = new AlertDialog.Builder(CreateActivity.this);
+                            alert.setMessage("Acest email exista deja.").setNegativeButton("Inapoi", null).create().show();
 
                         }
                     }
