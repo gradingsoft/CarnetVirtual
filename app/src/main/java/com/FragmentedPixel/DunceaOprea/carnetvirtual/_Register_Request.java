@@ -19,7 +19,7 @@ public class _Register_Request extends StringRequest {
     public _Register_Request(String Code,String Name, String FirstName, String Email, String CNP, String Phone, String Class, String Password, String Address, Bitmap STPicture, Response.Listener<String> listener) {
         super(Method.POST, Site_URL_Login, listener, null);
         params = new HashMap<>();
-        params.put("Access_code","123456789");
+        params.put("AccessCode","123456789");
         params.put("Code",Code);
         params.put("Name", Name);
         params.put("FirstName", FirstName);

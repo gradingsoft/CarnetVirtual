@@ -140,14 +140,15 @@ public class CreateActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
-                    boolean access = jsonResponse.getBoolean("access");
+
                     boolean code_access = jsonResponse.getBoolean("code_access");
                     boolean success = jsonResponse.getBoolean("success");
-                    if(access)
+                    boolean email_free= jsonResponse.getBoolean("email_free");
+                    if(code_access)
                     {
-                        if(code_access)
+                        if(email_free)
                         {
-                            if(success)
+                            if (success)
                             {
                                 AlertDialog.Builder alert = new AlertDialog.Builder(CreateActivity.this);
                                 alert.setMessage("Cont creat cu succes").setNegativeButton("Inapoi", new DialogInterface.OnClickListener() {
@@ -170,17 +171,13 @@ public class CreateActivity extends AppCompatActivity {
                         }
                         else
                         {
-                            AlertDialog.Builder alert = new AlertDialog.Builder(CreateActivity.this);
-                            alert.setMessage("Cod gresit").setNegativeButton("Inapoi",null).create().show();
-                            Intent I = new Intent(CreateActivity.this, StartUp.class);
-                            startActivity(I);
-                        }
 
+                        }
                     }
                     else
                     {
                         AlertDialog.Builder alert = new AlertDialog.Builder(CreateActivity.this);
-                        alert.setMessage("Nu ai acces").setNegativeButton("Inapoi",null).create().show();
+                        alert.setMessage("Cod gresit").setNegativeButton("Inapoi",null).create().show();
                         Intent I = new Intent(CreateActivity.this, StartUp.class);
                         startActivity(I);
                     }
