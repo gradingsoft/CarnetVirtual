@@ -115,7 +115,7 @@ public class CreateActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this,"Eroare",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Eroare poza",Toast.LENGTH_LONG).show();
 
         }
     }
@@ -206,7 +206,7 @@ public class CreateActivity extends AppCompatActivity {
                             else
                             {
                                 AlertDialog.Builder alert = new AlertDialog.Builder(CreateActivity.this);
-                                alert.setMessage("Eroare").setNegativeButton("", null).create().show();
+                                alert.setMessage("Eroare la creare cont").setNegativeButton("", null).create().show();
                                 Intent I = new Intent(CreateActivity.this, StartUp.class);
                                 startActivity(I);
 
