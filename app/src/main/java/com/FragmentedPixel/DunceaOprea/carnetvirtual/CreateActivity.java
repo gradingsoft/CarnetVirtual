@@ -14,6 +14,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -136,6 +137,7 @@ public class CreateActivity extends AppCompatActivity {
         STimage.compress(Bitmap.CompressFormat.PNG,100, baos);
         byte [] b=baos.toByteArray();
         String STImage=Base64.encodeToString(b, Base64.DEFAULT);
+        Log.d("Poza", b.toString());
 
         String name        =tname.getText().toString();
         String forename    =tforename.getText().toString();
@@ -207,8 +209,6 @@ public class CreateActivity extends AppCompatActivity {
                             {
                                 AlertDialog.Builder alert = new AlertDialog.Builder(CreateActivity.this);
                                 alert.setMessage("Eroare la creare cont").setNegativeButton("", null).create().show();
-                                Intent I = new Intent(CreateActivity.this, StartUp.class);
-                                startActivity(I);
 
                             }
                         }
