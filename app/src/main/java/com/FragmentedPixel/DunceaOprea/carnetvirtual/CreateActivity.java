@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -28,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 public class CreateActivity extends AppCompatActivity {
@@ -59,7 +61,11 @@ public class CreateActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CheckSubmit();
+                try {
+                    CheckSubmit();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -113,6 +119,10 @@ public class CreateActivity extends AppCompatActivity {
             String picturePath = cursor.getString(columnIndex);
             cursor.close();
             STimage = (BitmapFactory.decodeFile(picturePath));
+
+            ImageView imagetest = (ImageView) findViewById(R.id.testimg);
+            imagetest.setImageBitmap(STimage);
+
         }
         else
         {
@@ -122,8 +132,7 @@ public class CreateActivity extends AppCompatActivity {
     }
 
 
-    private void CheckSubmit()
-    {
+    private void CheckSubmit() throws UnsupportedEncodingException {
         EditText tname = (EditText) findViewById(R.id.name_editText);
         EditText tforename = (EditText) findViewById(R.id.forname_editText);
         EditText temail = (EditText) findViewById(R.id.email_editText);
@@ -137,7 +146,8 @@ public class CreateActivity extends AppCompatActivity {
         STimage.compress(Bitmap.CompressFormat.PNG,100, baos);
         byte [] b=baos.toByteArray();
         String STImage=Base64.encodeToString(b, Base64.DEFAULT);
-        Log.d("Poza", b.toString());
+
+        Log.d("Poza", STImage);
 
         String name        =tname.getText().toString();
         String forename    =tforename.getText().toString();
