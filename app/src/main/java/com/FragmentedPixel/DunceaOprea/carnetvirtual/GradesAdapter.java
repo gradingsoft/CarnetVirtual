@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -28,6 +30,7 @@ public class GradesAdapter extends ArrayAdapter<Grades>
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
+        String toRoman[] ={"I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"};
         View v = convertView;
         if (v == null)
         {
@@ -43,10 +46,13 @@ public class GradesAdapter extends ArrayAdapter<Grades>
             TextView gDate = (TextView) v.findViewById(R.id.gradedate);
             TextView gSubject = (TextView) v.findViewById(R.id.gradesubject);
 
-            SimpleDateFormat df = new SimpleDateFormat("dd/MM", Locale.getDefault());
-            gValue.setText(df.format(g.date));
-            gDate.setText(String.valueOf(g.value));
+            SimpleDateFormat df_day = new SimpleDateFormat("dd", Locale.getDefault());
+            SimpleDateFormat df_month = new SimpleDateFormat("M", Locale.getDefault());
+
+            gValue.setText(""+g.value);
+            gDate.setText(df_day.format(g.date)+" "+toRoman[1]);
             gSubject.setText(g.materie);
+            Toast.makeText(getContext(),Integer.parseInt(df_month.format(g.date)),Toast.LENGTH_LONG).show();
         }
 
 

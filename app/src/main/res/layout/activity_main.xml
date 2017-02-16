@@ -10,14 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.FragmentedPixel.DunceaOprea.carnetvirtual.Main">
 
-    <ImageView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/text_test"
         tools:ignore="HardcodedText,UnknownId"
         android:layout_below="@+id/chat_button"
-        android:layout_above="@+id/bottomButtons"
-        android:background="@android:color/holo_blue_light" />
+        android:layout_above="@+id/bottomButtons" />
 
     <Button
         android:text="Chat"

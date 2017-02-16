@@ -6,14 +6,13 @@
     android:layout_height="fill_parent">
 
     <TextView
-        android:text="Nota"
-        android:layout_width="match_parent"
+        android:text="Date"
         android:layout_height="wrap_content"
-        android:id="@+id/gradeValue"
+        android:layout_width="match_parent"
+        android:id="@+id/gradedate"
         android:layout_weight="1"
         tools:ignore="HardcodedText"
-        android:textAlignment="viewStart"
-        android:textSize="18sp" />
+        android:textAlignment="center" />
 
     <TextView
         android:text="Materie"
@@ -21,17 +20,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/gradesubject"
         android:layout_weight="1"
-        tools:ignore="HardcodedText"
-        android:textSize="18sp" />
+        tools:ignore="HardcodedText" />
 
     <TextView
-        android:text="Date"
-        android:layout_height="wrap_content"
+        android:text="Nota"
         android:layout_width="match_parent"
-        android:id="@+id/gradedate"
+        android:layout_height="wrap_content"
+        android:id="@+id/gradeValue"
         android:layout_weight="1"
         tools:ignore="HardcodedText"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        android:textAlignment="center" />
 
 </LinearLayout>
