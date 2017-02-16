@@ -58,13 +58,8 @@ public class LoginActivity extends Activity
             @Override
             public void run()
             {
-                try {
                     LogIn();
-                    Thread.sleep(5000);
                     progressDialog.dismiss();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
         }).start();
     }

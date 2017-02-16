@@ -67,13 +67,8 @@ public class StartUp extends AppCompatActivity {
             @Override
             public void run()
             {
-                try {
                     LogIn();
-                    Thread.sleep(3000);
                     progressDialog.dismiss();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
         }).start();
     }
@@ -215,13 +210,8 @@ public class StartUp extends AppCompatActivity {
             @Override
             public void run()
             {
-                try {
                     SubmitCode();
-                    Thread.sleep(3000);
                     progressDialog.dismiss();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
         }).start();
     }
