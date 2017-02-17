@@ -119,7 +119,7 @@ public class StartUp extends AppCompatActivity {
                             Bitmap BSignature_bm = BitmapFactory.decodeByteArray(bsignature, 0 ,bsignature.length);
 
                             new Student(SName,SAddress,SPhone,CName,STName,STFirstName,STPicture_bm,mEmail, mPassword, BSignature_bm,STSerialNr,STAddress,STPhone);
-                            startActivity(new Intent(StartUp.this, Main.class));
+
 
                             for(int i=0;i<Presence_nr;i++)
                             {
@@ -141,6 +141,7 @@ public class StartUp extends AppCompatActivity {
                                 String SBName = presence.getString("SBName");
                                 new Grades(date,GValue,SBName);
                             }
+                            startActivity(new Intent(StartUp.this, Main.class));
                         }
 
                     }
