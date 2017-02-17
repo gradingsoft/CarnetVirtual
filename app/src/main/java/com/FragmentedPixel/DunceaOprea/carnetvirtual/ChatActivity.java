@@ -1,10 +1,13 @@
 package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
+import android.graphics.Color;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,15 +35,24 @@ public class ChatActivity extends AppCompatActivity
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, messages);
         messagesListView.setAdapter(adapter);
+
+
+        for (int i = 0; i < adapter.getCount(); i++)
+        {
+            TextView currentLine = (TextView) adapter.getView(i, messagesListView.getChildAt(i), messagesListView);
+            currentLine.setText("da");
+            Toast.makeText(this, "a mers", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private String getMessage(ChatMessage m)
     {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM", Locale.getDefault());
 
-        String mesaj = m.autor + ":\n";
-        mesaj += GetType(m.type) + " " + simpleDateFormat.format(m.date) + "\n";
+        String mesaj = m.autor + "(" + GetType(m.type) + " la " + simpleDateFormat.format(m.date) + "):\n";
+        mesaj +=  "\n";
         mesaj += m.message;
+
 
         return  mesaj;
     }
@@ -54,4 +66,5 @@ public class ChatActivity extends AppCompatActivity
         else
             return  "Teza";
     }
+
 }
