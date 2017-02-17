@@ -47,12 +47,11 @@ public class GradesAdapter extends ArrayAdapter<Grades>
             TextView gSubject = (TextView) v.findViewById(R.id.gradesubject);
 
             SimpleDateFormat df_day = new SimpleDateFormat("dd", Locale.getDefault());
-            SimpleDateFormat df_month = new SimpleDateFormat("M", Locale.getDefault());
+            SimpleDateFormat df_month = new SimpleDateFormat("MM", Locale.getDefault());
 
             gValue.setText(""+g.value);
-            gDate.setText(df_day.format(g.date)+" "+toRoman[1]);
+            gDate.setText(df_day.format(g.date)+" "+toRoman[Integer.parseInt(df_month.format(g.date))-1]);
             gSubject.setText(g.materie);
-            Toast.makeText(getContext(),Integer.parseInt(df_month.format(g.date)),Toast.LENGTH_LONG).show();
         }
 
 
