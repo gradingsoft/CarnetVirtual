@@ -1,6 +1,7 @@
 package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -15,6 +16,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,7 +33,7 @@ public class CustomCalendarView extends LinearLayout
     private static final String LOGTAG = "Calendar View";
 
     // how many days to show, defaults to six weeks, 42 days
-    private static final int DAYS_COUNT = 35;
+    private static final int DAYS_COUNT = 42;
 
     // default date format
     private static final String DATE_FORMAT = "MM yyyy";
@@ -180,7 +182,7 @@ public class CustomCalendarView extends LinearLayout
 
         // determine the cell for current month's beginning
         calendar.set(Calendar.DAY_OF_MONTH, 1);
-        int monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+        int monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK) - 2;
 
         // move calendar backwards to the beginning of the week
         calendar.add(Calendar.DAY_OF_MONTH, -monthBeginningCell);
@@ -270,6 +272,7 @@ public class CustomCalendarView extends LinearLayout
                 // if it is today, set it to blue/bold
                 ((TextView)view).setTypeface(null, Typeface.BOLD);
                 ((TextView)view).setTextColor(getResources().getColor(R.color.today));
+                Toast.makeText(getContext().getApplicationContext(),"hihihihihihi",Toast.LENGTH_SHORT).show();
             }
 
             // set text
