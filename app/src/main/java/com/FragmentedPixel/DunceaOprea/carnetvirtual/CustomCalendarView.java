@@ -181,8 +181,8 @@ public class CustomCalendarView extends LinearLayout
         Calendar calendar = (Calendar)currentDate.clone();
 
         // determine the cell for current month's beginning
-        calendar.set(Calendar.DAY_OF_MONTH, 1);
-        int monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK) - 2;
+        calendar.set(Calendar.DAY_OF_MONTH, 0);
+        int monthBeginningCell = calendar.get(Calendar.DAY_OF_WEEK)-2 ;
 
         // move calendar backwards to the beginning of the week
         calendar.add(Calendar.DAY_OF_MONTH, -monthBeginningCell);
@@ -272,9 +272,9 @@ public class CustomCalendarView extends LinearLayout
                 // if it is today, set it to blue/bold
                 ((TextView)view).setTypeface(null, Typeface.BOLD);
                 ((TextView)view).setTextColor(getResources().getColor(R.color.today));
-                Toast.makeText(getContext().getApplicationContext(),"hihihihihihi",Toast.LENGTH_SHORT).show();
-            }
 
+            }
+            //Toast.makeText(getContext().getApplicationContext(),"hihihihihihi",Toast.LENGTH_SHORT).show();
             // set text
             ((TextView)view).setText(String.valueOf(date.getDate()));
 
