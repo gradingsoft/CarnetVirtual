@@ -22,7 +22,9 @@ public class PresenceActivity extends AppCompatActivity
         setContentView(R.layout.calendar_view);
         //Links();
         HashSet<Date> events = new HashSet<>();
-        events.add(new Date());
+
+        for (Presences p : Student.student.presences)
+            events.add(p.date);
 
         CustomCalendarView cv = ((CustomCalendarView)findViewById(R.id.calendar_view));
         cv.updateCalendar(events);

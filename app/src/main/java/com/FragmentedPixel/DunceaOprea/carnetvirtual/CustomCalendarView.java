@@ -169,14 +169,19 @@ public class CustomCalendarView extends LinearLayout
      */
     public void updateCalendar()
     {
-        updateCalendar(null);
+        //updateCalendar(null);
+        updateCalendar(eves);
     }
 
     /**
      * Display dates correctly in grid
      */
+    private HashSet<Date> eves;
+
     public void updateCalendar(HashSet<Date> events)
     {
+        eves = events;
+
         ArrayList<Date> cells = new ArrayList<>();
         Calendar calendar = (Calendar)currentDate.clone();
 
@@ -243,24 +248,13 @@ public class CustomCalendarView extends LinearLayout
 
             // if this day has an event, specify event image
             view.setBackgroundResource(0);
-            if (eventDays != null)
-            {
-                for (Date eventDate : eventDays)
-                {
-                    if (eventDate.getDate() == day &&
-                            eventDate.getMonth() == month &&
-                            eventDate.getYear() == year)
-                    {
-                        // mark this day for event
-                        view.setBackgroundResource(R.drawable.reminder);
-                        break;
-                    }
-                }
-            }
 
             // clear styling
             ((TextView)view).setTypeface(null, Typeface.NORMAL);
             ((TextView)view).setTextColor(Color.BLACK);
+
+
+
 
             if (month != today.getMonth() || year != today.getYear())
             {
@@ -274,7 +268,21 @@ public class CustomCalendarView extends LinearLayout
                 ((TextView)view).setTextColor(getResources().getColor(R.color.today));
 
             }
-            //Toast.makeText(getContext().getApplicationContext(),"hihihihihihi",Toast.LENGTH_SHORT).show();
+
+            if (eventDays != null)
+            {
+                for (Date eventDate : eventDays)
+                {
+                    if (eventDate.getDate() == day && eventDate.getMonth() == month && eventDate.getYear() == year)
+                    {
+                        // mark this day for event
+                        ((TextView)view).setTypeface(null, Typeface.BOLD);
+                        ((TextView)view).setTextColor(Color.RED);
+                        break;
+                    }
+                }
+            }
+
             // set text
             ((TextView)view).setText(String.valueOf(date.getDate()));
 
