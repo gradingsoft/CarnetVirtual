@@ -68,7 +68,12 @@ public class StartUp extends AppCompatActivity {
             public void run()
             {
                     LogIn();
-                    progressDialog.dismiss();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                progressDialog.dismiss();
             }
         }).start();
     }
