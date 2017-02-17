@@ -50,7 +50,7 @@ public class ChatActivity extends AppCompatActivity
     {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM", Locale.getDefault());
 
-        String mesaj = m.autor + "(" + GetType(m.type) + " la " + simpleDateFormat.format(m.date) + "):\n";
+        String mesaj =  GetType(m.type) + " " + m.autor + " la " + simpleDateFormat.format(m.date) + ":\n";
         mesaj +=  "\n";
         mesaj += m.message;
 
@@ -61,11 +61,11 @@ public class ChatActivity extends AppCompatActivity
     private String GetType (int type)
     {
         if(type == 1)
-            return "Mesaj";
+            return "✉ Mesaj";
         else if(type == 2)
-            return  "Test";
+            return  "☞ Test";
         else
-            return  "Teza";
+            return  "⌲ Teza";
     }
 
 }
