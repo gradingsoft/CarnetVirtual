@@ -146,6 +146,22 @@ public class StartUp extends AppCompatActivity {
                                 String SBName = presence.getString("SBName");
                                 new Grades(date,GValue,SBName);
                             }
+
+                            for(int i=0;i<Chat_nr;i++)
+                            {
+                                JSONObject chat = jsonResponse.getJSONObject("Chat"+i);
+
+                                DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+                                String CHDate = chat.getString("CHDate");
+                                String CHEDate = chat.getString("CHEDate");
+                                Date chdate = format.parse(CHDate);
+                                Date chedate = format.parse(CHEDate);
+                                Integer CHType = chat.getInt("CHType");
+                                String CHMessage = chat.getString("CHMessage");
+                                String TName = chat.getString("TName");
+                                new ChatMessage(chdate,chedate,CHMessage,TName,CHType);
+                            }
+
                             startActivity(new Intent(StartUp.this, Main.class));
                         }
 
