@@ -1,15 +1,18 @@
 package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Calendar;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashSet;
 
-public class PresenceActivity extends AppCompatActivity {
+public class PresenceActivity extends AppCompatActivity
+{
 
     private TextView infos;
     private String noPresencesText = "Nu aveti absente in aceasta zi.";
@@ -18,9 +21,26 @@ public class PresenceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_presence);
-        Links();
-    }
+        //Links();
+        HashSet<Date> events = new HashSet<>();
+        events.add(new Date());
 
+        CustomCalendarView cv = ((CustomCalendarView)findViewById(R.id.calendar_view));
+        cv.updateCalendar(events);
+
+        // assign event handler
+        cv.setEventHandler(new CustomCalendarView.EventHandler()
+        {
+            @Override
+            public void onDayLongPress(Date date)
+            {
+                // show returned day
+                DateFormat df = SimpleDateFormat.getDateInstance();
+                Toast.makeText(PresenceActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+/*
     private void Links()
     {
         infos = (TextView) findViewById(R.id.infos_textView);
@@ -77,5 +97,5 @@ public class PresenceActivity extends AppCompatActivity {
             infos.setText(infoText);
         else
             infos.setText(noPresencesText);
-    }
+    }*/
 }
