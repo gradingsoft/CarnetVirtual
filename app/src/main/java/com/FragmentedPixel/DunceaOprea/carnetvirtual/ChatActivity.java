@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,8 +40,8 @@ public class ChatActivity extends AppCompatActivity
 
         for (int i = 0; i < adapter.getCount(); i++)
         {
-            TextView currentLine = (TextView) adapter.getView(i, messagesListView.getChildAt(i), messagesListView);
-            currentLine.setText("da");
+            View currentLine = adapter.getView(i, messagesListView.getChildAt(i), messagesListView);
+            currentLine.setBackgroundColor(Color.RED);
             Toast.makeText(this, "a mers", Toast.LENGTH_SHORT).show();
         }
     }
