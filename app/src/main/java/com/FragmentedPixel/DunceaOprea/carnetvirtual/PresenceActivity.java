@@ -24,12 +24,25 @@ public class PresenceActivity extends AppCompatActivity
         setContentView(R.layout.calendar_view);
         //Links();
         HashSet<Date> events = new HashSet<>();
+        infos = (TextView) findViewById(R.id.infos_textView);
 
+        int nepres = 0;
+        int totpres=0;
         for (Presences p : Student.student.presences)
+        {
+            if(p.value)
+            totpres++;
+            else
+            {
+                nepres++;
+                totpres++;
+            }
             events.add(p.date);
-
+        }
         CustomCalendarView cv = ((CustomCalendarView)findViewById(R.id.calendar_view));
         cv.updateCalendar(events);
+
+        infos.setText("Absente in total: " + totpres +"\nAbsente nemotivate: " + nepres );
 
         // assign event handler
         cv.setEventHandler(new CustomCalendarView.EventHandler()
@@ -45,7 +58,7 @@ public class PresenceActivity extends AppCompatActivity
             @Override
             public void onDayPress(Date date)
             {
-                infos = (TextView) findViewById(R.id.infos_textView);
+
 
                 ArrayList<Presences> presences = Student.student.presences;
                 ArrayList<Presences> dayPres = new ArrayList<>();
@@ -67,7 +80,7 @@ public class PresenceActivity extends AppCompatActivity
                         presences_number += 1;
                         infoText += pres.materie + " ";
                     }
-                }//ss
+                }
                 infoText = "Absente nemotivate: " + presences_number + "\n" + infoText + "\n" + "Absente in total: " + prescenes_total;
 
 
