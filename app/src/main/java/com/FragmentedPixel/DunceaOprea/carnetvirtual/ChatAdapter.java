@@ -1,12 +1,14 @@
 package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -36,9 +38,22 @@ public class ChatAdapter extends ArrayAdapter<ChatMessage>
 
         if(message != null) {
             author.setText(message.autor);
+
             type.setText(GetType(message.type));
+
+            if(message.type == 1)
+                type.setTextColor(Color.BLACK);
+            else if(message.type == 2)
+                type.setTextColor(Color.BLUE);
+            else
+                type.setTextColor(Color.RED);
+
+
+            //Toast.makeText(getContext().getApplicationContext(),""+ message.type, Toast.LENGTH_SHORT).show();
+
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM", Locale.getDefault());
             date.setText(sdf.format(message.date));
+
             messageText.setText(message.message);
         }
 
