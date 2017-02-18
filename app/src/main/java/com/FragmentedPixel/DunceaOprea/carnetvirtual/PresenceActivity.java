@@ -54,7 +54,7 @@ public class PresenceActivity extends AppCompatActivity
                 //DateFormat df = SimpleDateFormat.getDateInstance();
                 //Toast.makeText(PresenceActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
             }
-
+            //s
             @Override
             public void onDayPress(Date date)
             {
