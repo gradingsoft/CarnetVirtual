@@ -29,43 +29,8 @@ public class ChatActivity extends AppCompatActivity
     private void ReadMessages()
     {
         ListView messagesListView = (ListView) findViewById(R.id.messages_listView);
-
-        ArrayList<String> messages = new ArrayList<>();
-
-        for (ChatMessage message: Student.student.chatMessages)
-            messages.add(getMessage(message));
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, messages);
+        ChatAdapter adapter = new ChatAdapter(this, Student.student.chatMessages);
         messagesListView.setAdapter(adapter);
-
-
-        for (int i = 0; i < adapter.getCount(); i++)
-        {
-            View currentLine = adapter.getView(i, messagesListView.getChildAt(i), messagesListView);
-            currentLine.setBackgroundColor(Color.RED);
-        }
-    }
-
-    private String getMessage(ChatMessage m)
-    {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM", Locale.getDefault());
-
-        String mesaj =  GetType(m.type) + " " + m.autor + " la " + simpleDateFormat.format(m.date) + ":\n";
-        mesaj +=  "\n";
-        mesaj += m.message;
-
-
-        return  mesaj;
-    }
-
-    private String GetType (int type)
-    {
-        if(type == 1)
-            return "✉ Mesaj";
-        else if(type == 2)
-            return  "☞ Test";
-        else
-            return  "⌲ Teza";
     }
 
 }
