@@ -1,5 +1,6 @@
 package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -7,6 +8,7 @@ import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 
@@ -39,12 +41,49 @@ public class PresenceActivity extends AppCompatActivity
                 DateFormat df = SimpleDateFormat.getDateInstance();
                 Toast.makeText(PresenceActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
             }
+
+            @Override
+            public void onDayPress(Date date)
+            {
+                infos = (TextView) findViewById(R.id.infos_textView);
+
+                ArrayList<Presences> presences = Student.student.presences;
+                ArrayList<Presences> dayPres = new ArrayList<>();
+                for (Presences pres: presences)
+                {
+
+                    if(date.getYear() == pres.date.getYear() && date.getMonth() == pres.date.getMonth() && date.getDay() == pres.date.getDay())
+                        dayPres.add(pres);
+
+                }
+
+                String infoText="Materii: ";
+                int presences_number = 0;
+                int prescenes_total = 0;
+                for(Presences pres: dayPres)
+                {
+                    prescenes_total += 1;
+                    if(!pres.value) {
+                        presences_number += 1;
+                        infoText += pres.materie + " ";
+                    }
+                }
+                infoText = "Absente nemotivate: " + presences_number + "\n" + infoText + "\n" + "Absente in total: " + prescenes_total;
+
+                //TODO: Remove this
+                AlertDialog.Builder alert = new AlertDialog.Builder(PresenceActivity.this);
+                if(prescenes_total != 0)
+                   alert.setMessage(infoText).setNegativeButton("Inapoi", null).create().show();
+                else
+                    alert.setMessage(noPresencesText).setNegativeButton("Inapoi", null).create().show();
+            }
+
         });
     }
 /*
     private void Links()
     {
-        infos = (TextView) findViewById(R.id.infos_textView);
+
 
         CalendarView calendarView = (CalendarView) findViewById(R.id.calendarView);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {

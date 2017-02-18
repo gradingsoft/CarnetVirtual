@@ -162,6 +162,15 @@ public class CustomCalendarView extends LinearLayout
                 return true;
             }
         });
+
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> view, View cell, int position, long id) {
+
+                eventHandler.onDayPress((Date)view.getItemAtPosition(position));
+
+            }
+        });
     }
 
     /**
@@ -305,5 +314,7 @@ public class CustomCalendarView extends LinearLayout
     public interface EventHandler
     {
         void onDayLongPress(Date date);
+
+        void onDayPress(Date date);
     }
 }
