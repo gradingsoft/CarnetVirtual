@@ -67,7 +67,7 @@ public class PresenceActivity extends AppCompatActivity
                         presences_number += 1;
                         infoText += pres.materie + " ";
                     }
-                }
+                }//ss
                 infoText = "Absente nemotivate: " + presences_number + "\n" + infoText + "\n" + "Absente in total: " + prescenes_total;
 
 
