@@ -38,8 +38,8 @@ public class PresenceActivity extends AppCompatActivity
             public void onDayLongPress(Date date)
             {
                 // show returned day
-                DateFormat df = SimpleDateFormat.getDateInstance();
-                Toast.makeText(PresenceActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
+                //DateFormat df = SimpleDateFormat.getDateInstance();
+                //Toast.makeText(PresenceActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -70,12 +70,11 @@ public class PresenceActivity extends AppCompatActivity
                 }
                 infoText = "Absente nemotivate: " + presences_number + "\n" + infoText + "\n" + "Absente in total: " + prescenes_total;
 
-                //TODO: Remove this
-                AlertDialog.Builder alert = new AlertDialog.Builder(PresenceActivity.this);
+
                 if(prescenes_total != 0)
-                   alert.setMessage(infoText).setNegativeButton("Inapoi", null).create().show();
+                    infos.setText(infoText);
                 else
-                    alert.setMessage(noPresencesText).setNegativeButton("Inapoi", null).create().show();
+                    infos.setText(noPresencesText);
             }
 
         });
