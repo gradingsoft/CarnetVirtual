@@ -134,6 +134,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/log_out_button"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:textAllCaps="false"
+        style="@style/Widget.AppCompat.Button.Colored" />
 
 </RelativeLayout>

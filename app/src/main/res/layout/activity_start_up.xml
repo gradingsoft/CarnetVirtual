@@ -26,12 +26,16 @@
         android:id="@+id/submit_button"
         android:layout_marginTop="30dp"
         tools:ignore="HardcodedText"
-        android:text="Submit code" />
+        android:text="Submit code"
+        android:textAllCaps="false"
+        style="@style/Widget.AppCompat.Button.Colored" />
 
     <Button
         android:text="I have an account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/login_button"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:textAllCaps="false"
+        style="@style/Widget.AppCompat.Button.Colored" />
 </LinearLayout>

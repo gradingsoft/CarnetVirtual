@@ -19,13 +19,15 @@
         android:layout_above="@+id/bottomButtons" />
 
     <Button
-        android:text="Chat"
+        android:text="Mesaje"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/chat_button"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:textAllCaps="false"
+        style="@style/Widget.AppCompat.Button.Colored" />
 
     <RelativeLayout
         android:id="@+id/bottomButtons"
@@ -39,7 +41,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/presence_button"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            android:textAllCaps="false"
+            style="@style/Widget.AppCompat.Button.Colored" />
 
         <Button
             android:text="Note"
@@ -48,7 +52,9 @@
             android:id="@+id/grades_button"
             tools:ignore="HardcodedText"
             android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_alignParentEnd="true"
+            android:textAllCaps="false"
+            style="@style/Widget.AppCompat.Button.Colored" />
 
         <Button
             android:text="First Page"
@@ -57,7 +63,9 @@
             android:id="@+id/firstpage_button"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            android:textAllCaps="false"
+            style="@style/Widget.AppCompat.Button.Colored" />
 
     </RelativeLayout>
 
