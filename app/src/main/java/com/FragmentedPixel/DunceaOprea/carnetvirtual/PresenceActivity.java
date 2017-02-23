@@ -1,13 +1,9 @@
 package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -54,21 +50,17 @@ public class PresenceActivity extends AppCompatActivity
                 //DateFormat df = SimpleDateFormat.getDateInstance();
                 //Toast.makeText(PresenceActivity.this, df.format(date), Toast.LENGTH_SHORT).show();
             }
-            //s
             @Override
             public void onDayPress(Date date)
             {
-
-
                 ArrayList<Presences> presences = Student.student.presences;
                 ArrayList<Presences> dayPres = new ArrayList<>();
                 for (Presences pres: presences)
                 {
-
-                    if(date.getYear() == pres.date.getYear() && date.getMonth() == pres.date.getMonth() && date.getDay() == pres.date.getDay())
+                    if(date.getYear() == pres.date.getYear() && date.getMonth() == pres.date.getMonth() && date.getDate() == pres.date.getDate())
                         dayPres.add(pres);
-
                 }
+
 
                 String infoText="Materii: ";
                 int presences_number = 0;
@@ -82,8 +74,6 @@ public class PresenceActivity extends AppCompatActivity
                     }
                 }
                 infoText = "Absente nemotivate: " + presences_number + "\n" + infoText + "\n" + "Absente in total: " + prescenes_total;
-
-
                 if(prescenes_total != 0)
                     infos.setText(infoText);
                 else

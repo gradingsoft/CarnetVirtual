@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import java.util.HashSet;
  */
 public class CustomCalendarView extends LinearLayout
 {
+    GridView lv1;
     // for logging
     private static final String LOGTAG = "Calendar View";
 
@@ -125,6 +127,24 @@ public class CustomCalendarView extends LinearLayout
 
     private void assignClickHandlers()
     {
+        lv1 = (GridView) findViewById(R.id.calendar_grid);
+
+        lv1.setOnTouchListener(new OnSwipeTouchListener(getContext().getApplicationContext())
+           {
+               public void onSwipeRight()
+               {
+                   currentDate.add(Calendar.MONTH, -1);
+                   updateCalendar();
+
+               }
+               public void onSwipeLeft()
+               {
+                   currentDate.add(Calendar.MONTH, 1);
+                   updateCalendar();
+               }
+           }
+        );
+
         // add one month and refresh UI
         btnNext.setOnClickListener(new OnClickListener()
         {
