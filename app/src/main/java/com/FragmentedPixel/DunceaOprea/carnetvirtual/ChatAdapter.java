@@ -65,7 +65,7 @@ public class ChatAdapter extends ArrayAdapter<ChatMessage>
         if(type == 1)
             return "✉ Mesaj";
         else if(type == 2)
-            return  "☞ Test";
+            return  "► Test";
         else
             return  "⌲ Teza";
     }

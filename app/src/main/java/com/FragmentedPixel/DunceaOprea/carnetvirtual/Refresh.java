@@ -62,10 +62,23 @@ public class Refresh  {
                             String STSerialNr = jsonResponse.getString("STSerialNr");
                             String STAddress = jsonResponse.getString("STAddress");
                             String STPhone = jsonResponse.getString("STPhone");
+                            Integer STVisa = jsonResponse.getInt("STVisa");
+
                             Integer Grade_nr = jsonResponse.getInt("Grade_nr");
                             Integer Presence_nr = jsonResponse.getInt("Presence_nr");
                             Integer Chat_nr = jsonResponse.getInt("Chat_nr");
 
+                            if(STVisa == 0) {
+                                AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                                alert.setMessage("Carnetul nu a fost vizat inca.").setNegativeButton("Inapoi",null).create().show();
+                                return;
+                            }
+                            else if (STVisa == -1)
+                            {
+                                AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                                alert.setMessage("Carnetul a fost respins.").setNegativeButton("Inapoi",null).create().show();
+                                return;
+                            }
 
                             String STPicture = jsonResponse.getString("STPicture");
                             byte[] byteArray_st = STPicture.getBytes("UTF-16");

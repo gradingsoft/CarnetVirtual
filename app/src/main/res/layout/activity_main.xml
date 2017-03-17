@@ -57,7 +57,7 @@
             style="@style/Widget.AppCompat.Button.Colored" />
 
         <Button
-            android:text="First Page"
+            android:text="Prima Pagina"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/firstpage_button"

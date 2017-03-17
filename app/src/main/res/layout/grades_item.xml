@@ -11,8 +11,9 @@
         android:layout_width="match_parent"
         android:id="@+id/gradedate"
         android:layout_weight="1"
-        tools:ignore="HardcodedText"
-        android:layout_marginLeft="15sp"/>
+        tools:ignore="HardcodedText,RtlHardcoded"
+        android:layout_marginLeft="15sp"
+        android:textSize="18sp" />
 
     <TextView
         android:text="Materie"
@@ -20,7 +21,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/gradesubject"
         android:layout_weight="1"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText"
+        android:textSize="18sp" />
 
     <TextView
         android:text="Nota"
@@ -29,6 +31,7 @@
         android:id="@+id/gradeValue"
         android:layout_weight="1"
         tools:ignore="HardcodedText"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="18sp" />
 
 </LinearLayout>

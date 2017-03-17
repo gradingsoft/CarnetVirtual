@@ -16,7 +16,7 @@ public class Main extends AppCompatActivity {
 
         LinkButtons();
         TextView text_text = (TextView) findViewById(R.id.text_test);
-        text_text.setText("Buna ziua, " + Student.student.name + "! bine ati revenit.");
+        text_text.setText("Buna ziua, " + Student.student.forename + "! bine ati revenit.");
        // Refresh.LogIn(getApplicationContext(),Serialization.serialization.email,Serialization.serialization.password);
     }
     @Override
