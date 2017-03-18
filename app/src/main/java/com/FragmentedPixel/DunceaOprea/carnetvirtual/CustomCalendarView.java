@@ -129,6 +129,8 @@ public class CustomCalendarView extends LinearLayout
     {
         lv1 = (GridView) findViewById(R.id.calendar_grid);
 
+
+        /*
         lv1.setOnTouchListener(new OnSwipeTouchListener(getContext().getApplicationContext())
            {
                public void onSwipeRight()
@@ -143,7 +145,7 @@ public class CustomCalendarView extends LinearLayout
                    updateCalendar();
                }
            }
-        );
+        );*/
 
         // add one month and refresh UI
         btnNext.setOnClickListener(new OnClickListener()
