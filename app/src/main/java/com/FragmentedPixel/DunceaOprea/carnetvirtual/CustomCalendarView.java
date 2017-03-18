@@ -130,7 +130,7 @@ public class CustomCalendarView extends LinearLayout
         lv1 = (GridView) findViewById(R.id.calendar_grid);
 
 
-        /*
+        /*s
         lv1.setOnTouchListener(new OnSwipeTouchListener(getContext().getApplicationContext())
            {
                public void onSwipeRight()
