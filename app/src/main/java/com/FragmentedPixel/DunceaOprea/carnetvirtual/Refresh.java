@@ -26,9 +26,9 @@ import java.util.Locale;
  * Created by vlad_ on 29.01.2017.
  */
 
-public class Refresh  {
+class Refresh  {
 
-    public static void LogIn(final Context context, final String Email, final String Password) {
+    static void LogIn(final Context context, final String Email, final String Password) {
 
         Response.Listener<String> loginListener = new Response.Listener<String>() {
             @Override
@@ -137,11 +137,7 @@ public class Refresh  {
                         AlertDialog.Builder alert = new AlertDialog.Builder(context);
                         alert.setMessage("Ups.. S-a intamplat ceva neprevazut").setNegativeButton("Inapoi",null).create().show();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
+                } catch (JSONException | UnsupportedEncodingException | ParseException e) {
                     e.printStackTrace();
                 }
 

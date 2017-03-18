@@ -10,11 +10,11 @@ import java.util.Map;
  * Created by vlad_ on 28.01.2017.
  */
 
-public class _Login_Request extends StringRequest {
+class _Login_Request extends StringRequest {
     private static final String Site_URL_Login = "http://carnet-virtual.victoriacentre.ro/login_request.php";
     private Map<String, String> params;
 
-    public _Login_Request(String Email, String Password, Response.Listener<String> listener) {
+    _Login_Request(String Email, String Password, Response.Listener<String> listener) {
         super(Method.POST, Site_URL_Login, listener, null);
         String AccessCode = "565656";
         params = new HashMap<>();

@@ -15,10 +15,6 @@ import android.widget.EditText;
 
 public class LoginActivity extends Activity
 {
-    private  EditText mEmailView;
-    private EditText mPasswordView;
-    private String mEmail;
-    private String mPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -66,11 +62,11 @@ public class LoginActivity extends Activity
 
     private void LogIn() {
 
-        mEmailView = (EditText) findViewById(R.id.email);
-        mPasswordView = (EditText) findViewById(R.id.password);
-        mEmail = mEmailView.getText().toString();
-        mPassword = mPasswordView.getText().toString();
-        Refresh.LogIn(LoginActivity.this,mEmail,mPassword);
+        EditText mEmailView = (EditText) findViewById(R.id.email);
+        EditText mPasswordView = (EditText) findViewById(R.id.password);
+        String mEmail = mEmailView.getText().toString();
+        String mPassword = mPasswordView.getText().toString();
+        Refresh.LogIn(LoginActivity.this, mEmail, mPassword);
 
     }
 }

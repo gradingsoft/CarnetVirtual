@@ -6,13 +6,13 @@ import java.util.Date;
  * Created by oalex on 2017-01-29.
  */
 
-public class ChatMessage
+class ChatMessage
 {
     public Date date;
-    public Date expirationDate;
-    public String message;
-    public String autor;
-    public int type;
+    private Date expirationDate;
+    String message;
+    String autor;
+    int type;
 
     public ChatMessage(Date date, Date expirationDate, String message, String autor, int type)
     {

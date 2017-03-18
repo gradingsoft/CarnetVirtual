@@ -2,6 +2,7 @@ package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class GradesAdapter extends ArrayAdapter<Grades>
+class GradesAdapter extends ArrayAdapter<Grades>
 {
     private ArrayList<Grades> objects;
 
@@ -22,13 +23,14 @@ public class GradesAdapter extends ArrayAdapter<Grades>
     * the only variable we care about now is ArrayList<Item> objects,
     * because it is the list of objects we want to display.
     */
-    public GradesAdapter(Context context, int textViewResourceId, ArrayList<Grades> objects) {
+    GradesAdapter(Context context, int textViewResourceId, ArrayList<Grades> objects) {
         super(context, textViewResourceId, objects);
         this.objects = objects;
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
+    public View getView(int position, View convertView, @NonNull ViewGroup parent)
     {
         String toRoman[] ={"I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"};
         View v = convertView;

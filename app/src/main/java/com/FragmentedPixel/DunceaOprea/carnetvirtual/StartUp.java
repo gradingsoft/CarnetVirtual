@@ -170,11 +170,7 @@ public class StartUp extends AppCompatActivity {
                         AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
                         alert.setMessage("Ups.. S-a intamplat ceva neprevazut").setNegativeButton("Inapoi",null).create().show();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                } catch (ParseException e) {
+                } catch (JSONException | UnsupportedEncodingException | ParseException e) {
                     e.printStackTrace();
                 }
 

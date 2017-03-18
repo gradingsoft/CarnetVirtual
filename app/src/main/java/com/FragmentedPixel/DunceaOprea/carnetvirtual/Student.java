@@ -9,24 +9,24 @@ public class Student
 {
     public static Student student;
 
-    public String schoolname;
-    public String schooladress;
-    public String schoolphone;
+    String schoolname;
+    String schooladress;
+    String schoolphone;
 
-    public String className;
+    String className;
     public String name;
-    public String forename;
-    public Bitmap photo;
-    public String e_mail;
+    String forename;
+    Bitmap photo;
+    private String e_mail;
     public String password;
-    public String serialNumber;
-    public Bitmap bsignature;
-    public String adress;
-    public String phone;
+    String serialNumber;
+    Bitmap bsignature;
+    String adress;
+    String phone;
 
-    public ArrayList<Grades> grades;
-    public ArrayList<Presences> presences;
-    public ArrayList<ChatMessage> chatMessages;
+    ArrayList<Grades> grades;
+    ArrayList<Presences> presences;
+    ArrayList<ChatMessage> chatMessages;
 
     public Student(String schoolname, String schooladress, String schoolphone,String className, String name, String forename,Bitmap photo, String e_mail, String password, Bitmap bsignature,String serialNumber, String adress, String phone)
     {

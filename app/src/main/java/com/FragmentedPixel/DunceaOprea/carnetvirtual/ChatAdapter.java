@@ -15,15 +15,15 @@ import java.util.ArrayList;
 import java.util.Locale;
 
 
-public class ChatAdapter extends ArrayAdapter<ChatMessage>
+class ChatAdapter extends ArrayAdapter<ChatMessage>
 {
-    public ChatAdapter(Context context, ArrayList<ChatMessage> users) {
+    ChatAdapter(Context context, ArrayList<ChatMessage> users) {
         super(context, 0, users);
     }
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
         ChatMessage message = getItem(position);
 
