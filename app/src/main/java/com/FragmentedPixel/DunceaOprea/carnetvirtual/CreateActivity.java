@@ -1,5 +1,6 @@
 package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
+import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,6 +9,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Debug;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
@@ -38,6 +41,8 @@ public class CreateActivity extends AppCompatActivity {
     String Class;
     String CID;
     String Code;
+
+    final int PIC_CROP = 2;
 
     private static int RESULT_LOAD_IMAGE = 1;
     private Bitmap STimage;
@@ -88,9 +93,39 @@ public class CreateActivity extends AppCompatActivity {
                     {
                         Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                         startActivityForResult(i, RESULT_LOAD_IMAGE);
+
+
+
                     }
             }
         });
+    }
+
+    private void performCrop(Uri picUri) {
+        try {
+            Intent cropIntent = new Intent("com.android.camera.action.CROP");
+            // indicate image type and Uri
+            cropIntent.setDataAndType(picUri, "image/*");
+            // set crop properties here
+            cropIntent.putExtra("crop", true);
+            // indicate aspect of desired crop
+            cropIntent.putExtra("aspectX", 3);
+            cropIntent.putExtra("aspectY", 4);
+            // indicate output X and Y
+            cropIntent.putExtra("outputX", 384 );
+            cropIntent.putExtra("outputY", 512);
+            // retrieve data on return
+            cropIntent.putExtra("return-data", true);
+            // start the activity - we handle returning in onActivityResult
+            startActivityForResult(cropIntent, PIC_CROP);
+        }
+        // respond to users whose devices do not support the crop action
+        catch (ActivityNotFoundException anfe) {
+            // display an error message
+            String errorMessage = "Whoops - your device doesn't support the crop action!";
+            Toast toast = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     @Override
@@ -110,9 +145,13 @@ public class CreateActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        Log.d("Eroaremare",""+requestCode);
+
+
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
+            performCrop(selectedImage);
+            /*
             String[] filePathColumn = { MediaStore.Images.Media.DATA };
             Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
             cursor.moveToFirst();
@@ -122,14 +161,28 @@ public class CreateActivity extends AppCompatActivity {
             STimage = (BitmapFactory.decodeFile(picturePath));
 
             ImageView imagetest = (ImageView) findViewById(R.id.testimg);
-            imagetest.setImageBitmap(STimage);
 
+            */
+
+
+        } else if (requestCode == PIC_CROP) {
+            if (data != null) {
+                // get the returned data
+                Bundle extras = data.getExtras();
+                // get the cropped bitmap
+                Bitmap selectedBitmap = extras.getParcelable("data");
+                ImageView imagetest = (ImageView) findViewById(R.id.testimg);
+                imagetest.setImageBitmap(selectedBitmap);
+                STimage=selectedBitmap;
+
+            }
         }
         else
         {
             Toast.makeText(this,"Eroare poza",Toast.LENGTH_LONG).show();
 
         }
+
     }
 
 
@@ -147,8 +200,6 @@ public class CreateActivity extends AppCompatActivity {
         STimage.compress(Bitmap.CompressFormat.PNG,100, baos);
         byte [] b=baos.toByteArray();
         String STImage=Base64.encodeToString(b, Base64.DEFAULT);
-
-        Log.d("Poza", STImage);
 
         String name        =tname.getText().toString();
         String forename    =tforename.getText().toString();
