@@ -45,7 +45,8 @@ public class Main extends AppCompatActivity {
                 (NotificationCompat.Builder) new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.unnamed)
                         .setContentTitle("My notification")
-                        .setContentText("Hello World!");
+                        .setContentText("Hello World!")
+                        .setAutoCancel(true);
         // Creates an explicit intent for an Activity in your app
                 Intent resultIntent = new Intent(this, FirstPage.class);
 

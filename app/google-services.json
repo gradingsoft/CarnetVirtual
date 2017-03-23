@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1072367645717",
+    "firebase_url": "https://gradingsoft-134ff.firebaseio.com",
+    "project_id": "gradingsoft-134ff",
+    "storage_bucket": "gradingsoft-134ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072367645717:android:96fdbcf11d8638aa",
+        "android_client_info": {
+          "package_name": "com.FragmentedPixel.DunceaOprea.carnetvirtual"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072367645717-rafqlggcphjnbjjgm44n3fe8ji9n8t11.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSaXnaL57ggxBXUos7CARU36T30hBkCGI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
