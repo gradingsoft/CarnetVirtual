@@ -43,7 +43,7 @@ public class CreateActivity extends AppCompatActivity {
     String Code;
 
     final int PIC_CROP = 2;
-
+    private static int REQUEST_CROP_PICTURE = 2;
     private static int RESULT_LOAD_IMAGE = 1;
     private Bitmap STimage;
     boolean writeAccepted;
@@ -88,18 +88,18 @@ public class CreateActivity extends AppCompatActivity {
     private void SelectPoza()
     {
         String[] perms = {"android.permission.READ_EXTERNAL_STORAGE"};
-
+        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         int permsRequestCode = 200;
         if (Build.VERSION.SDK_INT >= 23) {
             requestPermissions(perms, permsRequestCode);
-            SelectPoza();
+            startActivityForResult(i, RESULT_LOAD_IMAGE);
 
         }
         else
             writeAccepted=true;
         if(writeAccepted)
         {
-            Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
             startActivityForResult(i, RESULT_LOAD_IMAGE);
         }
     }
@@ -179,6 +179,10 @@ public class CreateActivity extends AppCompatActivity {
                 STimage=selectedBitmap;
 
             }
+        }else if ((requestCode == REQUEST_CROP_PICTURE) && (resultCode == RESULT_OK)) {
+            // When we are done cropping, display it in the ImageView.
+            ImageView imagetest = (ImageView) findViewById(R.id.testimg);
+           // imagetest.setImageBitmap(BitmapFactory.decodeFile(croppedImageFile.getAbsolutePath()));
         }
         else
         {

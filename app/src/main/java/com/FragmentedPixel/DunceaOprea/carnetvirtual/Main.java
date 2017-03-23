@@ -9,10 +9,13 @@ import android.os.Bundle;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,6 +32,8 @@ public class Main extends AppCompatActivity {
         LinkButtons();
         TextView text_text = (TextView) findViewById(R.id.text_test);
         text_text.setText("Buna ziua, " + Student.student.forename + "! bine ati revenit.");
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Log.d("Token", "Refreshed token: " + refreshedToken);
        // Refresh.LogIn(getApplicationContext(),Serialization.serialization.email,Serialization.serialization.password);
     }
     @Override
@@ -97,7 +102,7 @@ public class Main extends AppCompatActivity {
         gradesbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Notification();
+                //Notification();
                 Intent intent = new Intent(Main.this, GradesActivity.class);
                 startActivity(intent);
             }
@@ -107,8 +112,7 @@ public class Main extends AppCompatActivity {
         firstpagebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(Main.this, FirstPage.class);
-                Intent intent = new Intent(Main.this, MedieActivity.class);
+                Intent intent = new Intent(Main.this, FirstPage.class);
                 startActivity(intent);
             }
         });
