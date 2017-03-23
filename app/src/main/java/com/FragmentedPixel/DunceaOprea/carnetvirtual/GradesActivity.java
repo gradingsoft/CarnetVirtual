@@ -44,8 +44,6 @@ public class GradesActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
-                Student.student.selSbj = dropdownSpinner.getSelectedItem().toString();
-                Toast.makeText(GradesActivity.this, dropdownSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                 FilterList(dropdownSpinner.getSelectedItem().toString());
             }
 

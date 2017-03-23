@@ -12,21 +12,10 @@ import java.util.Objects;
 
 public class MedieActivity extends AppCompatActivity {
 
-    private String selSbj;
-    private ArrayList<Grades> sbjGrades = new ArrayList<>();
-    private boolean isTermPaper;
-    private int gradeTermPaper;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medii_layout);
-
-
-        if(!Student.student.selSbj.equals("Toate Materiile"))
-            selSbj = Student.student.selSbj;
-        else
-            selSbj = Student.student.grades.get(0).materie;
 
         ArrayList<String> materii = new ArrayList<>();
             for (Grades g: Student.student.grades)
