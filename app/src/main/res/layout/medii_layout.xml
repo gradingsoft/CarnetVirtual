@@ -45,7 +45,7 @@
         android:layout_margin="5dp" />
 
     <TextView
-        android:text="TextView"
+        android:text="Medie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/teza_textView"

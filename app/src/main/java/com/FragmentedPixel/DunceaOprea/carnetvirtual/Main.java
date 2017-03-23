@@ -107,7 +107,8 @@ public class Main extends AppCompatActivity {
         firstpagebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Main.this, FirstPage.class);
+                //Intent intent = new Intent(Main.this, FirstPage.class);
+                Intent intent = new Intent(Main.this, MedieActivity.class);
                 startActivity(intent);
             }
         });

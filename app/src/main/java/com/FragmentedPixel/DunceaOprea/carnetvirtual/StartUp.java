@@ -138,13 +138,14 @@ public class StartUp extends AppCompatActivity {
                             }
                             for(int i=0;i<Grade_nr;i++)
                             {
-                                JSONObject presence = jsonResponse.getJSONObject("Grade"+i);
-                                String GDate = presence.getString("GDate");
+                                JSONObject grade = jsonResponse.getJSONObject("Grade"+i);
+                                String GDate = grade.getString("GDate");
                                 DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
                                 Date date = format.parse(GDate);
-                                Integer GValue = presence.getInt("GValue");
-                                String SBName = presence.getString("SBName");
-                                new Grades(date,GValue,SBName);
+                                Integer GValue = grade.getInt("GValue");
+                                String SBName = grade.getString("SBName");
+                                Boolean GIsTermPapaer = grade.getBoolean("GIsTermPaper");
+                                new Grades(date,GValue,SBName, GIsTermPapaer);
                             }
 
                             for(int i=0;i<Chat_nr;i++)

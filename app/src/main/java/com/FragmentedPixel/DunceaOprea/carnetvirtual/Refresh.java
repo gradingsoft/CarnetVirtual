@@ -114,7 +114,8 @@ class Refresh  {
                                 Date date = format.parse(GDate);
                                 Integer GValue = grade.getInt("GValue");
                                 String SBName = grade.getString("SBName");
-                                new Grades(date,GValue,SBName);
+                                Boolean GIsTermPapaer = grade.getBoolean("GIsTermPaper");
+                                new Grades(date,GValue,SBName, GIsTermPapaer);
                             }
 
                             for(int i=0;i<Chat_nr;i++)

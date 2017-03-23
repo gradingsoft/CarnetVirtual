@@ -9,6 +9,8 @@ public class Student
 {
     public static Student student;
 
+    String selSbj;
+
     String schoolname;
     String schooladress;
     String schoolphone;
