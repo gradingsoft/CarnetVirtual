@@ -7,6 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Objects;
 
 public class Main extends AppCompatActivity {
 
@@ -39,10 +45,11 @@ public class Main extends AppCompatActivity {
         });
 
         int count = 0;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM", Locale.getDefault());
 
         for (ChatMessage m: Student.student.chatMessages)
         {
-            if(m.type >= 2) //2 sau 3 = test sau teza. si ziua este azi && m.date == Calendar.getInstance().getTime())
+            if(m.type >= 2 && Objects.equals(sdf.format(m.expirationDate), sdf.format(new Date())))
                 count++;
         }
         if(count != 0)
