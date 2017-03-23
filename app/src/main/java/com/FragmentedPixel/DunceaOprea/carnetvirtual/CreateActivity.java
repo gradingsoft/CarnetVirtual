@@ -66,12 +66,13 @@ public class CreateActivity extends AppCompatActivity {
         clasa_editText.setText(Class);
         clasa_editText.setInputType(0);
 
-        Button submitButton = (Button) findViewById(R.id.submit_button);
+        final Button submitButton = (Button) findViewById(R.id.submit_button);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
                     CheckSubmit();
+                    submitButton.setEnabled(false);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
