@@ -9,7 +9,7 @@ import java.util.Date;
 class ChatMessage
 {
     public Date date;
-    private Date expirationDate;
+    public Date expirationDate;
     String message;
     String autor;
     int type;

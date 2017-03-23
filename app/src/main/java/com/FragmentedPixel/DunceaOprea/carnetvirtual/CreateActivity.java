@@ -80,25 +80,28 @@ public class CreateActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View arg0) {
-                    String[] perms = {"android.permission.READ_EXTERNAL_STORAGE"};
-
-                    int permsRequestCode = 200;
-                if (Build.VERSION.SDK_INT >= 23) {
-                    requestPermissions(perms, permsRequestCode);
-
-                }
-                else
-                writeAccepted=true;
-                if(writeAccepted)
-                    {
-                        Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(i, RESULT_LOAD_IMAGE);
-
-
-
-                    }
+                SelectPoza();
             }
         });
+    }
+
+    private void SelectPoza()
+    {
+        String[] perms = {"android.permission.READ_EXTERNAL_STORAGE"};
+
+        int permsRequestCode = 200;
+        if (Build.VERSION.SDK_INT >= 23) {
+            requestPermissions(perms, permsRequestCode);
+            SelectPoza();
+
+        }
+        else
+            writeAccepted=true;
+        if(writeAccepted)
+        {
+            Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            startActivityForResult(i, RESULT_LOAD_IMAGE);
+        }
     }
 
     private void performCrop(Uri picUri) {

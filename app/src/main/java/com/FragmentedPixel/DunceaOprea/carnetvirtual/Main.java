@@ -1,6 +1,7 @@
 package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -36,6 +37,16 @@ public class Main extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        int count = 0;
+
+        for (ChatMessage m: Student.student.chatMessages)
+        {
+            if(m.type >= 2) //2 sau 3 = test sau teza. si ziua este azi && m.date == Calendar.getInstance().getTime())
+                count++;
+        }
+        if(count != 0)
+            chatbutton.setText(chatbutton.getText() + "(" + count + ")");
 
         Button gradesbutton = (Button) findViewById(R.id.grades_button);
         gradesbutton.setOnClickListener(new View.OnClickListener() {

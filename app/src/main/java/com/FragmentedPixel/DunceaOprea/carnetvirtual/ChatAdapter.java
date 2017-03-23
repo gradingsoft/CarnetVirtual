@@ -52,7 +52,7 @@ class ChatAdapter extends ArrayAdapter<ChatMessage>
             //Toast.makeText(getContext().getApplicationContext(),""+ message.type, Toast.LENGTH_SHORT).show();
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM", Locale.getDefault());
-            date.setText(sdf.format(message.date));
+            date.setText(sdf.format(message.expirationDate));
 
             messageText.setText(message.message);
         }
