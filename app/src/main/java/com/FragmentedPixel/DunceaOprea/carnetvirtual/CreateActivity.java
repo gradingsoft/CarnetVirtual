@@ -28,11 +28,14 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
@@ -43,7 +46,6 @@ public class CreateActivity extends AppCompatActivity {
     String Code;
 
     final int PIC_CROP = 2;
-    private static int REQUEST_CROP_PICTURE = 2;
     private static int RESULT_LOAD_IMAGE = 1;
     private Bitmap STimage;
     boolean writeAccepted;
@@ -148,12 +150,16 @@ public class CreateActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("Eroaremare",""+requestCode);
-
+        File croppedImageFile = new File(getFilesDir(), "test.jpg");
 
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
             Uri selectedImage = data.getData();
-            performCrop(selectedImage);
+
+            CropImage.activity(selectedImage)
+                    .setGuidelines(CropImageView.Guidelines.ON)
+                    .start(this);
+
+            //performCrop(selectedImage);
             /*
             String[] filePathColumn = { MediaStore.Images.Media.DATA };
             Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
@@ -179,12 +185,17 @@ public class CreateActivity extends AppCompatActivity {
                 STimage=selectedBitmap;
 
             }
-        }else if ((requestCode == REQUEST_CROP_PICTURE) && (resultCode == RESULT_OK)) {
-            // When we are done cropping, display it in the ImageView.
-            ImageView imagetest = (ImageView) findViewById(R.id.testimg);
-           // imagetest.setImageBitmap(BitmapFactory.decodeFile(croppedImageFile.getAbsolutePath()));
         }
-        else
+        else if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                Uri resultUri = result.getUri();
+                ImageView imagetest = (ImageView) findViewById(R.id.testimg);
+                imagetest.setImageURI(resultUri);
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }else
         {
             Toast.makeText(this,"Eroare poza",Toast.LENGTH_LONG).show();
 

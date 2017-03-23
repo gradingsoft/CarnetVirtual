@@ -1,12 +1,6 @@
 apply plugin: 'com.android.application'
 
-repositories {
-    mavenCentral()
 
-    maven {
-        url 'http://lorenzo.villani.me/android-cropimage/'
-    }
-}
 
 android {
     compileSdkVersion 25
@@ -38,6 +32,6 @@ dependencies {
     compile 'com.android.support:design:25.1.1'
     testCompile 'junit:junit:4.12'
     compile 'com.android.volley:volley:1.0.0'
-    compile 'me.villani.lorenzo.android:android-cropimage:1.1.+'
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
     apply plugin: 'com.google.gms.google-services'
 }

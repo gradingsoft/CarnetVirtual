@@ -35,7 +35,9 @@
         <activity android:name=".ChatActivity" />
         <activity android:name=".GradesActivity" />
         <activity android:name=".PresenceActivity" />
-        <activity android:name=".MedieActivity"></activity>
+        <activity android:name=".MedieActivity" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
     </application>
 
     <service
@@ -50,5 +52,7 @@
             <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
         </intent-filter>
     </service>
+
+
 
 </manifest>
