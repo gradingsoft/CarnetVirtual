@@ -1,10 +1,12 @@
 package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
@@ -25,6 +27,15 @@ public class GradesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grades);
 
+        Button medie = (Button) findViewById(R.id.medie_button);
+        medie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(GradesActivity.this, MedieActivity.class);
+                startActivity(i);
+            }
+        });
+
         student = Student.student;
         gradesListView = (ListView) findViewById(R.id.grades_listView);
         dropdownSpinner = (Spinner) findViewById(R.id.materii_spinner);
@@ -32,6 +43,7 @@ public class GradesActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
+                Student.student.selSbj = dropdownSpinner.getSelectedItem().toString();
                 FilterList(dropdownSpinner.getSelectedItem().toString());
             }
 

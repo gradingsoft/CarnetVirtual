@@ -12,17 +12,28 @@
 
     <Spinner
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_height="match_parent"
         android:background="#D0D0D0"
-        android:layout_centerHorizontal="true"
         android:id="@+id/materii_spinner"
-        />
+        android:layout_alignParentTop="true"
+        android:minWidth="0dp"
+        android:layout_toStartOf="@+id/medie_button"
+        android:layout_above="@+id/grades_listView" />
+
+    <Button
+        android:text="Media"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/medie_button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentEnd="true"
-        android:layout_below="@+id/materii_spinner"
-        android:id="@+id/grades_listView" />
+        android:id="@+id/grades_listView"
+        android:layout_below="@+id/medie_button" />
+
+
 </RelativeLayout>
