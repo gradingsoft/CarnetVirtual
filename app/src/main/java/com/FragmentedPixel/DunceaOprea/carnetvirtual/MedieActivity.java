@@ -2,9 +2,13 @@ package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class MedieActivity extends AppCompatActivity {
 
@@ -18,68 +22,19 @@ public class MedieActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medii_layout);
 
-        if(Student.student.selSbj != null)
+
+        if(!Student.student.selSbj.equals("Toate Materiile"))
             selSbj = Student.student.selSbj;
         else
             selSbj = Student.student.grades.get(0).materie;
 
-        GetData();
-        OnLoad();
+        ArrayList<String> materii = new ArrayList<>();
+            for (Grades g: Student.student.grades)
+                if(!materii.contains(g.materie))
+                    materii.add(g.materie);
+
+        ListView mediiMaterii = (ListView) findViewById(R.id.materii_list);
+        MediiAdapter adapter = new MediiAdapter(MedieActivity.this, R.layout.medii_adapter_layout, materii);
+        mediiMaterii.setAdapter(adapter);
     }
-
-    private void GetData() {
-
-        for (Grades g : Student.student.grades)
-            if (g.materie.equalsIgnoreCase(selSbj))
-                sbjGrades.add(g);
-
-        for (Grades g : sbjGrades)
-            if (g.isTermPaper) {
-                isTermPaper = true;
-                gradeTermPaper = g.value;
-            }
-    }
-
-    private void OnLoad()
-    {
-
-        TextView materie = (TextView) findViewById(R.id.materia_textView);
-        TextView teza = (TextView) findViewById(R.id.teza_textView);
-        TextView note = (TextView) findViewById(R.id.note_textView);
-        TextView medie = (TextView) findViewById(R.id.media_textView);
-
-        //Afisare materie
-        materie.setText(selSbj);
-
-        //Afisare teza
-        if(isTermPaper)
-            teza.setText("Teza: " + String.valueOf(gradeTermPaper));
-        else
-            teza.setText("Teza: -");
-
-        //Afisare note
-        note.setText("");
-        for (Grades g: sbjGrades)
-            if(!g.isTermPaper)
-                note.setText(note.getText() + String.valueOf(g.value) + " ");
-
-        //Caluclare medie
-        float sum = 0;
-        int count = 0;
-
-        for (Grades g : sbjGrades)
-            if(!g.isTermPaper) {
-                sum += g.value;
-                count ++ ;
-            }
-
-        sum = sum/count;
-
-        if(isTermPaper)
-            sum = (sum * 3 + gradeTermPaper) / 4;
-
-        medie.setText("Medie: " + String.valueOf(sum));
-    }
-
-
 }

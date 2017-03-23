@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -44,6 +45,7 @@ public class GradesActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
             {
                 Student.student.selSbj = dropdownSpinner.getSelectedItem().toString();
+                Toast.makeText(GradesActivity.this, dropdownSpinner.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
                 FilterList(dropdownSpinner.getSelectedItem().toString());
             }
 
