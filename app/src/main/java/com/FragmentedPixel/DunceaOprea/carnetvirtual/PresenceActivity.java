@@ -6,7 +6,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 public class PresenceActivity extends AppCompatActivity
 {
@@ -61,7 +63,7 @@ public class PresenceActivity extends AppCompatActivity
                         dayPres.add(pres);
                 }
 
-
+                /* Working
                 String infoText="Materii: ";
                 int presences_number = 0;
                 int prescenes_total = 0;
@@ -73,6 +75,37 @@ public class PresenceActivity extends AppCompatActivity
                         infoText += pres.materie + " ";
                     }
                 }
+                */
+                //Experiment
+                HashMap<String, Integer> absente = new HashMap<String, Integer>();
+
+                String infoText="Materii: ";
+                int presences_number = 0;
+                int prescenes_total = 0;
+                for(Presences pres: dayPres)
+                {
+                    prescenes_total += 1;
+                    if(!pres.value) {
+                        presences_number += 1;
+                        if(absente.get(pres.materie) !=  null)
+                        {
+                            int numar = absente.get(pres.materie) + 1;
+                            absente.put(pres.materie, numar);
+                        }
+                        else
+                        {
+                            absente.put(pres.materie, 1);
+                        }
+                    }
+                }
+                for(Map.Entry<String, Integer> entry : absente.entrySet()) {
+                    String key = entry.getKey();
+                    Integer value = entry.getValue();
+
+                    infoText += key + " x " + String.valueOf(value) + " ";
+                }
+
+                //End experiment
                 infoText = "Absente nemotivate: " + presences_number + "\n" + infoText + "\n" + "Absente in total: " + prescenes_total;
                 if(prescenes_total != 0)
                     infos.setText(infoText);
