@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Debug;
@@ -192,6 +193,8 @@ public class CreateActivity extends AppCompatActivity {
                 Uri resultUri = result.getUri();
                 ImageView imagetest = (ImageView) findViewById(R.id.testimg);
                 imagetest.setImageURI(resultUri);
+                Bitmap bitmap = ((BitmapDrawable)imagetest.getDrawable()).getBitmap();
+                STimage=bitmap;
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
             }
