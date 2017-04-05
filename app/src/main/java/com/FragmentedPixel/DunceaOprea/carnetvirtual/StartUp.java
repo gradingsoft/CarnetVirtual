@@ -42,7 +42,7 @@ public class StartUp extends AppCompatActivity {
         if (Serialization.serialization != null)
             ProgressBar();
     }
-
+    public ProgressDialog pglogin = null;
     private void ProgressBar()
     {
 
@@ -67,13 +67,8 @@ public class StartUp extends AppCompatActivity {
             @Override
             public void run()
             {
+                pglogin=progressDialog;
                     LogIn();
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                progressDialog.dismiss();
             }
         }).start();
     }
@@ -95,6 +90,7 @@ public class StartUp extends AppCompatActivity {
 
                         if (!is_email_right||!is_password_right)
                         {
+                            pglogin.dismiss();
                             startActivity(new Intent(StartUp.this, LoginActivity.class));
                         }
                         else
@@ -162,16 +158,18 @@ public class StartUp extends AppCompatActivity {
                                 String TName = chat.getString("TName");
                                 new ChatMessage(chdate,chedate,CHMessage,TName,CHType);
                             }
-
+                            pglogin.dismiss();
                             startActivity(new Intent(StartUp.this, Main.class));
                         }
 
                     }
                     else{
+                        pglogin.dismiss();
                         AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
                         alert.setMessage("Ups.. S-a intamplat ceva neprevazut").setNegativeButton("Inapoi",null).create().show();
                     }
                 } catch (JSONException | UnsupportedEncodingException | ParseException e) {
+                    pglogin.dismiss();
                     e.printStackTrace();
                 }
 
@@ -203,6 +201,8 @@ public class StartUp extends AppCompatActivity {
         });
     }
 
+    public ProgressDialog pgcode = null;
+
     private void SubmitCodeWait()
     {
 
@@ -229,8 +229,8 @@ public class StartUp extends AppCompatActivity {
             @Override
             public void run()
             {
+                pgcode=progressDialog;
                     SubmitCode();
-                    progressDialog.dismiss();
             }
         }).start();
     }
@@ -254,13 +254,16 @@ public class StartUp extends AppCompatActivity {
                         intent.putExtra("CID",CID);
                         //intent.putExtra("SName",SName);
                         intent.putExtra("CName",CName);
+                        pgcode.dismiss();
                         StartUp.this.startActivity(intent);
                     }
                     else{
+                        pgcode.dismiss();
                         AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
                         alert.setMessage("Cod inexistent").setNegativeButton("Inapoi",null).create().show();
                     }
                 } catch (JSONException e) {
+                    pgcode.dismiss();
                     e.printStackTrace();
                 }
 

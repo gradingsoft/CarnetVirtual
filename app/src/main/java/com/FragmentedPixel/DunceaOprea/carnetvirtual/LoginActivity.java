@@ -31,6 +31,8 @@ public class LoginActivity extends Activity
         });
     }
 
+
+    public ProgressDialog pg = null;
     private void ProgressBar()
     {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -48,14 +50,14 @@ public class LoginActivity extends Activity
         final ProgressDialog progressDialog;
         progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setMessage("Va rugam asteptati.");
-        progressDialog.setTitle("Incarcare date");
+        progressDialog.setTitle("Conectare");
         progressDialog.show();
         new Thread(new Runnable() {
             @Override
             public void run()
             {
+                pg=progressDialog;
                     LogIn();
-                    progressDialog.dismiss();
             }
         }).start();
     }
@@ -66,7 +68,7 @@ public class LoginActivity extends Activity
         EditText mPasswordView = (EditText) findViewById(R.id.password);
         String mEmail = mEmailView.getText().toString();
         String mPassword = mPasswordView.getText().toString();
-        Refresh.LogIn(LoginActivity.this, mEmail, mPassword);
+        Refresh.LogIn(LoginActivity.this, mEmail, mPassword,pg);
 
     }
 }

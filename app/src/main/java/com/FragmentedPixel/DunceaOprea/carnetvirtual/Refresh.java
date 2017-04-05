@@ -1,5 +1,6 @@
 package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -28,7 +29,7 @@ import java.util.Locale;
 
 class Refresh  {
 
-    static void LogIn(final Context context, final String Email, final String Password) {
+    static void LogIn(final Context context, final String Email, final String Password, final ProgressDialog pg) {
 
         Response.Listener<String> loginListener = new Response.Listener<String>() {
             @Override
@@ -42,11 +43,13 @@ class Refresh  {
 
                         if (!is_email_right)
                         {
+                            pg.dismiss();
                             AlertDialog.Builder alert = new AlertDialog.Builder(context);
                             alert.setMessage("Email-ul e gresit.").setNegativeButton("Inapoi",null).create().show();
                         }
                         else if (!is_password_right)
                         {
+                            pg.dismiss();
                             AlertDialog.Builder alert = new AlertDialog.Builder(context);
                             alert.setMessage("Parola e necorespunzatoare.").setNegativeButton("Inapoi",null).create().show();
                         }
@@ -69,12 +72,14 @@ class Refresh  {
                             Integer Chat_nr = jsonResponse.getInt("Chat_nr");
 
                             if(STVisa == 0) {
+                                pg.dismiss();
                                 AlertDialog.Builder alert = new AlertDialog.Builder(context);
                                 alert.setMessage("Carnetul nu a fost vizat inca.").setNegativeButton("Inapoi",null).create().show();
                                 return;
                             }
                             else if (STVisa == -1)
                             {
+                                pg.dismiss();
                                 AlertDialog.Builder alert = new AlertDialog.Builder(context);
                                 alert.setMessage("Carnetul a fost respins.").setNegativeButton("Inapoi",null).create().show();
                                 return;
@@ -132,6 +137,7 @@ class Refresh  {
                                 String TName = chat.getString("TName");
                                 new ChatMessage(chdate,chedate,CHMessage,TName,CHType);
                             }
+                            pg.dismiss();
                         }
                     }
                     else{
