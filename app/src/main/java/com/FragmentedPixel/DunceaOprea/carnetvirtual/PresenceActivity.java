@@ -3,6 +3,7 @@ package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,6 +16,7 @@ public class PresenceActivity extends AppCompatActivity
 
     private TextView infos;
     private String noPresencesText = "Nu aveti absente in aceasta zi.";
+    private String duncea;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class PresenceActivity extends AppCompatActivity
         cv.updateCalendar(events);
 
         infos.setText("Absente in total: " + totpres +"\nAbsente nemotivate: " + nepres );
-
+        duncea = "Absente in total: " + totpres +"\nAbsente nemotivate: " + nepres;
         HashMap<String, Integer> absente = new HashMap<String, Integer>();
 
         String infoText="\nMaterii: ";
@@ -144,7 +146,10 @@ public class PresenceActivity extends AppCompatActivity
             }
 
         });
+
     }
+
+
 /*
     private void Links()
     {
