@@ -171,7 +171,7 @@ public class CreateActivity extends AppCompatActivity {
                 ImageView imagetest = (ImageView) findViewById(R.id.testimg);
                 imagetest.setImageURI(resultUri);
                 Bitmap bitmap = ((BitmapDrawable)imagetest.getDrawable()).getBitmap();
-                Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 414, 550, true);
+                Bitmap bitmap1 = Bitmap.createScaledBitmap(bitmap, 414, 552, true);
 
                 imagetest.setImageBitmap(bitmap1);
                 STimage=bitmap1;

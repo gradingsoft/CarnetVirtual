@@ -40,6 +40,14 @@ class Refresh  {
                     boolean is_email_right = jsonResponse.getBoolean("is_email_right");
                     boolean is_password_right = jsonResponse.getBoolean("is_password_right");
                     if(success){
+                        boolean Version = jsonResponse.getBoolean("Version");
+                        if (!Version) {
+                            pg.dismiss();
+                            AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                            alert.setMessage("Versiune veche! Va rugam faceti update aplicatiei!").setNegativeButton("Inapoi", null).create().show();
+                            return;
+                        }
+
 
                         if (!is_email_right)
                         {
@@ -150,7 +158,8 @@ class Refresh  {
 
             }
         };
-        _Login_Request login_Request = new _Login_Request(Email,Password,loginListener);
+        Integer versionCode = BuildConfig.VERSION_CODE;
+        _Login_Request login_Request = new _Login_Request(versionCode.toString(),Email,Password,loginListener);
         RequestQueue login_Queue = Volley.newRequestQueue(context);
         login_Queue.add(login_Request);
 

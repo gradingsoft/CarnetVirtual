@@ -14,6 +14,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -73,7 +74,7 @@ public class StartUp extends AppCompatActivity {
         }).start();
     }
 
-
+    Integer versionCode = BuildConfig.VERSION_CODE;
 
     private void LogIn() {
         final String mEmail= Serialization.serialization.email;
@@ -87,6 +88,13 @@ public class StartUp extends AppCompatActivity {
                     boolean is_email_right = jsonResponse.getBoolean("is_email_right");
                     boolean is_password_right = jsonResponse.getBoolean("is_password_right");
                     if(success){
+                        boolean Version = jsonResponse.getBoolean("Version");
+                        if (!Version) {
+                            pglogin.dismiss();
+                            AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
+                            alert.setMessage("Versiune veche! Va rugam faceti update aplicatiei!").setNegativeButton("Inapoi", null).create().show();
+                            return;
+                        }
 
                         if (!is_email_right||!is_password_right)
                         {
@@ -172,10 +180,13 @@ public class StartUp extends AppCompatActivity {
                     pglogin.dismiss();
                     e.printStackTrace();
                 }
+                pglogin.dismiss();
 
             }
         };
-        _Login_Request login_Request = new _Login_Request(mEmail,mPassword,loginListener);
+
+
+        _Login_Request login_Request = new _Login_Request(versionCode.toString(),mEmail,mPassword,loginListener);
         RequestQueue login_Queue = Volley.newRequestQueue(StartUp.this);
         login_Queue.add(login_Request);
 
@@ -244,23 +255,33 @@ public class StartUp extends AppCompatActivity {
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean success = jsonResponse.getBoolean("success");
-                    if(success){
-                        String CID = jsonResponse.getString("CID");
-                        //String SName = jsonResponse.getString("SName");
-                        String CName = jsonResponse.getString("CName");
+                    if(success) {
+                        boolean Version = jsonResponse.getBoolean("Version");
+                        if (!Version) {
+                            pgcode.dismiss();
+                            AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
+                            alert.setMessage("Versiune veche! Va rugam faceti update aplicatiei!").setNegativeButton("Inapoi", null).create().show();
+                            return;
+                        }
+                        boolean Code = jsonResponse.getBoolean("Code");
+                        if (Code) {
+                                pgcode.dismiss();
+                                String CID = jsonResponse.getString("CID");
+                                //String SName = jsonResponse.getString("SName");
+                                String CName = jsonResponse.getString("CName");
 
-                        Intent intent = new Intent(StartUp.this,CreateActivity.class);
-                        intent.putExtra("Code",input_code);
-                        intent.putExtra("CID",CID);
-                        //intent.putExtra("SName",SName);
-                        intent.putExtra("CName",CName);
-                        pgcode.dismiss();
-                        StartUp.this.startActivity(intent);
-                    }
-                    else{
-                        pgcode.dismiss();
-                        AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
-                        alert.setMessage("Cod inexistent").setNegativeButton("Inapoi",null).create().show();
+                                Intent intent = new Intent(StartUp.this, CreateActivity.class);
+                                intent.putExtra("Code", input_code);
+                                intent.putExtra("CID", CID);
+                                //intent.putExtra("SName",SName);
+                                intent.putExtra("CName", CName);
+                                StartUp.this.startActivity(intent);
+                        } else {
+                            pgcode.dismiss();
+                            AlertDialog.Builder alert = new AlertDialog.Builder(StartUp.this);
+                            alert.setMessage("Cod inexistent").setNegativeButton("Inapoi", null).create().show();
+
+                        }
                     }
                 } catch (JSONException e) {
                     pgcode.dismiss();
@@ -269,7 +290,8 @@ public class StartUp extends AppCompatActivity {
 
             }
         };
-        _Code_Request code_Request = new _Code_Request(input_code,loginListener);
+
+        _Code_Request code_Request = new _Code_Request(versionCode.toString(),input_code,loginListener);
         RequestQueue code_Queue = Volley.newRequestQueue(StartUp.this);
         code_Queue.add(code_Request);
     }

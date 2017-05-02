@@ -11,13 +11,14 @@ import java.util.Map;
  */
 
 class _Login_Request extends StringRequest {
-    private static final String Site_URL_Login = "http://carnet-virtual.victoriacentre.ro/login_request.php";
+    private static final String Site_URL_Login = "http://carnet-virtual.victoriacentre.ro/login_request_10.php";
     private Map<String, String> params;
 
-    _Login_Request(String Email, String Password, Response.Listener<String> listener) {
+    _Login_Request(String VersionCode,String Email, String Password, Response.Listener<String> listener) {
         super(Method.POST, Site_URL_Login, listener, null);
         String AccessCode = "565656";
         params = new HashMap<>();
+        params.put("VersionCode",VersionCode);
         params.put("AccessCode",AccessCode);
         params.put("Email", Email);
         params.put("Password",Password);
