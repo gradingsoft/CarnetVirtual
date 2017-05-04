@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Locale;
 
@@ -63,13 +64,13 @@ public class GradesActivity extends AppCompatActivity {
     private void PopulateDropDown()
     {
         ArrayList<String> arraySpinner = new ArrayList<>();
-        arraySpinner.add(toateMateriile);
+
 
         for(Grades g: student.grades)
             if(!arraySpinner.contains(g.materie))
                 arraySpinner.add(g.materie);
-        Arrays.sort(arraySpinner.toArray());
-
+        Collections.sort(arraySpinner);
+        arraySpinner.add(0,toateMateriile);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arraySpinner);
         dropdownSpinner.setAdapter(adapter);
     }
@@ -81,7 +82,12 @@ public class GradesActivity extends AppCompatActivity {
         for(Grades g: student.grades)
             if(g.materie.equals(materie) || materie.equals(toateMateriile))
                 gradesArrayList.add(g);
-
+        Collections.sort(gradesArrayList, new Comparator<Grades>() {
+            @Override
+            public int compare(Grades grades, Grades t1) {
+                return grades.date.compareTo(t1.date);
+            }
+        });
 
         GradesAdapter adapter = new GradesAdapter(GradesActivity.this, R.layout.grades_item, gradesArrayList);
         gradesListView.setAdapter(adapter);
