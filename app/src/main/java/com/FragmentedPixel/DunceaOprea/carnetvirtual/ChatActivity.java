@@ -27,7 +27,7 @@ public class ChatActivity extends AppCompatActivity
     }
 
     private void ReadMessages()
-    {// push
+    {
         ListView messagesListView = (ListView) findViewById(R.id.messages_listView);
         ChatAdapter adapter = new ChatAdapter(this, Student.student.chatMessages);
         messagesListView.setAdapter(adapter);
