@@ -35,6 +35,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/button2"
+        android:id="@+id/buttonabsente"
         style="@style/Widget.AppCompat.Button.Colored" />
 </RelativeLayout>

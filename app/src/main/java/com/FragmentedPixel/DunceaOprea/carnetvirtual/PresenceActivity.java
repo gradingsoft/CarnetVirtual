@@ -25,7 +25,7 @@ public class PresenceActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_view);
         //Links();
-        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.buttonabsente).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(PresenceActivity.this, AbsenteActivity.class);
