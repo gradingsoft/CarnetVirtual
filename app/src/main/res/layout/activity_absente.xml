@@ -18,5 +18,38 @@
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:id="@+id/materii_list"
-        android:layout_below="@+id/media_generalatextView" />
+        android:layout_below="@+id/absne_textView" />
+
+    <TextView
+        android:text="Total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/abs_textView"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/media_generalatextView"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Materia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/materia_textView"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/media_generalatextView"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Nemotivate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/absne_textView"
+        android:textSize="18sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/media_generalatextView"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
