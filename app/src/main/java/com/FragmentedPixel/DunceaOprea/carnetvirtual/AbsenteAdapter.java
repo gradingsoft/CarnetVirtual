@@ -49,6 +49,7 @@ public class AbsenteAdapter extends ArrayAdapter<String>
             ArrayList<Presences> sbjPres = new ArrayList<>();
             //Read Data
 
+
             for (Presences pr : Student.student.presences)
                 if (pr.materie.equalsIgnoreCase(selSbj))
                     sbjPres.add(pr);

@@ -52,7 +52,7 @@ public class PresenceActivity extends AppCompatActivity
         cv.updateCalendar(events);
 
         infos.setText("Absente in total: " + totpres +"\nAbsente nemotivate: " + nepres );
-        duncea = "Absente in total: " + totpres +"\nAbsente nemotivate: " + nepres;
+        //duncea = "Absente in total: " + totpres +"\nAbsente nemotivate: " + nepres;
         HashMap<String, Integer> absente = new HashMap<String, Integer>();
 
         String infoText="\nMaterii: ";
@@ -79,7 +79,7 @@ public class PresenceActivity extends AppCompatActivity
             infoText += key + " x " + String.valueOf(value) + " ";
         }
 
-        infos.setText(infos.getText() + infoText);
+        //infos.setText(infos.getText() + infoText);
 
 
         // assign event handler
@@ -148,10 +148,10 @@ public class PresenceActivity extends AppCompatActivity
 
 
                 infoText = "Absente nemotivate: " + presences_number + "\n" + infoText + "\n" + "Absente in total: " + prescenes_total;
-                if(prescenes_total != 0)
-                    infos.setText(infoText);
-                else
-                    infos.setText(noPresencesText);
+                //if(prescenes_total != 0)
+                   // infos.setText(infoText);
+                //else
+                   // infos.setText(noPresencesText);
             }
 
         });
