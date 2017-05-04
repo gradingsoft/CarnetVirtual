@@ -3,6 +3,7 @@ package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.util.SortedList;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,12 +14,14 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Locale;
 
 public class GradesActivity extends AppCompatActivity {
 
     private Student student;
-    private String toateMateriile = "Toate Materiile";
+    protected String toateMateriile = "Toate Materiile";
 
     private Spinner dropdownSpinner;
     private ListView gradesListView;
@@ -65,6 +68,7 @@ public class GradesActivity extends AppCompatActivity {
         for(Grades g: student.grades)
             if(!arraySpinner.contains(g.materie))
                 arraySpinner.add(g.materie);
+        Arrays.sort(arraySpinner.toArray());
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arraySpinner);
         dropdownSpinner.setAdapter(adapter);
@@ -77,6 +81,7 @@ public class GradesActivity extends AppCompatActivity {
         for(Grades g: student.grades)
             if(g.materie.equals(materie) || materie.equals(toateMateriile))
                 gradesArrayList.add(g);
+
 
         GradesAdapter adapter = new GradesAdapter(GradesActivity.this, R.layout.grades_item, gradesArrayList);
         gradesListView.setAdapter(adapter);
