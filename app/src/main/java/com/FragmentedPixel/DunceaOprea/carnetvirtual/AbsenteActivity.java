@@ -20,8 +20,7 @@ public class AbsenteActivity extends AppCompatActivity {
                 materii.add(p.materie);
 
         ListView absenteMaterii = (ListView) findViewById(R.id.materii_list);
-        MediiAdapter adapter = new MediiAdapter(AbsenteActivity.this, R.layout.absente_adapter_layout, materii);
+        AbsenteAdapter adapter = new AbsenteAdapter(AbsenteActivity.this, R.layout.absente_adapter_layout, materii);
         absenteMaterii.setAdapter(adapter);
-
     }
 }

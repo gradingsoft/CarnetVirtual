@@ -1,7 +1,9 @@
 package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,13 @@ public class PresenceActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_view);
         //Links();
+        findViewById(R.id.button2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(PresenceActivity.this, AbsenteActivity.class);
+                startActivity(i);
+            }
+        });
         HashSet<Date> events = new HashSet<>();
         infos = (TextView) findViewById(R.id.infos_textView);
 
