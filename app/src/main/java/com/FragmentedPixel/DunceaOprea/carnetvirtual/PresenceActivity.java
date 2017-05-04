@@ -82,7 +82,7 @@ public class PresenceActivity extends AppCompatActivity
         //infos.setText(infos.getText() + infoText);
 
 
-        // assign event handler
+
         cv.setEventHandler(new CustomCalendarView.EventHandler()
         {
             @Override
