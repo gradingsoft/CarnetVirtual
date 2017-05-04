@@ -31,7 +31,7 @@ public class AbsenteAdapter extends ArrayAdapter<String>
         if (v == null)
         {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inflater.inflate(R.layout.medii_adapter_layout, null);
+            v = inflater.inflate(R.layout.absente_adapter_layout, null);
         }
 
         String selSbj = objects.get(position);
