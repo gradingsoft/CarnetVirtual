@@ -12,7 +12,7 @@ public class AbsenteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.medii_layout);
+        setContentView(R.layout.activity_absente);
 
         ArrayList<String> materii = new ArrayList<>();
         for (Presences p: Student.student.presences)

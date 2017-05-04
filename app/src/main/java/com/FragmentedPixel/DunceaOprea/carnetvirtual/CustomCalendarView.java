@@ -123,6 +123,7 @@ public class CustomCalendarView extends LinearLayout
         btnNext = (ImageView)findViewById(R.id.calendar_next_button);
         txtDate = (TextView)findViewById(R.id.calendar_date_display);
         grid = (GridView)findViewById(R.id.calendar_grid);
+
     }
 
     private void assignClickHandlers()
