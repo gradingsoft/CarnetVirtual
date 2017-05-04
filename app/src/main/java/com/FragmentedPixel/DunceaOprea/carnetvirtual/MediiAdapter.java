@@ -8,9 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  * Created by oalex on 2017-03-23 .
@@ -41,7 +39,7 @@ public class MediiAdapter extends ArrayAdapter<String>
         if (selSbj != null)
         {
             TextView materie = (TextView) v.findViewById(R.id.materia_textView);
-            TextView teza = (TextView) v.findViewById(R.id.teza_textView);
+            TextView teza = (TextView) v.findViewById(R.id.abs_textView);
             TextView note = (TextView) v.findViewById(R.id.note_textView);
             TextView medie = (TextView) v.findViewById(R.id.media_textView);
 
