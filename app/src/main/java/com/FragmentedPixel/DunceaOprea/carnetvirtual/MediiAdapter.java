@@ -1,7 +1,9 @@
 package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ public class MediiAdapter extends ArrayAdapter<String>
         this.objects = objects;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent)
@@ -39,7 +42,7 @@ public class MediiAdapter extends ArrayAdapter<String>
         if (selSbj != null)
         {
             TextView materie = (TextView) v.findViewById(R.id.materia_textView);
-            TextView teza = (TextView) v.findViewById(R.id.abs_textView);
+            TextView teza = (TextView) v.findViewById(R.id.PresenceNumber_textView);
             TextView note = (TextView) v.findViewById(R.id.note_textView);
             TextView medie = (TextView) v.findViewById(R.id.media_textView);
 
@@ -64,9 +67,14 @@ public class MediiAdapter extends ArrayAdapter<String>
 
             //Afisare teza
             if(isTermPaper)
-                teza.setText("Teza: " + String.valueOf(gradeTermPaper));
-            else
-                teza.setText("Teza: -");
+            {
+                teza.setText(String.valueOf(gradeTermPaper));
+                ColorSet(teza,gradeTermPaper);
+            }
+            else {
+                teza.setText("-");
+                teza.setBackground(null);
+            }
 
             //Afisare note
             note.setText("");
@@ -85,16 +93,27 @@ public class MediiAdapter extends ArrayAdapter<String>
                 }
 
             sum = sum/count;
-
+            sum = Math.round(sum);
             if(isTermPaper)
                 sum = (sum * 3 + gradeTermPaper) / 4;
-
             medie.setText("Medie: " + String.valueOf(sum));
         }
 
 
         return v;
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void ColorSet(TextView view, int grade)
+    {
+
+        if(grade<4)
+            view.setBackground(getContext().getDrawable(R.drawable.background_red));
+        else if(grade<9)
+            view.setBackground(getContext().getDrawable(R.drawable.background_orange));
+        else
+            view.setBackground(getContext().getDrawable(R.drawable.background_green));
     }
 
 }
