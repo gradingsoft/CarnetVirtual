@@ -12,7 +12,7 @@
     tools:context="com.FragmentedPixel.DunceaOprea.carnetvirtual.FirstPage">
 
     <TextView
-        android:text="Adresa scoala"
+        android:text="Adresă școală: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/schooladresa_textView"
@@ -20,10 +20,10 @@
         android:layout_marginTop="5dp"
         android:layout_below="@+id/schoolname_textView"
         android:layout_alignStart="@+id/schoolname_textView"
-        android:textSize="20sp" />
+        android:textSize="17sp" />
 
     <TextView
-        android:text="telefon scoala"
+        android:text="Telefon școală: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -31,10 +31,10 @@
         android:layout_alignStart="@+id/schooladresa_textView"
         android:id="@+id/schoolphone_textView"
         tools:ignore="HardcodedText"
-        android:textSize="20sp" />
+        android:textSize="17sp" />
 
     <TextView
-        android:text="Clasa elev"
+        android:text="Clasă: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -42,10 +42,10 @@
         android:layout_alignStart="@+id/schoolphone_textView"
         android:id="@+id/studentclass_textView"
         tools:ignore="HardcodedText"
-        android:textSize="20sp" />
+        android:textSize="17sp" />
 
     <TextView
-        android:text="Prenume elev"
+        android:text="Prenume: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -53,10 +53,10 @@
         android:layout_alignStart="@+id/studentname_textView"
         android:id="@+id/studentforename_textView"
         tools:ignore="HardcodedText"
-        android:textSize="20sp" />
+        android:textSize="17sp" />
 
     <TextView
-        android:text="Numar matricol?"
+        android:text="Număr matricol: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/nrmatricol_textView"
@@ -64,10 +64,10 @@
         android:layout_below="@+id/studentforename_textView"
         android:layout_alignStart="@+id/studentforename_textView"
         tools:ignore="HardcodedText"
-        android:textSize="20sp" />
+        android:textSize="17sp" />
 
     <TextView
-        android:text="Telefon elev"
+        android:text="Telefon: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -75,7 +75,7 @@
         android:layout_alignStart="@+id/studentadress_textView"
         android:id="@+id/studentphone_textView"
         tools:ignore="HardcodedText"
-        android:textSize="20sp" />
+        android:textSize="17sp" />
 
     <ImageView
         app:srcCompat="@android:color/holo_blue_light"
@@ -102,7 +102,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Nume elev"
+        android:text="Nume: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/studentname_textView"
@@ -110,10 +110,10 @@
         android:layout_marginTop="5dp"
         android:layout_below="@+id/studentclass_textView"
         android:layout_alignStart="@+id/studentclass_textView"
-        android:textSize="20sp" />
+        android:textSize="17sp" />
 
     <TextView
-        android:text="Adresa elev"
+        android:text="Adresă: "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/studentadress_textView"
@@ -121,22 +121,21 @@
         android:layout_marginTop="5dp"
         android:layout_below="@+id/nrmatricol_textView"
         android:layout_alignStart="@+id/nrmatricol_textView"
-        android:textSize="20sp" />
+        android:textSize="17sp" />
 
     <TextView
-        android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/schoolname_textView"
-        tools:text="Denumire Scoala"
+        android:text="Unitate de învățământ: "
         tools:ignore="HardcodedText"
         android:layout_marginTop="15dp"
         android:layout_below="@+id/semnatura"
         android:layout_alignParentStart="true"
-        android:textSize="20sp" />
+        android:textSize="17sp" />
 
     <Button
-        android:text="Delogheaza-te"
+        android:text="Deloghează-te"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

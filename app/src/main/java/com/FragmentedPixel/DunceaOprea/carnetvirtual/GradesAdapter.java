@@ -2,7 +2,9 @@ package com.FragmentedPixel.DunceaOprea.carnetvirtual;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,7 @@ class GradesAdapter extends ArrayAdapter<Grades>
         this.objects = objects;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @NonNull
     @Override
     public View getView(int position, View convertView, @NonNull ViewGroup parent)
@@ -52,6 +55,8 @@ class GradesAdapter extends ArrayAdapter<Grades>
             SimpleDateFormat df_month = new SimpleDateFormat("MM", Locale.getDefault());
 
             gValue.setText(""+g.value);
+            ColorSet(gValue,g.value);
+
             gDate.setText(df_day.format(g.date)+" "+toRoman[Integer.parseInt(df_month.format(g.date))-1]);
             gSubject.setText(g.materie);
         }
@@ -59,6 +64,20 @@ class GradesAdapter extends ArrayAdapter<Grades>
 
         return v;
 
+    }
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void ColorSet(TextView view, int grade)
+    {
+
+        if(grade<4)
+            view.setBackground(getContext().getDrawable(R.drawable.background_red));
+        else if(grade<9)
+            view.setBackground(getContext().getDrawable(R.drawable.background_orange));
+        else
+            view.setBackground(getContext().getDrawable(R.drawable.background_green));
     }
 
 }

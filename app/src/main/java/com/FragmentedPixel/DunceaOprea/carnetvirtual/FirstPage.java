@@ -40,30 +40,30 @@ public class FirstPage extends AppCompatActivity {
         bossSignature.setImageBitmap(student.bsignature);
 
         TextView schoolname = (TextView) findViewById(R.id.schoolname_textView);
-        schoolname.setText("Scoala: " + student.schoolname);
+        schoolname.setText(schoolname.getText() + student.schoolname);
 
         TextView schooladress = (TextView) findViewById(R.id.schooladresa_textView);
-        schooladress.setText("Adresa scoala: " + student.schooladress);
+        schooladress.setText(schooladress.getText() + student.schooladress);
 
         TextView schoolphone = (TextView) findViewById(R.id.schoolphone_textView);
-        schoolphone.setText("Telefon scoala: " + student.schoolphone);
+        schoolphone.setText(schoolphone.getText() + student.schoolphone);
 
         TextView studentclass = (TextView) findViewById(R.id.studentclass_textView);
-        studentclass.setText("Clasa: " + student.className);
+        studentclass.setText(studentclass.getText() + student.className);
 
         TextView studentname = (TextView) findViewById(R.id.studentname_textView);
-        studentname.setText("Nume: " + student.name);
+        studentname.setText(studentname.getText() + student.name);
 
         TextView studentforename = (TextView) findViewById(R.id.studentforename_textView);
-        studentforename.setText("Prenume: " + student.forename);
+        studentforename.setText(studentforename.getText() + student.forename);
 
         TextView numarmatricol = (TextView) findViewById(R.id.nrmatricol_textView);
-        numarmatricol.setText("Nr. matricol:" + student.serialNumber);
+        numarmatricol.setText(numarmatricol.getText() + student.serialNumber);
 
         TextView studentadress = (TextView) findViewById(R.id.studentadress_textView);
-        studentadress.setText("Adresa: " + student.adress);
+        studentadress.setText(studentadress.getText() + student.adress);
 
         TextView studentphone = (TextView) findViewById(R.id.studentphone_textView);
-        studentphone.setText("Telefon: " + student.phone);
+        studentphone.setText(studentphone.getText() + student.phone);
     }
 }

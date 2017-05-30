@@ -25,13 +25,15 @@
         android:textSize="18sp" />
 
     <TextView
-        android:text="Nota"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/gradeValue"
-        android:layout_weight="1"
-        tools:ignore="HardcodedText"
+        android:layout_width="60dp"
+        android:layout_height="22dp"
+        android:background="@drawable/background_green"
+        android:gravity="center"
+        android:text="Nota"
         android:textAlignment="center"
-        android:textSize="18sp" />
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>
